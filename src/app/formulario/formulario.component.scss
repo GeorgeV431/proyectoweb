@@ -1,3 +1,31 @@
-div{
- border: 1px solid black;   
+form{
+    width: 50%;
+    margin:auto;
+    border: 2px solid rgb(185, 185, 185);
+    border-radius: 5px;
+}
+
+ul{
+    list-style: none;
+
+}
+button{
+    float: none;
+    width: 14%;
+    margin-left: 43%;
+    
+    border: 1px solid black;
+}
+
+.mat-form-field{
+    margin-left: 4.5em;
+    width: 75%;
+}
+#rut{
+    width: 15em;
+    float: left;
+}
+#correo{
+    float: left;
+    width: 30.5em;
 }
