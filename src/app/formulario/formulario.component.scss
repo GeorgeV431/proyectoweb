@@ -1,10 +1,9 @@
 form{
     width: 50%;
-    margin:auto;
+    margin: 2em auto;
     border: 2px solid rgb(185, 185, 185);
     border-radius: 5px;
-    margin-top: 2em;
-    padding-top: 2em;
+    padding: 2em 0;
 }
 
 h1{
@@ -25,12 +24,15 @@ ul{         // ul lista de input
     //border:1px solid black;
 }
 
+.submit{
+    width: 7.4em;
+    margin: 0 auto;
 
-button{             //boton registrarse
-    float: none;
-    width: 14%;
-    margin-left: 43%;
-    border: 1px solid black;
+}
+
+.submit button{             //boton registrarse
+    //width: auto;
+    display: block;
 }
 
 #rut{       //input rut
@@ -46,7 +48,7 @@ button{             //boton registrarse
 
 
 .mat-form-field{
-    margin-left: 4.5em;
-    width: 75%;
+    margin: 0 auto;
+    width: 80%;
 }
 
