@@ -20,28 +20,30 @@ h1{
     text-align: center;
 }
 
-ul{
+ul{         // ul lista de input
     list-style: none;
     //border:1px solid black;
 }
 
-#rut{
-    width: 15em;
-    float: left;
-    margin-left: -4.2em;
-}
 
-#correo{
-    float: left;
-    width: 30.5em;
-}
-
-button{
+button{             //boton registrarse
     float: none;
     width: 14%;
     margin-left: 43%;
     border: 1px solid black;
 }
+
+#rut{       //input rut
+    width: 30%;
+    float: left;
+    margin-left: -4.2em;
+}
+
+#correo{    //input correo
+    float: left;
+    width: 61%;
+}
+
 
 .mat-form-field{
     margin-left: 4.5em;

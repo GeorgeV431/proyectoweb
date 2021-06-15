@@ -1,0 +1,30 @@
+div{
+    width: 75%;
+    margin:auto;
+    border: 2px solid rgb(185, 185, 185);
+    border-radius: 5px;
+    margin-top: 2em;
+    padding: 2em;
+}
+
+h1{
+    
+    font-family: Arbutus Slab;
+    font-weight: bold;
+    color: rgb(63, 63, 63);
+
+
+    margin-top: -1.9em;
+    margin-left: 1em;
+    background: white;
+    width: 10em;
+    text-align: center;
+}
+mat-tab-group{
+    margin: auto;
+
+}
+
+.mat-form-field + .mat-form-field {
+    margin-left: 8px;
+}

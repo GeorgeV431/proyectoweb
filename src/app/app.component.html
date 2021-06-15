@@ -2,6 +2,8 @@
 <header>
   <mat-drawer-container id="sideContainer" autosize>
   <h1> La Boutique De Fischl </h1>
+
+  <!-- boton inicio sesion -->
     <div id="sidenavButton">
       <button type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
     </div>
@@ -12,29 +14,48 @@
 
 <!-- SIDEBAR (INICIO DE SESION) -->
 <mat-drawer #drawer id="sidenav" mode="over" backdrop="off" >
+  <!-- titulo -->
   <mat-label>INICIO DE SESION</mat-label>
+
+  <!-- formulario -->
   <form id="sideBar">
+
     <!-- correo -->
     <mat-form-field appearance="outline">
       <mat-label>Correo</mat-label>
       <input autocomplete="off" matInput placeholder="CorreoDeEjemplo@xmail.xxx">
     </mat-form-field>
+
     <!-- contraseña -->
     <mat-form-field appearance="outline">
       <mat-label>Contraseña</mat-label>
       <input type="password" matInput placeholder="Contraseña">
     </mat-form-field>
-    <!-- boton inicio -->
-    <button type="submit" mat-raised-button> Iniciar Sesion </button>
 
+    <!-- captcha -->
+    <div class="g-recaptcha" data-sitekey="6LfnmzUbAAAAAF0DZrvwy9wy6buyDvQaauSlOySi"></div>
+
+    <!-- boton iniciar sesion -->
+    <button id="submitbutton" type="submit" mat-raised-button> Iniciar Sesion </button>
   </form>
+
+  <!-- link registro -->
+  <mat-label>¿Aun no tienes una cuenta?       </mat-label>
+  <a (click)="drawer.toggle()" routerLink="registro"><strong>Registrate</strong></a>
+
   <!-- boton cerrar sidebar -->
-  <button id="sidenavToggle" type="button" mat-raised-button (click)="drawer.toggle()"> Cerrar </button>
+  <div id="sidenavToggle">
+  <button  type="button" mat-raised-button (click)="drawer.toggle()"> Cerrar </button>
+  </div>
+
 </mat-drawer>
 
 <!-- BODY -->
-
-<app-formulario></app-formulario>
+<!-- imagen pa trolear -->
+<div id="image">
+<img hidden src="assets/fischldog.png">
+</div>
+<!--<app-formulario></app-formulario>-->
 
 
 

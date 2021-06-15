@@ -11,6 +11,11 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { AdminViewComponent } from './admin-view/admin-view.component';
+import {matTabsAnimations, MatTabsModule} from '@angular/material/tabs';
+import {matExpansionAnimations, MatExpansionModule} from '@angular/material/expansion';
+
+
 
 
 
@@ -20,7 +25,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 @NgModule({
   declarations: [
     AppComponent,
-    FormularioComponent
+    FormularioComponent,
+    AdminViewComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatSelectModule,
     MatInputModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

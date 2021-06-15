@@ -30,7 +30,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.name.hasError('email') ? 'Not a valid email' : '';
+    return ;
   }
 
   /*-- Apellidos --*/
@@ -39,7 +39,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.apellido.hasError('email') ? 'Not a valid email' : '';
+    return ;
   }
   /*-- RUT --*/
   getErrorMessageRUT() {
@@ -47,7 +47,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.name.hasError('email') ? 'Not a valid email' : '';
+    return ;
   }
 
   /*-- Direccion --*/
@@ -56,7 +56,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.name.hasError('email') ? 'Not a valid email' : '';
+    return ;
   }
 
   /*-- Region  --*/
@@ -65,7 +65,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.name.hasError('email') ? 'Not a valid email' : '';
+    return ;
   }
 
   /*-- Romuna  --*/
@@ -74,7 +74,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.name.hasError('email') ? 'Not a valid email' : '';
+    return ;
   }
 
   /*-- Correo electronico --*/
@@ -92,7 +92,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.name.hasError('email') ? 'Not a valid email' : '';
+    return ;
   }
 
   /*-- Confirmar Contraseña --*/
@@ -101,11 +101,9 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return this.name.hasError('email') ? 'Not a valid email' : '';
+    return ;
   }
 
-  
-  
 
   constructor() { }
 

@@ -1,7 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import {FormularioComponent} from "../app/formulario/formulario.component"
+import {AdminViewComponent} from "../app/admin-view/admin-view.component"
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path:"registro",component:FormularioComponent},
+  {path:"admin",component:AdminViewComponent,}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

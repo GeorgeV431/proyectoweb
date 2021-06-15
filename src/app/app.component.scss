@@ -30,17 +30,26 @@ h1{
 
 //boton cerrar sidebar
 #sidenavToggle{
-    position: absolute;
-    bottom: 1em;
-    left: 6.5em;
+    margin:auto;
+    width: 5em;
+    margin-top: 85%;
+
+}
+#submitbutton{
+    margin-top: 5%;
+    margin-bottom: 2%;
 }
 
 //sidebar
 #sidenav{
-    width: 20em;
+    width: 30em;
     padding: 2em;
 }
 //sidebar form
 #sideBar{
     margin-top: 1em;
+}
+#image{
+    margin:auto;
+    width: 60%;
 }
