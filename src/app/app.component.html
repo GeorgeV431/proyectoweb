@@ -1,7 +1,7 @@
 <!-- HEADER -->
 <header>
   <mat-drawer-container id="sideContainer" autosize>
-  <h1> La Boutique De Fischl </h1>
+  <a [routerLink]="['/']" routerLinkActive="router-link-active" > <h1>La Boutique De Fischl </h1> </a>
 
   <!-- boton inicio sesion -->
     <div id="sidenavButton">
@@ -18,10 +18,9 @@
   <mat-label>INICIO DE SESION</mat-label>
   <!-- boton cerrar sidebar -->
   <div id="sidenavToggle">
-    <button  type="button" mat-mini-fab color="warn" (click)="drawer.toggle()"> X </button>
-    </div>
+    <button mat-mini-fab color="white" id="cerrar"  type="button" (click)="drawer.toggle()"> X </button>
+  </div>
   
-
   <!-- formulario -->
   <form id="sideBar">
 
@@ -54,8 +53,9 @@
 <!-- BODY -->
 <!-- imagen pa trolear -->
 <div id="image">
-<img src="assets/fischldog.png">
+<img hidden src="assets/fischldog.png">
 </div>
+
 <!--<app-formulario></app-formulario>-->
 
 

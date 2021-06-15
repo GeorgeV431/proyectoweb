@@ -31,7 +31,11 @@ h1{
 //boton cerrar sidebar
 #sidenavToggle{
     float: right;
-
+    
+}
+#cerrar:hover{
+    background-color: red;
+    color: white;
 }
 
 //boton submit iniciar sesion
@@ -52,4 +56,9 @@ h1{
 #image{
     margin:auto;
     width: 60%;
+}
+
+
+body{
+    background-color: #000000;
 }
