@@ -16,6 +16,11 @@
 <mat-drawer #drawer id="sidenav" mode="over" backdrop="off" >
   <!-- titulo -->
   <mat-label>INICIO DE SESION</mat-label>
+  <!-- boton cerrar sidebar -->
+  <div id="sidenavToggle">
+    <button  type="button" mat-mini-fab color="warn" (click)="drawer.toggle()"> X </button>
+    </div>
+  
 
   <!-- formulario -->
   <form id="sideBar">
@@ -43,11 +48,7 @@
   <mat-label>¿Aun no tienes una cuenta?       </mat-label>
   <a (click)="drawer.toggle()" routerLink="registro"><strong>Registrate</strong></a>
 
-  <!-- boton cerrar sidebar -->
-  <div id="sidenavToggle">
-  <button  type="button" mat-raised-button (click)="drawer.toggle()"> Cerrar </button>
-  </div>
-
+  
 </mat-drawer>
 
 <!-- BODY -->

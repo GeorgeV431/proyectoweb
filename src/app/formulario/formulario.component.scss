@@ -1,4 +1,4 @@
-form{
+form{   //formulario
     width: 50%;
     margin: 2em auto;
     border: 2px solid rgb(185, 185, 185);
@@ -6,7 +6,7 @@ form{
     padding: 2em 0;
 }
 
-h1{
+h1{     //titulo del formulario
     font-family: Arbutus Slab;
     font-weight: bold;
     color: rgb(63, 63, 63);
@@ -21,20 +21,27 @@ h1{
 
 ul{         // ul lista de input
     list-style: none;
-    //border:1px solid black;
+    padding-left: 0%;
+
+}
+li{     // cada item de la lista
+
+    width: 90%;
+    margin: auto;
 }
 
-.submit{
+.submit{    //div del submit button
     width: 7.4em;
     margin: 0 auto;
 
 }
+.mat-form-field{    //objeto dentro de cada item de la lista
+    margin: 0 auto;
+    width: 100%;
 
-.submit button{             //boton registrarse
-    //width: auto;
-    display: block;
 }
 
+/*
 #rut{       //input rut
     width: 30%;
     float: left;
@@ -45,10 +52,7 @@ ul{         // ul lista de input
     float: left;
     width: 61%;
 }
+*/
 
 
-.mat-form-field{
-    margin: 0 auto;
-    width: 80%;
-}
 
