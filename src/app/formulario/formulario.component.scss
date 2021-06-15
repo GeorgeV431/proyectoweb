@@ -3,17 +3,43 @@ form{
     margin:auto;
     border: 2px solid rgb(185, 185, 185);
     border-radius: 5px;
+    margin-top: 2em;
+    padding-top: 2em;
+}
+
+h1{
+    font-family: Arbutus Slab;
+    font-weight: bold;
+    color: rgb(63, 63, 63);
+
+    float: left;
+    margin-top: -1.9em;
+    margin-left: 1em;
+    background: white;
+    width: 6em;
+    text-align: center;
 }
 
 ul{
     list-style: none;
-
+    //border:1px solid black;
 }
+
+#rut{
+    width: 15em;
+    float: left;
+    margin-left: -4.2em;
+}
+
+#correo{
+    float: left;
+    width: 30.5em;
+}
+
 button{
     float: none;
     width: 14%;
     margin-left: 43%;
-    
     border: 1px solid black;
 }
 
@@ -21,11 +47,4 @@ button{
     margin-left: 4.5em;
     width: 75%;
 }
-#rut{
-    width: 15em;
-    float: left;
-}
-#correo{
-    float: left;
-    width: 30.5em;
-}
+

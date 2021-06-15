@@ -2,6 +2,8 @@ header{
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(138,43,226,1) 0%, rgba(40,194,215,1) 100%);
 }
+
+//titulo
 h1{
     font-family: Arbutus Slab;
     color: white;
@@ -12,4 +14,33 @@ h1{
     padding: 0.75em;
     width: 24.6%;
     font-size:xx-large;
+}
+
+//container del sidebar
+#sideContainer {
+    background: none;
+}
+  
+//boton inicio de sesion
+#sidenavButton {
+    position: absolute;
+    top: 1.5em;
+    left: 2em;  
+}
+
+//boton cerrar sidebar
+#sidenavToggle{
+    position: absolute;
+    bottom: 1em;
+    left: 6.5em;
+}
+
+//sidebar
+#sidenav{
+    width: 20em;
+    padding: 2em;
+}
+//sidebar form
+#sideBar{
+    margin-top: 1em;
 }

@@ -1,11 +1,13 @@
 <form action="" autocomplete="off" >
+<h1>
+REGISTRO
+</h1>
   <ul class="example-container">
-
     <!-- Nombre -->
     <li>
       <mat-form-field appearance="fill">
-        <mat-label>Nombre Completo</mat-label>
-        <input matInput placeholder="Nombre Completo" [formControl]=name required>
+        <mat-label>Nombre </mat-label>
+        <input matInput placeholder="Roberto Andres" [formControl]=name required>
         <mat-error *ngIf="name.invalid">{{getErrorMessageNombre()}}</mat-error>
       </mat-form-field>
     </li>
@@ -14,8 +16,17 @@
     <li>
       <mat-form-field appearance="fill">
         <mat-label>Apellidos</mat-label>
-        <input matInput placeholder="Apellidos" [formControl]=apellido required>
+        <input matInput placeholder="Concha Vergara" [formControl]=apellido required>
         <mat-error *ngIf="apellido.invalid">{{getErrorMessageApellidos()}}</mat-error>
+      </mat-form-field>
+    </li>
+
+    <!-- Correo Electronico -->
+    <li id="correo">
+      <mat-form-field appearance="fill">
+        <mat-label>Correo Electronico</mat-label>
+        <input matInput placeholder="CorreoDeEjemplo@xmail.xxx" [formControl]=correo required>
+        <mat-error *ngIf="correo.invalid">{{getErrorMessageCorreo()}}</mat-error>
       </mat-form-field>
     </li>
 
@@ -25,15 +36,6 @@
         <mat-label>RUT</mat-label>
         <input max="9" type="number" matInput placeholder="RUT" [formControl]=rut required>
         <mat-error *ngIf="rut.invalid">{{getErrorMessageRUT()}}</mat-error>
-      </mat-form-field>
-    </li>
-
-    <!-- Correo Electronico -->
-    <li id="correo">
-      <mat-form-field appearance="fill">
-        <mat-label>Correo Electronico</mat-label>
-        <input matInput placeholder="Correo Electronico" [formControl]=correo required>
-        <mat-error *ngIf="correo.invalid">{{getErrorMessageCorreo()}}</mat-error>
       </mat-form-field>
     </li>
 
@@ -93,6 +95,6 @@
     </li>
    
   </ul>
-  <button mat-raised-button color="primary">Primary</button>
+  <button mat-raised-button color="primary">Registrarse</button>
 
 </form>

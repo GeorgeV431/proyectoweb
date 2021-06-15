@@ -1,9 +1,44 @@
+<!-- HEADER -->
 <header>
+  <mat-drawer-container id="sideContainer" autosize>
   <h1> La Boutique De Fischl </h1>
+    <div id="sidenavButton">
+      <button type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
+    </div>
+  
+  </mat-drawer-container>
+
 </header>
+
+<!-- SIDEBAR (INICIO DE SESION) -->
+<mat-drawer #drawer id="sidenav" mode="over" backdrop="off" >
+  <mat-label>INICIO DE SESION</mat-label>
+  <form id="sideBar">
+    <!-- correo -->
+    <mat-form-field appearance="outline">
+      <mat-label>Correo</mat-label>
+      <input autocomplete="off" matInput placeholder="CorreoDeEjemplo@xmail.xxx">
+    </mat-form-field>
+    <!-- contraseña -->
+    <mat-form-field appearance="outline">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput placeholder="Contraseña">
+    </mat-form-field>
+    <!-- boton inicio -->
+    <button type="submit" mat-raised-button> Iniciar Sesion </button>
+
+  </form>
+  <!-- boton cerrar sidebar -->
+  <button id="sidenavToggle" type="button" mat-raised-button (click)="drawer.toggle()"> Cerrar </button>
+</mat-drawer>
+
+<!-- BODY -->
 
 <app-formulario></app-formulario>
 
+
+
+<!-- FOOTER -->
 <footer>
   
 </footer>
