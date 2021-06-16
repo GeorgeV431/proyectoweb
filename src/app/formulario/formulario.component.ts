@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import {MatDialog} from '@angular/material/dialog';
 
 
 @Component({
@@ -8,6 +11,8 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./formulario.component.scss']
 })
 export class FormularioComponent implements OnInit {
+
+  formulario:FormGroup;
 
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
@@ -83,6 +88,15 @@ export class FormularioComponent implements OnInit {
     }
 
 }
+constructor(public fb:FormBuilder,private router:Router,private route:ActivatedRoute,public dialog: MatDialog) {
+  this.formulario=fb.group({
+    nombre:['']
+  });
+ }
+
+ngOnInit(): void {
+}
+
 
   /*-- Nombre --*/
 
@@ -91,7 +105,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return ;
+    return true;
   }
 
   /*-- Apellidos --*/
@@ -100,7 +114,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return ;
+    return true;
   }
   /*-- RUT --*/
   getErrorMessageRUT() {
@@ -108,7 +122,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return ;
+    return true;
   }
 
   /*-- Direccion --*/
@@ -117,7 +131,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return ;
+    return true;
   }
 
   /*-- Region  --*/
@@ -126,7 +140,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return ;
+    return true;
   }
 
   /*-- Comuna  --*/
@@ -135,7 +149,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return ;
+    return true;
   }
 
   /*-- Correo electronico --*/
@@ -143,8 +157,8 @@ export class FormularioComponent implements OnInit {
     if (this.correo.hasError('required')) {
       return 'You must enter a value';
     }
+    return this.correo.hasError('email') ? 'Not a valid email' : true;
 
-    return this.name.hasError('email') ? 'Not a valid email' : '';
   }
 
   /*-- Contraseña --*/
@@ -153,7 +167,7 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return ;
+    return true;
   }
 
   /*-- Confirmar Contraseña --*/
@@ -162,13 +176,42 @@ export class FormularioComponent implements OnInit {
       return 'You must enter a value';
     }
 
-    return ;
+    return true;
   }
 
-
-  constructor() { }
-
-  ngOnInit(): void {
+  validInput(){
+    if(this.getErrorMessageNombre()==true && this.getErrorMessageApellidos()==true && this.getErrorMessageRUT()==true && this.getErrorMessageDireccion()==true && this.getErrorMessageCorreo()==true &&  this.getErrorMessageRegion()==true && this.getErrorMessageComuna()==true && this.getErrorMessageContrasenya()==true && this.getErrorMessageCContrasenya()==true){
+      return true;
+    }
+    return false;
   }
 
+  onSubmit(): void {
+    if(this.validInput()){
+      if(this.contrasenya.value!=this.cContrasenya.value){
+        this.dialog.open(dialogClave);
+      }
+      else{
+      //console.log(this.name.value, this.apellido.value, this.rut.value, this.direccion.value, this.correo.value, this.region.value, this.comuna.value, this.contrasenya.value, this.cContrasenya.value);
+      this.dialog.open(dialogo);
+      this.router.navigateByUrl('/');
+      }
+    }
+    }
 }
+@Component({
+  selector: 'dialogo',
+  templateUrl: 'dialogo.html',
+})
+export class dialogo {}
+@Component({
+  selector: 'dialogClave',
+  templateUrl: 'dialogClave.html',
+})
+export class dialogClave {}
+  
+  
+
+  
+
+

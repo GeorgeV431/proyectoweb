@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormularioComponent } from './formulario/formulario.component';
+import { dialogClave, dialogo, FormularioComponent } from './formulario/formulario.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
@@ -14,13 +14,17 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { AdminViewComponent } from './admin-view/admin-view.component';
 import {matTabsAnimations, MatTabsModule} from '@angular/material/tabs';
 import {matExpansionAnimations, MatExpansionModule} from '@angular/material/expansion';
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FormularioComponent,
-    AdminViewComponent
+    AdminViewComponent,
+    dialogo,
+    dialogClave
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,8 @@ import {matExpansionAnimations, MatExpansionModule} from '@angular/material/expa
     MatButtonModule,
     MatSidenavModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
