@@ -192,7 +192,7 @@ ngOnInit(): void {
         this.dialog.open(dialogClave);
       }
       else{
-      //console.log(this.name.value, this.apellido.value, this.rut.value, this.direccion.value, this.correo.value, this.region.value, this.comuna.value, this.contrasenya.value, this.cContrasenya.value);
+      //  console.log(this.name.value, this.apellido.value, this.rut.value, this.direccion.value, this.correo.value, this.region.value, this.comuna.value, this.contrasenya.value, this.cContrasenya.value);
       this.dialog.open(dialogo);
       this.router.navigateByUrl('/');
       }

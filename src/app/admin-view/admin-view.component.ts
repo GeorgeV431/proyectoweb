@@ -7,6 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminViewComponent implements OnInit {
 
+  //esto es temporal para visualizar como sera
+  usuarios= 'awebo,pium,fium,wom,alo,wenas,tardes'.split(',');
+  pedidos= 'awebo,pium,fium,wom,alo,wenas,tardes'.split(',');
+  
+  //esto es como deberia ser 
+  //usuarios: any[] | undefined ;
+  //pedidos: any[] | undefined ;
+
   panelOpenState = false;
 
   constructor() { }
