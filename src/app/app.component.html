@@ -27,17 +27,17 @@
     <!-- correo -->
     <mat-form-field appearance="outline">
       <mat-label>Correo</mat-label>
-      <input autocomplete="off" matInput placeholder="CorreoDeEjemplo@xmail.xxx">
+      <input autocomplete="off" matInput placeholder="CorreoDeEjemplo@xmail.xxx" required >
     </mat-form-field>
 
     <!-- contraseña -->
     <mat-form-field appearance="outline">
       <mat-label>Contraseña</mat-label>
-      <input type="password" matInput placeholder="Contraseña">
+      <input type="password" matInput placeholder="Contraseña" required >
     </mat-form-field>
 
     <!-- captcha -->
-    <div class="g-recaptcha" data-sitekey="6LfnmzUbAAAAAF0DZrvwy9wy6buyDvQaauSlOySi"></div>
+    <div class="g-recaptcha" data-sitekey="6LfnmzUbAAAAAF0DZrvwy9wy6buyDvQaauSlOySi" required ></div>
 
     <!-- boton iniciar sesion -->
     <button id="submitbutton" type="submit" mat-raised-button> Iniciar Sesion </button>
