@@ -4,6 +4,7 @@ form{   //formulario
     border: 2px solid rgb(185, 185, 185);
     border-radius: 5px;
     padding: 2em 0;
+    background-color: white;
 }
 
 h1{     //titulo del formulario
@@ -17,6 +18,8 @@ h1{     //titulo del formulario
     background: white;
     width: 6em;
     text-align: center;
+    border: 1px solid  rgb(185, 185, 185);
+    border-radius:round($number: 5px)
 }
 
 ul{         // ul lista de input
