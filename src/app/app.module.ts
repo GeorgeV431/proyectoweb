@@ -19,6 +19,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatIcon, MatIconModule} from '@angular/material/icon';
 import { TiendaComponent } from './tienda/tienda.component';
 import {MatCardModule} from '@angular/material/card';
+import { ProductoComponent } from './producto/producto.component';
 
 
 
@@ -32,7 +33,8 @@ import {MatCardModule} from '@angular/material/card';
     AdminViewComponent,
     dialogo,
     dialogClave,
-    TiendaComponent
+    TiendaComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
