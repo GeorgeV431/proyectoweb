@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {FormularioComponent} from "../app/formulario/formulario.component"
 import {AdminViewComponent} from "../app/admin-view/admin-view.component"
+import {TiendaComponent} from "../app/tienda/tienda.component"
 
 const routes: Routes = [
   {path:"registro",component:FormularioComponent},
-  {path:"admin",component:AdminViewComponent,}
+  {path:"admin",component:AdminViewComponent},
+  {path:"",component:TiendaComponent}
 ];
 
 @NgModule({

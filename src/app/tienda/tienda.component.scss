@@ -1,0 +1,30 @@
+#tienda{
+    width: 90%;
+    margin: 2em auto;
+    margin-left: 5%;
+    border: 2px solid rgb(185, 185, 185);
+    border-radius: 5px;
+    padding: 2em 0;
+    background-color: white;
+    display: inline-block;
+}
+
+.card {
+    max-width: 25em;
+    margin:2em;
+    height: 35em;
+    float: left;
+}
+
+mat-form-field{
+    width: 5em;
+
+}
+#cartButton{
+    width: 7.5em;
+    height: 3em;
+    background-color: rgb(6, 177, 177);
+    color: white;
+}
+
+

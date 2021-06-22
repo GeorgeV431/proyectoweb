@@ -15,6 +15,13 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
 import {matTabsAnimations, MatTabsModule} from '@angular/material/tabs';
 import {matExpansionAnimations, MatExpansionModule} from '@angular/material/expansion';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatIcon, MatIconModule} from '@angular/material/icon';
+import { TiendaComponent } from './tienda/tienda.component';
+import {MatCardModule} from '@angular/material/card';
+
+
+
 
 
 
@@ -24,7 +31,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     FormularioComponent,
     AdminViewComponent,
     dialogo,
-    dialogClave
+    dialogClave,
+    TiendaComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +47,10 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSidenavModule,
     MatTabsModule,
     MatExpansionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatGridListModule,
+    MatIconModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
