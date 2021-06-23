@@ -1,7 +1,8 @@
 <div id="tienda">
   <div id="filtro">
     <mat-accordion>
-      <mat-expansion-panel hideToggle>
+      <mat-expansion-panel  hideToggle>
+        
         <mat-expansion-panel-header>
           <mat-panel-title>
             FILTRAR PRODUCTOS
@@ -10,17 +11,18 @@
         </mat-expansion-panel-header>
 
         <!-- EXPANSION PANEL CONTENT -->
-
-        <div id="checkbox" [formGroup]="toppings">
+        <ng-template matExpansionPanelContent>
+        <form action="">
+        <div id="checkbox" >
           <h4>Seleccione las categorias:</h4>
           <p>
-            <mat-checkbox formControlName="pepperoni">Pepperoni</mat-checkbox>
+            <mat-checkbox >Pepperoni</mat-checkbox>
           </p>
           <p>
-            <mat-checkbox formControlName="extracheese">Extra Cheese</mat-checkbox>
+            <mat-checkbox >Extra Cheese</mat-checkbox>
           </p>
           <p>
-            <mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox>
+            <mat-checkbox >Mushroom</mat-checkbox>
           </p>
         </div>
         <div id="price">
@@ -34,14 +36,15 @@
           </mat-slider>
 
         </div>
+        <mat-action-row>
+          <button id="filtrar" type="submit" mat-raised-button color=primary>FILTRAR</button>
+        </mat-action-row>
+        
+      </form>
+        </ng-template>
 
-        <div id="filtrar">
-          <button mat-raised-button color=primary>FILTRAR</button>
-        </div>
-
-
+      
       </mat-expansion-panel>
-
     </mat-accordion>
 
   </div>

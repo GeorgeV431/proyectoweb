@@ -11,16 +11,11 @@ export class TiendaComponent implements OnInit {
   valueP = 0;
   valueR = 0;
   panelOpenState = false;
-  toppings: FormGroup;
 
   num = '1.2.3.4.5.6.7.8.9.1.2.3.4.5.6.7.8.9.1.2.3.4.5.6.7.8.9'.split('.');
 
-  constructor(fb: FormBuilder) {
-    this.toppings = fb.group({
-      pepperoni: false,
-      extracheese: false,
-      mushroom: false
-    });}
+  constructor() {}
+
 
 
   ngOnInit(): void {
