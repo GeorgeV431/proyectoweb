@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
+import { ServicioService } from '../servicio.service';
 
 @Component({
   selector: 'app-admin-view',
@@ -7,19 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminViewComponent implements OnInit {
 
-  //esto es temporal para visualizar como sera
-  usuarios= 'awebo,pium,fium,wom,alo,wenas,tardes'.split(',');
-  pedidos= 'awebo,pium,fium,wom,alo,wenas,tardes'.split(',');
-  
-  //esto es como deberia ser 
-  //usuarios: any[] | undefined ;
-  //pedidos: any[] | undefined ;
+  @HostBinding('class') clases = 'row';
+
+  usuarios: any | undefined = [] ;
+  pedidos: any | undefined = [];
 
   panelOpenState = false;
 
-  constructor() { }
+  constructor(public servicio:ServicioService ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+  }
+
+  getUsuarios(){
+    this.servicio.getUsuarios()
+      .subscribe(
+        res => {
+          this.usuarios = res;
+        },
+        err => console.error(err)
+      );
+  }
+
+  getBoletas(){
+    this.servicio.getBoletas()
+      .subscribe(
+        res => {
+          this.pedidos = res;
+        },
+        err => console.error(err)
+      );
   }
 
 }
