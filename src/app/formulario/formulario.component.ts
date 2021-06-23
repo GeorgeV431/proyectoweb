@@ -13,7 +13,7 @@ import {MatDialog} from '@angular/material/dialog';
 export class FormularioComponent implements OnInit {
 
   formulario:FormGroup;
-
+ 
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
 

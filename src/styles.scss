@@ -8,10 +8,14 @@ html, body {
 
 body { 
     font-family: Roboto, "Helvetica Neue", sans-serif; 
+    /*
     background-image:url("assets/fischl.png");
     background-color: #cccccc;
     background-repeat:no-repeat;
     background-size:cover;
+    */
+    background: rgb(2,0,36);
+    background: linear-gradient(250deg, rgba(2,0,36,1) 0%, rgba(70,0,101,1) 0%, rgba(0,9,103,1) 100%);
 }
 
 a{

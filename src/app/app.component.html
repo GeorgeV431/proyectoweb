@@ -2,13 +2,16 @@
 <header>
   <mat-drawer-container id="sideContainer" autosize>
   <a [routerLink]="['/']" routerLinkActive="router-link-active" > <h1>La Boutique De Fischl </h1> </a>
-
+  <!-- fischl img -->
+  <img mat-card-sm-image src="../assets/chibiFischl.png" >
   <!-- boton inicio sesion -->
     <div id="sidenavButton">
       <button type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
+      
     </div>
-  
+    
   </mat-drawer-container>
+  
 
 </header>
 
@@ -51,12 +54,7 @@
 </mat-drawer>
 
 <!-- BODY -->
-<!-- imagen pa trolear -->
-<div id="image">
-<img hidden src="assets/fischldog.png">
-</div>
 
 <!--<app-formulario></app-formulario>-->
-<div>AWEBO</div>
 
 <router-outlet></router-outlet>
