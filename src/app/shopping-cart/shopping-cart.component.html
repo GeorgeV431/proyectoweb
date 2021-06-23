@@ -1,0 +1,22 @@
+<div id="cart" >
+    <mat-card *ngFor="let item of num" class="card">
+        <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-header>
+          <mat-card-title>product.name</mat-card-title>
+          <mat-card-subtitle> {{item}} </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <button mat-button ><mat-icon aria-hidden="false" aria-label="Example home icon">remove</mat-icon></button>
+            <mat-form-field appearance="outline">
+                <input class="cantidad" matInput>
+            </mat-form-field>
+            <button mat-button ><mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon></button>
+            <button id="cartButton" mat-button><mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon></button>
+            <button  id="delete" mat-button><mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon></button>
+        </mat-card-actions>
+      </mat-card>
+      <div id="divBuy">
+        <button id="buy"  mat-button>COMPRAR</button>
+      </div>
+      
+</div>

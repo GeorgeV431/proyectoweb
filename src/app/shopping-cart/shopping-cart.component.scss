@@ -1,0 +1,54 @@
+#cart{
+    width: 75%;
+    margin: 2em auto;
+    border: 2px solid rgb(185, 185, 185);
+    border-radius: 5px;
+    padding: 2em 0;
+    background-color: rgb(204, 204, 204);
+}
+
+.card {
+    width: 90%;
+    margin: 0.5em auto;
+}
+  
+.header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+mat-card-header{
+    width: 30%;
+    padding-top: 1.5em;
+    float: left;
+}
+
+img{
+    float: left;
+    margin-left: 2em;
+    border-radius: 5px;
+}
+
+input{
+    text-align: center;
+}
+
+#delete{
+    background-color: rgb(241, 3, 3);
+    color: white;
+    height: 3em;
+    margin-left: 4em;
+}
+
+#divBuy{
+    width: 10em;
+    height: 3.25em;
+    margin: 2em auto 0em auto;
+}
+
+#buy{
+    background-color: rgb(6, 189, 0);
+    color: white;
+    width: 10em;
+    height: 3.25em;
+}

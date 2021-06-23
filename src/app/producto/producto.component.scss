@@ -6,6 +6,8 @@
 .header-image {
     background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
+
+
 }
 #cartButton{
     width: 7.5em;
@@ -22,4 +24,8 @@ mat-card-actions{
 }
 input{
     text-align: center;
+}
+img{
+    float: left;
+    margin-bottom: 1em;
 }

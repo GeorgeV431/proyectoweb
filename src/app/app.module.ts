@@ -20,6 +20,7 @@ import {MatIcon, MatIconModule} from '@angular/material/icon';
 import { TiendaComponent } from './tienda/tienda.component';
 import {MatCardModule} from '@angular/material/card';
 import { ProductoComponent } from './producto/producto.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 
@@ -34,7 +35,8 @@ import { ProductoComponent } from './producto/producto.component';
     dialogo,
     dialogClave,
     TiendaComponent,
-    ProductoComponent
+    ProductoComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
