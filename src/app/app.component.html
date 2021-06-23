@@ -3,7 +3,7 @@
   <mat-drawer-container id="sideContainer" autosize>
   <a [routerLink]="['/']" routerLinkActive="router-link-active" > <h1>La Boutique De Fischl </h1> </a>
   <!-- fischl img -->
-  <img mat-card-sm-image src="../assets/chibiFischl.png" >
+  <img #tooltip="matTooltip" matTooltip="Have a nice day!" matTooltipPosition="left"  mat-card-sm-image src="../assets/chibiFischl.png" >
   <!-- boton inicio sesion -->
     <div id="sidenavButton">
       <button type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>

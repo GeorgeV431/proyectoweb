@@ -24,6 +24,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import {MatSliderModule} from '@angular/material/slider';
     MatCardModule,
     MatRadioModule,
     MatCheckboxModule,
-    MatSliderModule
+    MatSliderModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]
