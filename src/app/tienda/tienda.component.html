@@ -56,7 +56,7 @@
     
 
   </div>
-  <button id="shoppingCart" mat-stroked-button ><mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon></button>
+  <button id="shoppingCart" [routerLink]="['/cart']" routerLinkActive="router-link-active"  mat-stroked-button ><mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon></button>
   
 
   <div *ngFor="let item of num">
