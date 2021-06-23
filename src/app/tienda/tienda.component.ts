@@ -9,7 +9,8 @@ import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
   styleUrls: ['./tienda.component.scss']
 })
 export class TiendaComponent implements OnInit {
-  valueP = 0;
+  valuePMax = 0;
+  valuePMin = 0;
   valueR = 0;
   panelOpenState = false;
 

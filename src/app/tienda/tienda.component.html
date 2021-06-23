@@ -27,8 +27,13 @@
             </div>
 
             <div id="price">
-              <label>Precio: ${{valueP}}</label>
-              <mat-slider max="50000" step="5000" thumbLabel tickInterval="5000" [(ngModel)]="valueP" class="Slider">
+              <label>Precio Maximo: ${{valuePMax}}</label>
+              <mat-slider max="50000" step="5000" thumbLabel tickInterval="5000" [(ngModel)]="valuePMax" class="Slider">
+              </mat-slider>
+            </div>
+            <div id="price">
+              <label>Precio Minimo: ${{valuePMin}}</label>
+              <mat-slider max="50000" step="5000" thumbLabel tickInterval="5000" [(ngModel)]="valuePMin" class="Slider">
               </mat-slider>
             </div>
 
@@ -48,8 +53,11 @@
 
       </mat-expansion-panel>
     </mat-accordion>
+    
 
   </div>
+  <button id="shoppingCart" mat-stroked-button ><mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon></button>
+  
 
   <div *ngFor="let item of num">
     <mat-card *ngIf="show"  class="card" >
@@ -64,7 +72,7 @@
         <button mat-button>
           <mat-icon aria-hidden="false" aria-label="Example home icon">remove</mat-icon>
         </button>
-        <mat-form-field appearance="outline">
+        <mat-form-field id="cantidad" appearance="outline">
           <input class="cantidad" matInput>
         </mat-form-field>
         <button mat-button>

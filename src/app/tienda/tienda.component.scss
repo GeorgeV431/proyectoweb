@@ -29,7 +29,8 @@ input{
 
 #filtro{
     width: 75%;
-    margin: auto;
+    margin-left: 2em;
+    float: left;
 }
 #checkbox{
 
@@ -69,3 +70,12 @@ width: fit-content;
     }
   }
 
+#shoppingCart{
+    margin: 0.5em 0em 0em 8em ;
+    height: 3em;
+    width: 5em;
+}
+
+#cantidad{
+    width: 5em;
+}
