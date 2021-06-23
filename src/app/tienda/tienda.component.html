@@ -1,4 +1,44 @@
 <div id="tienda">
+    <div id="filtro">
+        <mat-accordion>
+            <mat-expansion-panel hideToggle>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  FILTRAR PRODUCTOS
+                </mat-panel-title>
+                
+              </mat-expansion-panel-header>
+
+              <!-- EXPANSION PANEL CONTENT -->
+
+              <div id="checkbox" [formGroup]="toppings">
+                    <h4>Seleccione las categorias:</h4>
+                    <p><mat-checkbox formControlName="pepperoni">Pepperoni</mat-checkbox></p>
+                    <p><mat-checkbox formControlName="extracheese">Extra Cheese</mat-checkbox></p>
+                    <p><mat-checkbox formControlName="mushroom">Mushroom</mat-checkbox></p>
+              </div>
+              <div id="price">
+                <label>Precio: ${{valueP}}</label>
+                <mat-slider max="50000" step="5000" thumbLabel tickInterval="5000" [(ngModel)]="valueP" class="Slider">
+                </mat-slider>
+              </div>
+              <div id="rating">
+                <label>Valoración: {{valueR}}</label>
+                <mat-slider max="5" step="1" thumbLabel tickInterval="1" [(ngModel)]="valueR" class="Slider">
+                </mat-slider>
+              
+            </div>
+        
+              <div id="filtrar" >
+                <button mat-raised-button color=primary >FILTRAR</button>
+              </div>
+              
+
+            </mat-expansion-panel>
+            
+          </mat-accordion>
+
+    </div>
 
     <mat-card  *ngFor="let item of num" class="card">
         <mat-card-header>
@@ -14,7 +54,7 @@
                 <input class="cantidad" matInput>
             </mat-form-field>
             <button mat-button ><mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon></button>
-            <button id="cartButton" mat-button><mat-icon aria-hidden="false" aria-label="Example home icon">add_shopping_cart</mat-icon></button>
+            <button id="cartButton" mat-button><mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon></button>
         </mat-card-actions>
       </mat-card>
  

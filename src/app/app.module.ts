@@ -21,11 +21,9 @@ import { TiendaComponent } from './tienda/tienda.component';
 import {MatCardModule} from '@angular/material/card';
 import { ProductoComponent } from './producto/producto.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-
-
-
-
-
+import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -54,7 +52,10 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     MatDialogModule,
     MatGridListModule,
     MatIconModule,
-    MatCardModule
+    MatCardModule,
+    MatRadioModule,
+    MatCheckboxModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

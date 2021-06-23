@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import {FormBuilder, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-tienda',
@@ -7,9 +8,20 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./tienda.component.scss']
 })
 export class TiendaComponent implements OnInit {
+  valueP = 0;
+  valueR = 0;
+  panelOpenState = false;
+  toppings: FormGroup;
+
   num = '1.2.3.4.5.6.7.8.9.1.2.3.4.5.6.7.8.9.1.2.3.4.5.6.7.8.9'.split('.');
 
-  constructor() { }
+  constructor(fb: FormBuilder) {
+    this.toppings = fb.group({
+      pepperoni: false,
+      extracheese: false,
+      mushroom: false
+    });}
+
 
   ngOnInit(): void {
   }
