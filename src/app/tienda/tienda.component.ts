@@ -15,16 +15,16 @@ export class TiendaComponent implements OnInit {
   panelOpenState = false;
   
   num: Array<Producto> = [
-    {nombre: "Shiba1", stock: 10, valor: 30000, categoria: "Pepperonni"},
-    {nombre: "Shiba2", stock: 10, valor: 10000, categoria: "Mushroom"},
-    {nombre: "Shiba3", stock: 10, valor: 50000, categoria: "Extra Cheese"},
-    {nombre: "Shiba4", stock: 10, valor: 90000, categoria: "Pepperonni"},
-    {nombre: "Shiba5", stock: 10, valor: 80000, categoria: "Mushroom"},
-    {nombre: "Shiba6", stock: 10, valor: 10000, categoria: "Extra Cheese"},
-    {nombre: "Shiba7", stock: 10, valor: 90000, categoria: "Mushroom"},
-    {nombre: "Shiba8", stock: 10, valor: 70000, categoria: "Pepperonni"},
-    {nombre: "Shiba9", stock: 10, valor: 90000, categoria: "Extra Cheese"},
-    {nombre: "Shiba10", stock: 10, valor: 50000, categoria: "Mushroom"},
+    {nombre: "Shiba1", stock: 10, valor: 3000, categoria: "Pepperonni"},
+    {nombre: "Shiba2", stock: 10, valor: 1000, categoria: "Mushroom"},
+    {nombre: "Shiba3", stock: 10, valor: 5000, categoria: "Extra Cheese"},
+    {nombre: "Shiba4", stock: 10, valor: 9000, categoria: "Pepperonni"},
+    {nombre: "Shiba5", stock: 10, valor: 8000, categoria: "Mushroom"},
+    {nombre: "Shiba6", stock: 10, valor: 1000, categoria: "Extra Cheese"},
+    {nombre: "Shiba7", stock: 10, valor: 9000, categoria: "Mushroom"},
+    {nombre: "Shiba8", stock: 10, valor: 7000, categoria: "Pepperonni"},
+    {nombre: "Shiba9", stock: 10, valor: 9000, categoria: "Extra Cheese"},
+    {nombre: "Shiba10", stock: 10, valor: 5000, categoria: "Mushroom"},
 
   ];
 
@@ -33,12 +33,19 @@ export class TiendaComponent implements OnInit {
   constructor(public fb:FormBuilder) {
     this.filtro = fb.group({
       categoria: [""],
-      priceMin: -1,
-      priceMax: -1,
+      priceMin: 0,
+      priceMax: 10000,
       rating: 0
     });
 
   }
+  reset( ) {
+    this.filtro = this.fb.group({
+      categoria: [""],
+      priceMin: 0,
+      priceMax: 10000,
+      rating: 0,
+    })}
 
 
   ngOnInit(): void {
