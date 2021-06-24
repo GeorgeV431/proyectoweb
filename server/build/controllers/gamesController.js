@@ -16,7 +16,7 @@ const database_1 = __importDefault(require("../database"));
 class GamesController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const games = yield database_1.default.query('SELECT * FROM games');
+            const games = yield database_1.default.query('SELECT * FROM esquema');
             res.json(games);
         });
     }
