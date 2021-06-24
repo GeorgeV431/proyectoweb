@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
 
 @Component({
@@ -13,7 +13,7 @@ export class TiendaComponent implements OnInit {
   valuePMin = 0;
   valueR = 0;
   panelOpenState = false;
-
+  
   num: Array<Producto> = [
     {nombre: "Shiba1", stock: 10, valor: 3000, categoria: "Pepperonni"},
     {nombre: "Shiba2", stock: 10, valor: 1000, categoria: "Mushroom"},
@@ -38,7 +38,6 @@ export class TiendaComponent implements OnInit {
     });
 
   }
-
 
 
   ngOnInit(): void {
