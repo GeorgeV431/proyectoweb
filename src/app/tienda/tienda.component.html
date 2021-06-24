@@ -13,33 +13,30 @@
         <!-- EXPANSION PANEL CONTENT -->
         <ng-template matExpansionPanelContent>
           <form [formGroup]="filtro" (ngSubmit)="onSubmit()">
-            <div id="checkbox">
-              <h4>Seleccione las categorias:</h4>
-              <p>
-                <mat-checkbox value="Pepperoni">Pepperoni</mat-checkbox>
-              </p>
-              <p>
-                <mat-checkbox value="Extra Cheese">Extra Cheese</mat-checkbox>
-              </p>
-              <p>
-                <mat-checkbox value="Mushroom">Mushroom</mat-checkbox>
-              </p>
+            <div id="categoria">
+              <label>Seleccione la categoria: </label>
+              <mat-radio-group formControlName="categoria">
+                <mat-radio-button value="Pepperonni">Pepperonni </mat-radio-button>
+                <mat-radio-button value="Mushroom">Mushroom </mat-radio-button>
+                <mat-radio-button value="Extra Cheese">Extra Cheese </mat-radio-button>
+              </mat-radio-group>
             </div>
 
-            <div id="price">
-              <label>Precio Maximo: ${{valuePMax}}</label>
-              <mat-slider max="50000" step="5000" thumbLabel tickInterval="5000" [(ngModel)]="valuePMax" class="Slider">
+            <div id="min">
+              <label>Precio Minimo: ${{filtro.value.priceMin}}</label>
+              <mat-slider formControlName="priceMin" max="100000" step="5000" thumbLabel tickInterval="5000" class="Slider">
               </mat-slider>
             </div>
-            <div id="price">
-              <label>Precio Minimo: ${{valuePMin}}</label>
-              <mat-slider max="50000" step="5000" thumbLabel tickInterval="5000" [(ngModel)]="valuePMin" class="Slider">
+            
+            <div id="priceMax" >
+              <label>Precio Maximo: ${{filtro.value.priceMax}}</label>
+              <mat-slider formControlName="priceMax" max="100000" step="5000" thumbLabel tickInterval="5000" class="Slider">
               </mat-slider>
             </div>
 
             <div id="rating">
               <label>Valoración: {{valueR}}</label>
-              <mat-slider max="5" step="1" thumbLabel tickInterval="1" [(ngModel)]="valueR" class="Slider">
+              <mat-slider formControlName="rating" max="5" step="1" thumbLabel tickInterval="1" class="Slider">
               </mat-slider>
             </div>
 
@@ -60,7 +57,7 @@
   
 
   <div *ngFor="let item of num">
-    <mat-card *ngIf="show"  class="card" >
+    <mat-card *ngIf= "revisar(item)"  class="card" >
       <mat-card-header>
         <mat-card-title><a href="/producto"> {{item.nombre}}</a> </mat-card-title>
       </mat-card-header>

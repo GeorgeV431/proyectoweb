@@ -15,16 +15,16 @@ export class TiendaComponent implements OnInit {
   panelOpenState = false;
   
   num: Array<Producto> = [
-    {nombre: "Shiba1", stock: 10, valor: 3000, categoria: "Pepperonni"},
-    {nombre: "Shiba2", stock: 10, valor: 1000, categoria: "Mushroom"},
-    {nombre: "Shiba3", stock: 10, valor: 5000, categoria: "Extra Cheese"},
-    {nombre: "Shiba4", stock: 10, valor: 9000, categoria: "Pepperonni"},
-    {nombre: "Shiba5", stock: 10, valor: 8000, categoria: "Mushroom"},
+    {nombre: "Shiba1", stock: 10, valor: 30000, categoria: "Pepperonni"},
+    {nombre: "Shiba2", stock: 10, valor: 10000, categoria: "Mushroom"},
+    {nombre: "Shiba3", stock: 10, valor: 50000, categoria: "Extra Cheese"},
+    {nombre: "Shiba4", stock: 10, valor: 90000, categoria: "Pepperonni"},
+    {nombre: "Shiba5", stock: 10, valor: 80000, categoria: "Mushroom"},
     {nombre: "Shiba6", stock: 10, valor: 10000, categoria: "Extra Cheese"},
-    {nombre: "Shiba7", stock: 10, valor: 9000, categoria: "Mushroom"},
-    {nombre: "Shiba8", stock: 10, valor: 7000, categoria: "Pepperonni"},
-    {nombre: "Shiba9", stock: 10, valor: 9000, categoria: "Extra Cheese"},
-    {nombre: "Shiba10", stock: 10, valor: 5000, categoria: "Mushroom"},
+    {nombre: "Shiba7", stock: 10, valor: 90000, categoria: "Mushroom"},
+    {nombre: "Shiba8", stock: 10, valor: 70000, categoria: "Pepperonni"},
+    {nombre: "Shiba9", stock: 10, valor: 90000, categoria: "Extra Cheese"},
+    {nombre: "Shiba10", stock: 10, valor: 50000, categoria: "Mushroom"},
 
   ];
 
@@ -32,9 +32,10 @@ export class TiendaComponent implements OnInit {
 
   constructor(public fb:FormBuilder) {
     this.filtro = fb.group({
-      checkbox:[''],
-      price: -1,
-      rating: 0,
+      categoria: [""],
+      priceMin: -1,
+      priceMax: -1,
+      rating: 0
     });
 
   }
@@ -45,9 +46,41 @@ export class TiendaComponent implements OnInit {
 
   show = true;
   onSubmit(){
+    console.log(this.filtro.value)
+  }
+  revisar(item:Producto){
     
-    this.show = false;
+    let result = 3;
+    let flagCategoria = false, flagMin = false, flagMax = false;
 
+    if(this.filtro.value.categoria === ""){
+      result--;
+      flagCategoria = true;
+    }
+    if(this.filtro.value.priceMin == -1){
+      result--;
+      flagMin = true;
+    }
+    if(this.filtro.value.priceMax == -1){
+      result--;
+      flagMax = true;
+    }
+    
+    if(result == 0) return true;
+
+    result = 3;
+    if( flagCategoria || item.categoria === this.filtro.value.categoria)
+      result--
+    
+    if( flagMin || (item.valor != undefined && this.filtro.value.priceMin <= item.valor) )
+      result--
+    
+    if( flagMax || (item.valor != undefined && this.filtro.value.priceMax >= item.valor) )
+      result--
+
+    if(result == 0) return true;
+    else
+      return false;
   }
   
 }
