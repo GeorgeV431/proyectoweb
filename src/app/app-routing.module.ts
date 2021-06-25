@@ -5,6 +5,7 @@ import {AdminViewComponent} from "../app/admin-view/admin-view.component"
 import {TiendaComponent} from "../app/tienda/tienda.component"
 import {ProductoComponent} from "../app/producto/producto.component"
 import {ShoppingCartComponent} from "../app/shopping-cart/shopping-cart.component"
+import{ CartService } from "../app/cart.service"
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path:"admin",component:AdminViewComponent},
   {path:"",component:TiendaComponent},
   {path:"producto",component:ProductoComponent},
-  {path:"cart",component:ShoppingCartComponent}
+  {path:"cart",component:ShoppingCartComponent},
+  {path:"cartService",component:CartService}
 ];
 
 @NgModule({

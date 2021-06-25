@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
+import { CartService } from "../cart.service"
 
 @Component({
   selector: 'app-tienda',
@@ -13,24 +14,26 @@ export class TiendaComponent implements OnInit {
   valuePMin = 0;
   valueR = 0;
   panelOpenState = false;
+
   
   num: Array<Producto> = [
-    {nombre: "Shiba1", stock: 10, valor: 3000, categoria: "Pepperonni"},
-    {nombre: "Shiba2", stock: 10, valor: 1000, categoria: "Mushroom"},
-    {nombre: "Shiba3", stock: 10, valor: 5000, categoria: "Extra Cheese"},
-    {nombre: "Shiba4", stock: 10, valor: 9000, categoria: "Pepperonni"},
-    {nombre: "Shiba5", stock: 10, valor: 8000, categoria: "Mushroom"},
-    {nombre: "Shiba6", stock: 10, valor: 1000, categoria: "Extra Cheese"},
-    {nombre: "Shiba7", stock: 10, valor: 9000, categoria: "Mushroom"},
-    {nombre: "Shiba8", stock: 10, valor: 7000, categoria: "Pepperonni"},
-    {nombre: "Shiba9", stock: 10, valor: 9000, categoria: "Extra Cheese"},
-    {nombre: "Shiba10", stock: 10, valor: 5000, categoria: "Mushroom"},
+    {id: 1,nombre: "Shiba1", stock: 10, valor: 3000, categoria: "Pepperonni"},
+    {id: 2,nombre: "Shiba2", stock: 10, valor: 1000, categoria: "Mushroom"},
+    {id: 3,nombre: "Shiba3", stock: 10, valor: 5000, categoria: "Extra Cheese"},
+    {id: 4,nombre: "Shiba4", stock: 10, valor: 9000, categoria: "Pepperonni"},
+    {id: 5,nombre: "Shiba5", stock: 10, valor: 8000, categoria: "Mushroom"},
+    {id: 6,nombre: "Shiba6", stock: 10, valor: 1000, categoria: "Extra Cheese"},
+    {id: 7,nombre: "Shiba7", stock: 10, valor: 9000, categoria: "Mushroom"},
+    {id: 8,nombre: "Shiba8", stock: 10, valor: 7000, categoria: "Pepperonni"},
+    {id: 9,nombre: "Shiba9", stock: 10, valor: 9000, categoria: "Extra Cheese"},
+    {id: 10,nombre: "Shiba10", stock: 10, valor: 5000, categoria: "Mushroom"},
 
   ];
+  cantidades:number[]=Array<number>();
 
   filtro:FormGroup;
 
-  constructor(public fb:FormBuilder) {
+  constructor(public fb:FormBuilder,private cartService:CartService) {
     this.filtro = fb.group({
       categoria: [""],
       priceMin: 0,
@@ -39,6 +42,20 @@ export class TiendaComponent implements OnInit {
     });
 
   }
+
+  ngOnInit(): void {
+    for (let index = 0; index < this.num.length; index++) {
+      this.cantidades.push(1);
+    }
+  }
+
+  addCart(indice:number){
+        this.cartService.adicionarP(this.num[indice]);
+        this.cartService.adicionarC(this.cantidades[indice]);
+ 
+  }
+
+
   reset( ) {
     this.filtro = this.fb.group({
       categoria: [""],
@@ -47,14 +64,11 @@ export class TiendaComponent implements OnInit {
       rating: 0,
     })}
 
-
-  ngOnInit(): void {
-  }
-
   show = true;
   onSubmit(){
     console.log(this.filtro.value)
   }
+
   revisar(item:Producto){
     
     let result = 3;

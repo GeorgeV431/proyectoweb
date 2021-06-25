@@ -56,7 +56,7 @@
   <button id="shoppingCart" [routerLink]="['/cart']" routerLinkActive="router-link-active"  mat-stroked-button ><mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon></button>
   
 
-  <div *ngFor="let item of num">
+  <div *ngFor="let item of num,let indice=index">
     <mat-card *ngIf= "revisar(item)"  class="card" >
       <mat-card-header>
         <mat-card-title><a href="/producto"> {{item.nombre}}</a> </mat-card-title>
@@ -73,14 +73,14 @@
          -->
 
         <mat-form-field id="cantidad" appearance="outline">
-          <input type="number"  class="cantidad" matInput>
+          <input type="number" [(ngModel)]="cantidades[indice]" class="cantidad" matInput>
         </mat-form-field>
         <!--  
         <button mat-button>
           <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
         </button>
         -->
-        <button id="cartButton" mat-button>
+        <button id="cartButton" (click)="addCart(indice)" mat-button>
           <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
         </button>
       </mat-card-actions>
