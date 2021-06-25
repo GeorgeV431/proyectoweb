@@ -22,12 +22,13 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit(): void {
     this.productos=this.cartService.getProductos();
     this.cantidades=this.cartService.getCantidades();
-    
+
   }
 
   delete(indice:any) {
     console.log(indice);
     this.cartService.eliminarP(indice);
+    this.cartService.eliminarC(indice);
     }
 
   
