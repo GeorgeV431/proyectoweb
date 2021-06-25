@@ -3,7 +3,7 @@
   <mat-drawer-container id="sideContainer" autosize>
   <a [routerLink]="['/']" routerLinkActive="router-link-active" > <h1>La Boutique De Fischl </h1> </a>
   <!-- fischl img -->
-  <img #tooltip="matTooltip" matTooltip="Have a nice day!" matTooltipPosition="left"  mat-card-sm-image src="../assets/chibiFischl.png" >
+  <img id="miniFischl" #tooltip="matTooltip" matTooltip="Have a nice day!" matTooltipPosition="left"  mat-card-sm-image src="../assets/chibiFischl.png" >
   <!-- boton inicio sesion -->
     <div id="sidenavButton">
       <button type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
@@ -11,7 +11,6 @@
     </div>
     
   </mat-drawer-container>
-  
 
 </header>
 
@@ -54,6 +53,7 @@
 </mat-drawer>
 
 <!-- BODY -->
+<button class="scroll-to-top" type="button" mat-raised-button (click)="scrollToTop()"> Top </button>
 
 <!--<app-formulario></app-formulario>-->
 

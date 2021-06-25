@@ -2,7 +2,7 @@ header{
     background: rgb(2,0,36);
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(138,43,226,1) 0%, rgba(40,194,215,1) 100%);
 }
-img{
+#miniFischl{
     position:absolute;
     right: 0em;
     top: 0em;
@@ -67,3 +67,11 @@ body{
     margin-top: 1em;
 }
 
+.scroll-to-top{
+    position: fixed;
+    background:pink;
+    bottom: 7.1em;
+    right: 0.25em;
+
+
+  }

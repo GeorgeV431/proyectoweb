@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, ElementRef } from '@angular/core';
+import { ViewportScroller
+ } from '@angular/common';
 import {FormControl, Validators} from '@angular/forms';
 
 
@@ -16,6 +18,22 @@ export class AppComponent {
 
 
   title = 'proyectoweb';
+
+  pageYoffset = 0;
+  @HostListener('window:scroll', ['$event']) onScroll(){
+    this.pageYoffset = window.pageYOffset;
+  }
+
+    constructor(private scroll: ViewportScroller) { }
+
+    ngOnInit(): void 
+    {
+      
+    }
+
+scrollToTop(){
+  this.scroll.scrollToPosition([0,0]);
+}
 
 
 
