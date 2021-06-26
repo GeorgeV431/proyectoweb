@@ -8,11 +8,15 @@
     <!-- fischl img -->
     <img id="miniFischl" #tooltip="matTooltip" matTooltip="Have a nice day!" matTooltipPosition="left" mat-card-sm-image
       src="../assets/chibiFischl.png">
-    <!-- boton inicio sesion -->
-    <div id="sidenavButton">
-      <button type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
 
-    </div>
+    <div *ngIf="!usuarioService.getEstado(); then iniciarSesion else saludo"></div>
+    <!-- boton inicio sesion -->
+    <ng-template #iniciarSesion id="sidenavButton">
+      <button type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
+    </ng-template>
+    <ng-template #saludo>
+      Hola, {{usuarioService.getNombre()}}
+    </ng-template>
 
   </mat-drawer-container>
   <a id="admin" href="/admin" *ngIf="usuarioService.esAdmin">ADMIN</a>
@@ -28,31 +32,30 @@
   </div>
 
   <!-- formulario -->
-  <form onsubmit="onSubmit()" id="sideBar">
+  <form [formGroup]="ingreso" (ngSubmit)="onSubmit()" id="sideBar">
 
     <!-- correo -->
     <mat-form-field appearance="outline">
       <mat-label>Correo</mat-label>
-      <input autocomplete="off" matInput placeholder="CorreoDeEjemplo@xmail.xxx" required>
+      <input autocomplete="off" matInput placeholder="CorreoDeEjemplo@xmail.xxx" formControlName="correo" required>
     </mat-form-field>
 
     <!-- contraseña -->
     <mat-form-field appearance="outline">
       <mat-label>Contraseña</mat-label>
-      <input type="password" matInput placeholder="Contraseña" required>
+      <input type="password" matInput placeholder="Contraseña" formControlName="contrasenia" required>
     </mat-form-field>
 
     <!-- captcha -->
     <div class="g-recaptcha" data-sitekey="6LfnmzUbAAAAAF0DZrvwy9wy6buyDvQaauSlOySi" required></div>
 
     <!-- boton iniciar sesion -->
-    <button id="submitbutton" type="submit" mat-raised-button> Iniciar Sesion </button>
+    <button id="submitbutton" type="submit" (click)="drawer.toggle()" mat-raised-button> Iniciar Sesion </button>
   </form>
 
   <!-- link registro -->
   <mat-label>¿Aun no tienes una cuenta? </mat-label>
   <a (click)="drawer.toggle()" routerLink="registro"><strong>Registrate</strong></a>
-
 
 </mat-drawer>
 

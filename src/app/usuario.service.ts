@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class UsuarioService {
 
-  estaConectado = true;
-  nombre = [''];
+  estaConectado = false;
+  nombre = "";
   id = 0;
   esAdmin = true;
 
@@ -28,6 +28,12 @@ export class UsuarioService {
 
   desconectar(){
     this.estaConectado = false;
+  }
+
+  ingreso(correo:string, contrasenia:string){
+    this.conectar();
+    this.nombre = correo;
+    
   }
 
 }

@@ -3,7 +3,7 @@ import { Component, HostListener, ElementRef, OnInit } from '@angular/core';
 import {
   ViewportScroller
 } from '@angular/common';
-import { FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
 
@@ -29,7 +29,16 @@ export class AppComponent {
     this.pageYoffset = window.pageYOffset;
   }
 
-  constructor(private scroll: ViewportScroller, private router: Router, public usuarioService: UsuarioService) { }
+  ingreso: FormGroup;
+
+  constructor(public fb:FormBuilder, private scroll: ViewportScroller, private router: Router, public usuarioService: UsuarioService) {
+    this.ingreso = fb.group({
+      correo: [''],
+      contrasenia: ['']
+    });
+
+
+  }
 
   ngOnInit(): void {
     AOS.init();
@@ -41,8 +50,9 @@ export class AppComponent {
 
 
   onSubmit() {
+    this.usuarioService.ingreso(this.ingreso.value.correo, this.ingreso.value.contrasenia);
+    //alert(this.usuarioService.getNombre()+"ha ingresado");
 
-    this.router.navigateByUrl('/producto');
   }
 
 
