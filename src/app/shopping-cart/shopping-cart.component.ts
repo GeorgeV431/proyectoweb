@@ -10,6 +10,8 @@ import { CartService } from "../cart.service"
 })
 export class ShoppingCartComponent implements OnInit {
 
+  total:number=0;
+
   cantidades: number[] = new Array<number>();
 
 
@@ -22,7 +24,6 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit(): void {
     this.productos = this.cartService.getProductos();
     this.cantidades = this.cartService.getCantidades();
-
   }
 
   delete(indice: any) {

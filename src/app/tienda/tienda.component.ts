@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NumberValueAccessor } from '@angular/forms';
 import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
 import { CartService } from "../cart.service"
 
@@ -14,6 +14,9 @@ export class TiendaComponent implements OnInit {
   valuePMin = 0;
   valueR = 0;
   panelOpenState = false;
+  total=0;
+  hidden = true;
+  
 
 
   num: Array<Producto> = [
@@ -48,14 +51,21 @@ export class TiendaComponent implements OnInit {
     for (let index = 0; index < this.num.length; index++) {
       this.cantidades.push(1);
     }
+    if (this.cartService.getLengthP()>=1) {
+      this.toggleBadgeVisibility();
+    }
+    this.total=this.cartService.getLengthP();
   }
 
   addCart(indice: number) {
     this.cartService.adicionarP(this.num[indice]);
     this.cartService.adicionarC(this.cantidades[indice]);
-
+    
+    if (this.cartService.getLengthP()==1) {
+      this.toggleBadgeVisibility();
+    }
+    this.total=this.cartService.getLengthP();
   }
-
 
   reset() {
     this.filtro = this.fb.group({
@@ -105,9 +115,14 @@ export class TiendaComponent implements OnInit {
     else
       return false;
   }
+
   vistaProducto(indice: number) {
     this.cartService.addObjeto(this.num[indice]);
     this.router.navigateByUrl('/producto');
+  }
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
   }
 
 }
