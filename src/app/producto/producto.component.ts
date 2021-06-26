@@ -76,5 +76,12 @@ export class ProductoComponent implements OnInit {
     this.cartService.adicionarC(this.cantidad);
 
   }
+  stock(){
+    if (this.producto.stock==0) {
+      return false;
+    }else{
+      return true;
+    }
+  }
 
 }
