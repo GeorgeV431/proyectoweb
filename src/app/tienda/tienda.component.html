@@ -55,7 +55,7 @@
 
 
   </div>
-  <button id="shoppingCart" [routerLink]="['/cart']" routerLinkActive="router-link-active" mat-stroked-button>
+  <button id="shoppingCart" matBadge=" {{total}} " matBadgeColor="warn" [matBadgeHidden]="hidden" [routerLink]="['/cart']" routerLinkActive="router-link-active" mat-stroked-button>
     <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
   </button>
 
@@ -84,9 +84,11 @@
           <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
         </button>
         -->
-        <button id="cartButton" (click)="addCart(indice)" mat-button>
+        
+        <button id="cartButton" (click)="addCart(indice)" mat-button> 
           <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
         </button>
+
       </mat-card-actions>
     </mat-card>
   </div>

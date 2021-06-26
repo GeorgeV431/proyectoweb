@@ -25,6 +25,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatBadgeModule} from '@angular/material/badge';
+
 
 
 @NgModule({
@@ -58,7 +60,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatRadioModule,
     MatCheckboxModule,
     MatSliderModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
