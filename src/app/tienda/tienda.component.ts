@@ -45,7 +45,7 @@ export class TiendaComponent implements OnInit {
       priceMin: 0,
       priceMax: 10000,
       rating: 0,
-      stock:["true"]
+      stock: false
     });
 
   }
@@ -76,7 +76,7 @@ export class TiendaComponent implements OnInit {
       priceMin: 0,
       priceMax: 10000,
       rating: 0,
-      stock:[""]
+      stock: false
     })
   }
 
@@ -102,7 +102,7 @@ export class TiendaComponent implements OnInit {
       result--;
       flagMax = true;
     }
-    if (this.filtro.value.stock == "true") {
+    if (this.filtro.value.stock == false) {
       result--;
       flagStock = true;
     }
