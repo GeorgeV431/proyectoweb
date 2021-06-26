@@ -85,7 +85,10 @@
         </button>
         -->
         
-        <button id="cartButton" (click)="addCart(indice)" mat-button> 
+        <button *ngIf="stock(item)" id="cartButton" (click)="addCart(indice)" mat-button> 
+          <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
+        </button>
+        <button *ngIf="!stock(item)" #tooltip="matTooltip" matTooltip="Producto fuera de stock" matTooltipPosition="above" id="cartButtonOff"  mat-button> 
           <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
         </button>
 

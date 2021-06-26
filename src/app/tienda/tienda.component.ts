@@ -20,7 +20,7 @@ export class TiendaComponent implements OnInit {
 
 
   num: Array<Producto> = [
-    { id: 1, nombre: "Shiba1", stock: 10, valor: 3000, categoria: "Pepperonni" },
+    { id: 1, nombre: "Shiba1", stock: 0, valor: 3000, categoria: "Pepperonni" },
     { id: 2, nombre: "Shiba2", stock: 10, valor: 1000, categoria: "Mushroom" },
     { id: 3, nombre: "Shiba3", stock: 10, valor: 5000, categoria: "Extra Cheese" },
     { id: 4, nombre: "Shiba4", stock: 10, valor: 9000, categoria: "Pepperonni" },
@@ -123,6 +123,14 @@ export class TiendaComponent implements OnInit {
 
   toggleBadgeVisibility() {
     this.hidden = !this.hidden;
+  }
+
+  stock(item:Producto){
+    if (item.stock==0) {
+      return false;
+    }else{
+      return true;
+    }
   }
 
 }
