@@ -23,6 +23,7 @@
     background-color: rgb(6, 177, 177);
     color: white;
     margin: 0em 0em 0em 2em;
+
 }
 
 input{
@@ -31,8 +32,7 @@ input{
 
 #filtro{
     width: 75%;
-    margin-left: 2em;
-    float: left;
+    margin:auto;
 }
 #checkbox{
 
@@ -50,11 +50,11 @@ input{
     width: 20em;
     display: inline-block;
 }
+
 #filtrar{
 width: fit-content;
 
 }
-
 
 .Slider{
     width: 20em;
@@ -75,7 +75,11 @@ width: fit-content;
 #shoppingCart{
     margin: 0.5em 0em 0em 8em ;
     height: 3em;
-    width: 5em;
+    width: 4.5em;
+    background-color: white;
+    position: fixed;
+    top: 8.7em;
+    right: 0.25em;
 }
 
 #cantidad{
