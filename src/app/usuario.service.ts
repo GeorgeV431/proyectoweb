@@ -5,5 +5,28 @@ import { Injectable } from '@angular/core';
 })
 export class UsuarioService {
 
+  estaConectado = true;
+  nombre = [''];
+  id = 0;
+
   constructor() { }
+
+  getEstado(){
+    return this.estaConectado;
+  }
+  getNombre(){
+    return this.nombre;
+  }
+  getId(){
+    return this.id;
+  }
+
+  conectar(){
+    this.estaConectado = true;
+  }
+
+  desconectar(){
+    this.estaConectado = false;
+  }
+
 }

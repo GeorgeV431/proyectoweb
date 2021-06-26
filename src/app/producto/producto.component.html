@@ -33,4 +33,42 @@
       </mat-card-content>
     </mat-card>
   </mat-card-content>
+
+  <div *ngIf="usuarioService.getEstado(); then agregarComentario else pedirLogIn"></div>
+  <ng-template #agregarComentario>
+    <form [formGroup]="comentario" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <p>AGREGAR COMENTARIO:</p>
+        <!--usuario-->
+        <mat-form-field>
+          <mat-label>Puntaje</mat-label>
+          <mat-select formControlName="puntaje"> 
+            <mat-option value="1">1</mat-option>
+            <mat-option value="2">2</mat-option>
+            <mat-option value="3">3</mat-option>
+            <mat-option value="4">4</mat-option>
+            <mat-option value="5">5</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Dejar Comentario</mat-label>
+          <textarea matInput formControlName="comentario"></textarea>
+        </mat-form-field>
+
+        <mat-action-row>
+          <button mat-raised-button color=primary type="submit">Enviar</button>
+        </mat-action-row>
+      </mat-card-content>
+    </form>
+  </ng-template>
+
+  <ng-template #pedirLogIn>
+    <mat-card-content>
+      <mat-card>
+        Debe Iniciar Sesion para dejar un comentario.
+      </mat-card>
+    </mat-card-content>
+  </ng-template>
+
 </mat-card>

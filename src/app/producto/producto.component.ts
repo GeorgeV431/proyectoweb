@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { CartService } from '../cart.service';
 import { Usuario, Producto, Comentarios, Boleta, Detalle } from '../clases/clases';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-producto',
@@ -20,7 +22,10 @@ export class ProductoComponent implements OnInit {
 
   valoracion = 2;
   stars = ''.split('.');
-  constructor(private cartService: CartService) {
+
+  comentario: FormGroup;
+
+  constructor(public fb: FormBuilder, private cartService: CartService, public usuarioService: UsuarioService) {
     switch (this.valoracion) {
       case 1:
         this.stars = '1'.split('.');
@@ -42,6 +47,11 @@ export class ProductoComponent implements OnInit {
         break;
     }
 
+    this.comentario = fb.group({
+      puntaje: 0,
+      comentario: ['']
+    });
+
   }
   not0() {
     if (this.valoracion >= 1) {
@@ -52,6 +62,13 @@ export class ProductoComponent implements OnInit {
 
   ngOnInit(): void {
     this.producto = this.cartService.getObjeto();
+  }
+
+  onSubmit(){
+    
+    this.comentarios.push(
+      {id: (this.comentarios.length),producto: 101, usuario: (this.usuarioService.getId()), texto: this.comentario.value.comentario }
+    )
   }
 
   addCart() {
