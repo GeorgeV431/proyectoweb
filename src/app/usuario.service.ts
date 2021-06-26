@@ -8,6 +8,7 @@ export class UsuarioService {
   estaConectado = true;
   nombre = [''];
   id = 0;
+  esAdmin = true;
 
   constructor() { }
 

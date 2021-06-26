@@ -8,6 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import * as AOS from 'aos';
+import { UsuarioService } from './usuario.service';
 
 @Component({
   selector: 'app-root',
@@ -24,25 +25,25 @@ export class AppComponent {
   title = 'proyectoweb';
 
   pageYoffset = 0;
-  @HostListener('window:scroll', ['$event']) onScroll(){
+  @HostListener('window:scroll', ['$event']) onScroll() {
     this.pageYoffset = window.pageYOffset;
   }
 
-    constructor(private scroll: ViewportScroller,private router:Router) { }
+  constructor(private scroll: ViewportScroller, private router: Router, public usuarioService: UsuarioService) { }
 
   ngOnInit(): void {
     AOS.init();
   }
 
-  scrollToTop(){
-    this.scroll.scrollToPosition([0,0]);
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
   }
-  
 
-onSubmit(){
-  
-      this.router.navigateByUrl('/producto');
-}
+
+  onSubmit() {
+
+    this.router.navigateByUrl('/producto');
+  }
 
 
 }
