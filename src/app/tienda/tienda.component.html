@@ -1,4 +1,15 @@
 <div id="tienda">
+  <form [formGroup]="filtro" (ngSubmit)="onSubmit()">
+  <section id="categorias">
+    <mat-button-toggle-group  formControlName="categoria" aria-label="Font Style">
+      <mat-button-toggle value="">Todo</mat-button-toggle>
+      <mat-button-toggle value="Pepperonni">Pepperonni</mat-button-toggle>
+      <mat-button-toggle value="Mushroom">Mushroom</mat-button-toggle>
+      <mat-button-toggle value="Extra Cheese">Extra Cheese</mat-button-toggle>
+      <mat-button-toggle value="Bacon">Bacon</mat-button-toggle>
+      <mat-button-toggle value="Pineapple">Pineapple</mat-button-toggle>
+    </mat-button-toggle-group>
+  </section>
   <div id="filtro">
     <mat-accordion>
       <mat-expansion-panel hideToggle>
@@ -12,13 +23,12 @@
 
         <!-- EXPANSION PANEL CONTENT -->
         <ng-template matExpansionPanelContent>
-          <form [formGroup]="filtro" (ngSubmit)="onSubmit()">
-            <div id="categoria">
-              <label>Seleccione la categoria: </label>
-              <mat-radio-group formControlName="categoria">
-                <mat-radio-button value="Pepperonni">Pepperonni </mat-radio-button>
-                <mat-radio-button value="Mushroom">Mushroom </mat-radio-button>
-                <mat-radio-button value="Extra Cheese">Extra Cheese </mat-radio-button>
+          
+            <div id="stock">
+              <label>Seleccione: </label>
+              <mat-radio-group formControlName="stock">
+                <mat-radio-button value="false">Solo Con Stock </mat-radio-button>
+                <mat-radio-button value="true">Con o sin Stock </mat-radio-button>
               </mat-radio-group>
             </div>
 
@@ -46,15 +56,14 @@
               <button id="filtrar" (click)="reset()" mat-raised-button color=primary>Reiniciar</button>
             </mat-action-row>
 
-          </form>
+          
         </ng-template>
 
 
       </mat-expansion-panel>
     </mat-accordion>
-
-
   </div>
+</form>
   <button id="shoppingCart" matBadge=" {{total}} " matBadgeColor="warn" [matBadgeHidden]="hidden" [routerLink]="['/cart']" routerLinkActive="router-link-active" mat-stroked-button>
     <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
   </button>

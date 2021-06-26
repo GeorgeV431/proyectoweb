@@ -26,6 +26,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+
 
 
 
@@ -61,7 +63,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     MatCheckboxModule,
     MatSliderModule,
     MatTooltipModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatButtonToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

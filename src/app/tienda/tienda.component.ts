@@ -16,6 +16,8 @@ export class TiendaComponent implements OnInit {
   panelOpenState = false;
   total=0;
   hidden = true;
+  fontStyleControl = new FormControl();
+  fontStyle?: string;
   
 
 
@@ -42,7 +44,8 @@ export class TiendaComponent implements OnInit {
       categoria: [""],
       priceMin: 0,
       priceMax: 10000,
-      rating: 0
+      rating: 0,
+      stock:["true"]
     });
 
   }
@@ -73,6 +76,7 @@ export class TiendaComponent implements OnInit {
       priceMin: 0,
       priceMax: 10000,
       rating: 0,
+      stock:[""]
     })
   }
 
@@ -83,8 +87,8 @@ export class TiendaComponent implements OnInit {
 
   revisar(item: Producto) {
 
-    let result = 3;
-    let flagCategoria = false, flagMin = false, flagMax = false;
+    let result = 4;
+    let flagCategoria = false, flagMin = false, flagMax = false, flagStock=false;
 
     if (this.filtro.value.categoria === "") {
       result--;
@@ -98,10 +102,14 @@ export class TiendaComponent implements OnInit {
       result--;
       flagMax = true;
     }
+    if (this.filtro.value.stock == "true") {
+      result--;
+      flagStock = true;
+    }
 
     if (result == 0) return true;
 
-    result = 3;
+    result = 4;
     if (flagCategoria || item.categoria === this.filtro.value.categoria)
       result--
 
@@ -109,6 +117,9 @@ export class TiendaComponent implements OnInit {
       result--
 
     if (flagMax || (item.valor != undefined && this.filtro.value.priceMax >= item.valor))
+      result--
+
+    if (flagStock || (item.stock != 0 ))
       result--
 
     if (result == 0) return true;
