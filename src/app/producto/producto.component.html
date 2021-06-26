@@ -43,9 +43,9 @@
 
   <div *ngIf="usuarioService.getEstado(); then agregarComentario else pedirLogIn"></div>
   <ng-template #agregarComentario>
-    <form [formGroup]="comentario" (ngSubmit)="onSubmit()">
+    <form [formGroup]="comentario" id="agregar" (ngSubmit)="onSubmit()">
       <mat-card-content>
-        <p>AGREGAR COMENTARIO:</p>
+        <p id="tituloAgregar">AGREGAR COMENTARIO:</p>
         <!--usuario-->
         <mat-form-field>
           <mat-label>Puntaje</mat-label>
@@ -56,12 +56,12 @@
             <mat-option value="4">4</mat-option>
             <mat-option value="5">5</mat-option>
           </mat-select>
-        </mat-form-field>
+        </mat-form-field >
 
-        <mat-form-field appearance="fill">
+        <mat-form-field id="texto"  appearance="fill">
           <mat-label>Dejar Comentario</mat-label>
-          <textarea matInput formControlName="comentario"></textarea>
-        </mat-form-field>
+          <textarea  matInput formControlName="comentario"></textarea>
+        </mat-form-field> 
 
         <mat-action-row>
           <button mat-raised-button color=primary type="submit">Enviar</button>
