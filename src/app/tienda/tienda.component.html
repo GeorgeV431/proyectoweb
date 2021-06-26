@@ -24,13 +24,15 @@
 
             <div id="min">
               <label>Precio Minimo: ${{filtro.value.priceMin}}</label>
-              <mat-slider formControlName="priceMin" max="10000" step="500" thumbLabel tickInterval="5000" class="Slider">
+              <mat-slider formControlName="priceMin" max="10000" step="500" thumbLabel tickInterval="5000"
+                class="Slider">
               </mat-slider>
             </div>
-            
-            <div id="priceMax" >
+
+            <div id="priceMax">
               <label>Precio Maximo: ${{filtro.value.priceMax}}</label>
-              <mat-slider formControlName="priceMax" max="10000" min="1000" step="500" thumbLabel tickInterval="5000" class="Slider">
+              <mat-slider formControlName="priceMax" max="10000" min="1000" step="500" thumbLabel tickInterval="5000"
+                class="Slider">
               </mat-slider>
             </div>
 
@@ -42,7 +44,7 @@
 
             <mat-action-row>
               <button id="filtrar" (click)="reset()" mat-raised-button color=primary>Reiniciar</button>
-            </mat-action-row> 
+            </mat-action-row>
 
           </form>
         </ng-template>
@@ -50,16 +52,18 @@
 
       </mat-expansion-panel>
     </mat-accordion>
-    
+
 
   </div>
-  <button id="shoppingCart" [routerLink]="['/cart']" routerLinkActive="router-link-active"  mat-stroked-button ><mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon></button>
-  
+  <button id="shoppingCart" [routerLink]="['/cart']" routerLinkActive="router-link-active" mat-stroked-button>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
+  </button>
+
 
   <div *ngFor="let item of num,let indice=index">
-    <mat-card *ngIf= "revisar(item)"  class="card" >
+    <mat-card *ngIf="revisar(item)" class="card">
       <mat-card-header>
-        <mat-card-title><a (click)="vistaProducto(indice)" > {{item.nombre}}</a> </mat-card-title>
+        <mat-card-title><a (click)="vistaProducto(indice)"> {{item.nombre}}</a> </mat-card-title>
       </mat-card-header>
       <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Foto del producto">
       <mat-card-content>
@@ -80,7 +84,7 @@
           <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
         </button>
         -->
-        <button id="cartButton" (click)="addCart(indice)"  mat-button>
+        <button id="cartButton" (click)="addCart(indice)" mat-button>
           <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
         </button>
       </mat-card-actions>

@@ -1,47 +1,48 @@
 <div>
-    <h1>  ADMINISTRACION  </h1>
+  <h1> ADMINISTRACION </h1>
 
-    <mat-tab-group>
-        <!-- tabla de usuarios -->
-        <mat-tab label="Usuarios">  
+  <mat-tab-group>
+    <!-- tabla de usuarios -->
+    <mat-tab label="Usuarios">
 
-            <mat-accordion *ngFor="let item of usuarios" > <!-- se le pone un for al accordion para llenar la wea -->
-                <mat-expansion-panel >
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      {{item}}
-                    </mat-panel-title>
-                    <mat-panel-description>
-                      This is a summary of the content
-                    </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <p>This is the primary content of the panel.</p>
-                </mat-expansion-panel>
+      <mat-accordion *ngFor="let item of usuarios">
+        <!-- se le pone un for al accordion para llenar la wea -->
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{item}}
+            </mat-panel-title>
+            <mat-panel-description>
+              This is a summary of the content
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>This is the primary content of the panel.</p>
+        </mat-expansion-panel>
 
-            </mat-accordion>
+      </mat-accordion>
 
-        </mat-tab>
+    </mat-tab>
 
-        <!-- tabla de pedidos -->
-        <mat-tab label="Pedidos"> 
+    <!-- tabla de pedidos -->
+    <mat-tab label="Pedidos">
 
-            <mat-accordion *ngFor="let item of pedidos">
-                <mat-expansion-panel >
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      {{item}}
-                    </mat-panel-title>
-                    <mat-panel-description>
-                      This is a summary of the content
-                    </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <p>This is the primary content of the panel.</p>
-                </mat-expansion-panel>
+      <mat-accordion *ngFor="let item of pedidos">
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{item}}
+            </mat-panel-title>
+            <mat-panel-description>
+              This is a summary of the content
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+          <p>This is the primary content of the panel.</p>
+        </mat-expansion-panel>
 
-            </mat-accordion>
+      </mat-accordion>
 
-        </mat-tab>
+    </mat-tab>
 
-    </mat-tab-group>
+  </mat-tab-group>
 
 </div>

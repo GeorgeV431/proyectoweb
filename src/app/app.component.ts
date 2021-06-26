@@ -1,7 +1,9 @@
 import { Component, HostListener, ElementRef } from '@angular/core';
-import { ViewportScroller
- } from '@angular/common';
-import {FormControl, Validators} from '@angular/forms';
+import {
+  ViewportScroller
+} from '@angular/common';
+import { FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -20,21 +22,25 @@ export class AppComponent {
   title = 'proyectoweb';
 
   pageYoffset = 0;
-  @HostListener('window:scroll', ['$event']) onScroll(){
+  @HostListener('window:scroll', ['$event']) onScroll() {
     this.pageYoffset = window.pageYOffset;
   }
 
-    constructor(private scroll: ViewportScroller) { }
+  constructor(private scroll: ViewportScroller, private router: Router) { }
 
-    ngOnInit(): void 
-    {
-      
-    }
+  ngOnInit(): void {
 
-scrollToTop(){
-  this.scroll.scrollToPosition([0,0]);
-}
+  }
 
+  scrollToTop() {
+    this.scroll.scrollToPosition([0, 0]);
+  }
+
+
+  onSubmit() {
+
+    this.router.navigateByUrl('/producto');
+  }
 
 
 }

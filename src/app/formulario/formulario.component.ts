@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import {FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 
 @Component({
@@ -12,8 +12,8 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class FormularioComponent implements OnInit {
 
-  formulario:FormGroup;
- 
+  formulario: FormGroup;
+
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
 
@@ -21,7 +21,7 @@ export class FormularioComponent implements OnInit {
   apellido = new FormControl('', [Validators.required,]);
   rut = new FormControl('', [Validators.required,]);
   direccion = new FormControl('', [Validators.required,]);
-  correo = new FormControl('', [Validators.required,Validators.email]);
+  correo = new FormControl('', [Validators.required, Validators.email]);
   contrasenya = new FormControl('', [Validators.required,]);
   cContrasenya = new FormControl('', [Validators.required,]);
   region = new FormControl('', [Validators.required,]);
@@ -87,15 +87,15 @@ export class FormularioComponent implements OnInit {
         break;
     }
 
-}
-constructor(public fb:FormBuilder,private router:Router,private route:ActivatedRoute,public dialog: MatDialog) {
-  this.formulario=fb.group({
-    nombre:['']
-  });
- }
+  }
+  constructor(public fb: FormBuilder, private router: Router, private route: ActivatedRoute, public dialog: MatDialog) {
+    this.formulario = fb.group({
+      nombre: ['']
+    });
+  }
 
-ngOnInit(): void {
-}
+  ngOnInit(): void {
+  }
 
 
   /*-- Nombre --*/
@@ -179,39 +179,39 @@ ngOnInit(): void {
     return true;
   }
 
-  validInput(){
-    if(this.getErrorMessageNombre()==true && this.getErrorMessageApellidos()==true && this.getErrorMessageRUT()==true && this.getErrorMessageDireccion()==true && this.getErrorMessageCorreo()==true &&  this.getErrorMessageRegion()==true && this.getErrorMessageComuna()==true && this.getErrorMessageContrasenya()==true && this.getErrorMessageCContrasenya()==true){
+  validInput() {
+    if (this.getErrorMessageNombre() == true && this.getErrorMessageApellidos() == true && this.getErrorMessageRUT() == true && this.getErrorMessageDireccion() == true && this.getErrorMessageCorreo() == true && this.getErrorMessageRegion() == true && this.getErrorMessageComuna() == true && this.getErrorMessageContrasenya() == true && this.getErrorMessageCContrasenya() == true) {
       return true;
     }
     return false;
   }
 
   onSubmit(): void {
-    if(this.validInput()){
-      if(this.contrasenya.value!=this.cContrasenya.value){
+    if (this.validInput()) {
+      if (this.contrasenya.value != this.cContrasenya.value) {
         this.dialog.open(dialogClave);
       }
-      else{
-      //  console.log(this.name.value, this.apellido.value, this.rut.value, this.direccion.value, this.correo.value, this.region.value, this.comuna.value, this.contrasenya.value, this.cContrasenya.value);
-      this.dialog.open(dialogo);
-      this.router.navigateByUrl('/');
+      else {
+        //  console.log(this.name.value, this.apellido.value, this.rut.value, this.direccion.value, this.correo.value, this.region.value, this.comuna.value, this.contrasenya.value, this.cContrasenya.value);
+        this.dialog.open(dialogo);
+        this.router.navigateByUrl('/');
       }
     }
-    }
+  }
 }
 @Component({
   selector: 'dialogo',
   templateUrl: 'dialogo.html',
 })
-export class dialogo {}
+export class dialogo { }
 @Component({
   selector: 'dialogClave',
   templateUrl: 'dialogClave.html',
 })
-export class dialogClave {}
-  
-  
+export class dialogClave { }
 
-  
+
+
+
 
 

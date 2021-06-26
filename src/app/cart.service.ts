@@ -6,7 +6,8 @@ import { Producto } from './clases/clases';
 })
 export class CartService {
 
-  objeto:Producto={id: 1,nombre: "Shiba1", stock: 10, valor: 3000, categoria: "Pepperonni"};
+  //no se si esto deberia estar aqui, pero era agregarlo en este service o crear uno nuevo solo para esto
+  objeto:Producto={id: 0,nombre: "", stock: 0, valor:0, categoria: ""};
 
   productos:Producto[]= new Array<Producto>();
   cantidades:number[]= new Array<number>();

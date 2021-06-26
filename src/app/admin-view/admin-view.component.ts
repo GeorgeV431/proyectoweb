@@ -11,17 +11,17 @@ export class AdminViewComponent implements OnInit {
 
 
 
-  usuarios: any | undefined = [] ;
+  usuarios: any | undefined = [];
   pedidos: any | undefined = [];
 
   panelOpenState = false;
 
-  constructor(public servicio:ServicioService ) {}
+  constructor(public servicio: ServicioService) { }
 
   ngOnInit() {
   }
 
-  getUsuarios(){
+  getUsuarios() {
     this.servicio.getUsuarios()
       .subscribe(
         res => {
@@ -31,7 +31,7 @@ export class AdminViewComponent implements OnInit {
       );
   }
 
-  getBoletas(){
+  getBoletas() {
     this.servicio.getBoletas()
       .subscribe(
         res => {

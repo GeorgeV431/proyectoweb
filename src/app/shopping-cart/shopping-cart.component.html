@@ -1,21 +1,23 @@
-<div id="cart" >
-    <mat-card *ngFor="let item of productos,let indice=index" class="card">
-        <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-        <mat-card-header>
-          <mat-card-title>{{item.nombre}}</mat-card-title>
-          <mat-card-subtitle> {{item.valor}} </mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
+<div id="cart">
+  <mat-card *ngFor="let item of productos,let indice=index" class="card">
+    <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-header>
+      <mat-card-title>{{item.nombre}}</mat-card-title>
+      <mat-card-subtitle> {{item.valor}} </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-actions>
 
-            <mat-form-field appearance="outline">
-              <input type="number" [(ngModel)]="cantidades[indice]" matInput>
-            </mat-form-field>
+      <mat-form-field appearance="outline">
+        <input type="number" [(ngModel)]="cantidades[indice]" matInput>
+      </mat-form-field>
 
-            <button class="delete" (click)="delete(indice)" mat-button><mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon></button>
+      <button class="delete" (click)="delete(indice)" mat-button>
+        <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+      </button>
 
-        </mat-card-actions>
-      </mat-card>
-      <div id="divBuy">
-        <button id="buy" mat-button>COMPRAR</button>
-      </div>
-    </div>
+    </mat-card-actions>
+  </mat-card>
+  <div id="divBuy">
+    <button id="buy" mat-button>COMPRAR</button>
+  </div>
+</div>

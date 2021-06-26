@@ -39,5 +39,5 @@ export interface Detalle {
     boleta?: number,
     producto?: number,
     cantidad?: number,
-    subtotal?:number
+    subtotal?: number
 }

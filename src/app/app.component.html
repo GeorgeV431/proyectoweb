@@ -1,56 +1,59 @@
 <!-- HEADER -->
 <header>
-  
+
   <mat-drawer-container id="sideContainer" autosize>
-  <a [routerLink]="['/']" routerLinkActive="router-link-active" > <h1>La Boutique De Fischl </h1> </a>
-  <!-- fischl img -->
-  <img id="miniFischl" #tooltip="matTooltip" matTooltip="Have a nice day!" matTooltipPosition="left"  mat-card-sm-image src="../assets/chibiFischl.png" >
-  <!-- boton inicio sesion -->
+    <a [routerLink]="['/']" routerLinkActive="router-link-active">
+      <h1>La Boutique De Fischl </h1>
+    </a>
+    <!-- fischl img -->
+    <img id="miniFischl" #tooltip="matTooltip" matTooltip="Have a nice day!" matTooltipPosition="left" mat-card-sm-image
+      src="../assets/chibiFischl.png">
+    <!-- boton inicio sesion -->
     <div id="sidenavButton">
       <button type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
-      
+
     </div>
-    
+
   </mat-drawer-container>
   <a id="admin" href="/admin">ADMIN</a>
 </header>
 
 <!-- SIDEBAR (INICIO DE SESION) -->
-<mat-drawer #drawer id="sidenav" mode="over" backdrop="off" >
+<mat-drawer #drawer id="sidenav" mode="over" backdrop="off">
   <!-- titulo -->
   <mat-label>INICIO DE SESION</mat-label>
   <!-- boton cerrar sidebar -->
   <div id="sidenavToggle">
-    <button mat-mini-fab color="white" id="cerrar"  type="button" (click)="drawer.toggle()"> X </button>
+    <button mat-mini-fab color="white" id="cerrar" type="button" (click)="drawer.toggle()"> X </button>
   </div>
-  
+
   <!-- formulario -->
-  <form id="sideBar">
+  <form onsubmit="onSubmit()" id="sideBar">
 
     <!-- correo -->
     <mat-form-field appearance="outline">
       <mat-label>Correo</mat-label>
-      <input autocomplete="off" matInput placeholder="CorreoDeEjemplo@xmail.xxx" required >
+      <input autocomplete="off" matInput placeholder="CorreoDeEjemplo@xmail.xxx" required>
     </mat-form-field>
 
     <!-- contraseña -->
     <mat-form-field appearance="outline">
       <mat-label>Contraseña</mat-label>
-      <input type="password" matInput placeholder="Contraseña" required >
+      <input type="password" matInput placeholder="Contraseña" required>
     </mat-form-field>
 
     <!-- captcha -->
-    <div class="g-recaptcha" data-sitekey="6LfnmzUbAAAAAF0DZrvwy9wy6buyDvQaauSlOySi" required ></div>
+    <div class="g-recaptcha" data-sitekey="6LfnmzUbAAAAAF0DZrvwy9wy6buyDvQaauSlOySi" required></div>
 
     <!-- boton iniciar sesion -->
     <button id="submitbutton" type="submit" mat-raised-button> Iniciar Sesion </button>
   </form>
 
   <!-- link registro -->
-  <mat-label>¿Aun no tienes una cuenta?       </mat-label>
+  <mat-label>¿Aun no tienes una cuenta? </mat-label>
   <a (click)="drawer.toggle()" routerLink="registro"><strong>Registrate</strong></a>
 
-  
+
 </mat-drawer>
 
 <!-- BODY -->
