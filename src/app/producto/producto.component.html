@@ -4,6 +4,9 @@
     <div mat-card-avatar class="header-image"></div>
     <mat-card-title> {{ producto.nombre }} </mat-card-title>
     <mat-card-subtitle> {{producto.categoria}} </mat-card-subtitle>
+    <button id="shoppingCart"  [routerLink]="['/cart']" routerLinkActive="router-link-active" mat-stroked-button>
+      <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
+    </button>
   </mat-card-header>
   <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
   <mat-card-content>
@@ -18,9 +21,13 @@
       <input type="number" [(ngModel)]="cantidad" class="cantidad" matInput>
     </mat-form-field>
 
-    <button id="cartButton" (click)="addCart()" mat-button>
+    <button *ngIf="stock()" id="cartButton" (click)="addCart()" mat-button> 
       <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
     </button>
+    <button *ngIf="!stock()" #tooltip="matTooltip" matTooltip="Producto fuera de stock" matTooltipPosition="above" id="cartButtonOff"  mat-button> 
+      <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
+    </button>
+
   </mat-card-actions>
   <mat-card-content>
     <p>COMENTARIOS:</p>

@@ -16,6 +16,16 @@
     color: white;
     margin-left: 10em;
 }
+
+#cartButtonOff{
+    width: 7.5em;
+    height: 3em;
+    background-color: rgb(131, 131, 131);
+    color: rgb(255, 255, 255);
+    margin: 0em 0em 0em 2em;
+
+}
+
 mat-card-actions{
     margin: auto;
     width: 70%;
@@ -29,4 +39,13 @@ input{
 img{
     float: left;
     margin-bottom: 1em;
+}
+#shoppingCart{
+    margin: 0.5em 0em 0em 8em ;
+    height: 3em;
+    width: 4.5em;
+    background-color: white;
+    position: fixed;
+    top: 8.7em;
+    right: 0.25em;
 }
