@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CartService } from '../cart.service';
 import { Usuario, Producto,Comentarios, Boleta, Detalle } from '../clases/clases';
 
 @Component({
@@ -8,7 +9,8 @@ import { Usuario, Producto,Comentarios, Boleta, Detalle } from '../clases/clases
 })
 export class ProductoComponent implements OnInit {
 
-  producto:Producto={nombre: "Shiba1", stock: 10, valor: 3000, categoria: "Pepperonni"}
+  producto:Producto= {id: 1,nombre: "Shiba1", stock: 10, valor: 3000, categoria: "Pepperonni"};
+  cantidad:number=1;;
 
   comentarios:Array<Comentarios>=[
     {id:1,producto: 101,usuario: 665,texto: "que wen producto 10/10"},
@@ -18,7 +20,7 @@ export class ProductoComponent implements OnInit {
 
   valoracion=2;
   stars = ''.split('.');
-  constructor() {
+  constructor(private cartService:CartService) {
     switch (this.valoracion) {
       case 1:
         this.stars = '1'.split('.');
@@ -49,6 +51,13 @@ export class ProductoComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.producto=this.cartService.getObjeto();
   }
+
+  addCart(){
+    this.cartService.adicionarP(this.producto);
+    this.cartService.adicionarC(this.cantidad);
+
+}
 
 }

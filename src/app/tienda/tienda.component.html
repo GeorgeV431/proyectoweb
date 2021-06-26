@@ -59,7 +59,7 @@
   <div *ngFor="let item of num,let indice=index">
     <mat-card *ngIf= "revisar(item)"  class="card" >
       <mat-card-header>
-        <mat-card-title><a href="/producto"> {{item.nombre}}</a> </mat-card-title>
+        <mat-card-title><a (click)="vistaProducto(indice)" > {{item.nombre}}</a> </mat-card-title>
       </mat-card-header>
       <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Foto del producto">
       <mat-card-content>

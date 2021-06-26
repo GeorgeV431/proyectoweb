@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
 import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
 import { CartService } from "../cart.service"
@@ -33,7 +33,8 @@ export class TiendaComponent implements OnInit {
 
   filtro:FormGroup;
 
-  constructor(public fb:FormBuilder,private cartService:CartService) {
+
+  constructor(public fb:FormBuilder,private router:Router,private cartService:CartService) {
     this.filtro = fb.group({
       categoria: [""],
       priceMin: 0,
@@ -102,6 +103,10 @@ export class TiendaComponent implements OnInit {
     if(result == 0) return true;
     else
       return false;
+  }
+  vistaProducto(indice:number){
+    this.cartService.addObjeto(this.num[indice]);
+    this.router.navigateByUrl('/producto');
   }
   
 }
