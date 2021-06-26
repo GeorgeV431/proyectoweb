@@ -9,7 +9,7 @@ import { ServicioService } from '../servicio.service';
 })
 export class AdminViewComponent implements OnInit {
 
-  @HostBinding('class') clases = 'row';
+
 
   usuarios: any | undefined = [] ;
   pedidos: any | undefined = [];
