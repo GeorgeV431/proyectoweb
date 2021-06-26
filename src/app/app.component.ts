@@ -1,11 +1,11 @@
-import { Component, HostListener, ElementRef } from '@angular/core';
+import { Component, HostListener, ElementRef, OnInit } from '@angular/core';
 import {
   ViewportScroller
 } from '@angular/common';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +29,7 @@ export class AppComponent {
   constructor(private scroll: ViewportScroller, private router: Router) { }
 
   ngOnInit(): void {
-
+    AOS.init();
   }
 
   scrollToTop() {

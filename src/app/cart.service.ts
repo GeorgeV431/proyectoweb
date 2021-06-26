@@ -12,6 +12,8 @@ export class CartService {
   productos:Producto[]= new Array<Producto>();
   cantidades:number[]= new Array<number>();
 
+  total = 0;
+
   constructor() { }
 
   getProductos(){
