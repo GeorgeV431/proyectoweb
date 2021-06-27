@@ -16,9 +16,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  remember = new FormControl('', [Validators.required,]);
-  correo = new FormControl('', [Validators.required, Validators.email]);
-  contrasenia = new FormControl('', [Validators.required,]);
+  correoValid = new FormControl('', [Validators.required, Validators.email]);
+  contraseniaValid = new FormControl('', [Validators.required,]);
 
   title = 'proyectoweb';
 
@@ -67,17 +66,17 @@ export class AppComponent {
     })
   }
   getErrorMessageContrasenia() {
-    if (this.contrasenia.hasError('required')) {
+    if (this.contraseniaValid.hasError('required')) {
       return 'You must enter a value';
     }
 
     return true;
   }
   getErrorMessageCorreo() {
-    if (this.correo.hasError('required')) {
+    if (this.correoValid.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.correo.hasError('email') ? 'Not a valid email' : true;
+    return this.correoValid.hasError('email') ? 'Not a valid email' : true;
 
   }
 
@@ -90,15 +89,12 @@ export class AppComponent {
 
   onSubmit():void {
     if (this.validInput()==false || grecaptcha.getResponse() == "") {
-      alert("You can't proceed!");
+      alert("You shall not pass");
     }else
     {
+      console.log(this.ingreso.value.correo);
       this.usuarioService.ingreso(this.ingreso.value.correo, this.ingreso.value.contrasenia, this.ingreso.value.remember);
-      this.ingreso = this.fb.group({
-        correo: [''],
-        contrasenia: [''],
-        remember: false,
-      });
+     
     }
 
   }

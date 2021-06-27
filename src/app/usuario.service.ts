@@ -35,6 +35,7 @@ export class UsuarioService {
 
   ingreso(correo:string, contrasenia:string, recordar:boolean){
     this.conectar();
+    console.log(correo);
     this.nombre = correo;
 
     if(recordar){
