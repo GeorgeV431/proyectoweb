@@ -15,6 +15,7 @@
       <button id="sidenavButton" type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
     </ng-template>
     <ng-template #saludo>
+      <button id="sidenavButton" type="button" mat-raised-button (click)="cerrarSesion()"> Cerrar Sesion </button>
       Hola, {{usuarioService.getNombre()}}
     </ng-template>
 
@@ -45,8 +46,7 @@
       <mat-label>Contraseña</mat-label>
       <input type="password" matInput placeholder="Contraseña" formControlName="contrasenia" required>
     </mat-form-field>
-    <mat-checkbox  formControlName="remember">Recordar Usuario y Contraseña</mat-checkbox>
-    
+    <mat-checkbox  formControlName="remember">Mantener sesion iniciada.</mat-checkbox>
     <br>
 
     <!-- captcha -->
