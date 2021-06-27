@@ -1,8 +1,6 @@
 
 import { Component, HostListener, ElementRef, OnInit } from '@angular/core';
-import {
-  ViewportScroller
-} from '@angular/common';
+import { ViewportScroller } from '@angular/common';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
@@ -18,11 +16,9 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  emailFormControl = new FormControl('', [
-    Validators.required,
-    Validators.email,
-  ]);
-
+  remember = new FormControl('', [Validators.required,]);
+  correo = new FormControl('', [Validators.required, Validators.email]);
+  contrasenia = new FormControl('', [Validators.required,]);
 
   title = 'proyectoweb';
 
@@ -38,6 +34,7 @@ export class AppComponent {
       correo: [''],
       contrasenia: [''],
       remember: false,
+      reCaptcha: undefined,
     });
 
 
@@ -66,23 +63,45 @@ export class AppComponent {
         let datos = (localStorage.getItem('Usuario'));
         if (datos != null)
           localStorage.removeItem('Usuario');
-
       }
-
     })
+  }
+  getErrorMessageContrasenia() {
+    if (this.contrasenia.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return true;
+  }
+  getErrorMessageCorreo() {
+    if (this.correo.hasError('required')) {
+      return 'You must enter a value';
+    }
+    return this.correo.hasError('email') ? 'Not a valid email' : true;
 
   }
-  onSubmit() {
-    this.usuarioService.ingreso(this.ingreso.value.correo, this.ingreso.value.contrasenia, this.ingreso.value.remember);
-    
-    this.ingreso = this.fb.group({
-      correo: [''],
-      contrasenia: [''],
-      remember: false,
-    });
+
+  validInput() {
+    if (this.getErrorMessageCorreo() == true && this.getErrorMessageContrasenia() == true ) {
+      return true;
+    }
+    return false;
   }
 
+  onSubmit():void {
+    if (this.validInput()==false || grecaptcha.getResponse() == "") {
+      alert("You can't proceed!");
+    }else
+    {
+      this.usuarioService.ingreso(this.ingreso.value.correo, this.ingreso.value.contrasenia, this.ingreso.value.remember);
+      this.ingreso = this.fb.group({
+        correo: [''],
+        contrasenia: [''],
+        remember: false,
+      });
+    }
 
+  }
 }
 
 @Component({

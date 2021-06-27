@@ -33,20 +33,29 @@
   </div>
 
   <!-- formulario -->
-  <form [formGroup]="ingreso" (ngSubmit)="onSubmit()" id="sideBar">
-
+  <form [formGroup]="ingreso" (ngSubmit)="onSubmit()" autocomplete="off" id="sideBar">
+    <ul>
     <!-- correo -->
-    <mat-form-field appearance="outline">
-      <mat-label>Correo</mat-label>
-      <input autocomplete="off" matInput placeholder="CorreoDeEjemplo@xmail.xxx" formControlName="correo" required>
-    </mat-form-field>
+    <li id="correo">
+      <mat-form-field appearance="fill">
+        <mat-label>Correo Electronico</mat-label>
+        <input matInput placeholder="CorreoDeEjemplo@xmail.xxx" [formControl]=correo required>
+        <mat-error *ngIf="correo.invalid">{{getErrorMessageCorreo()}}</mat-error>
+      </mat-form-field>
+    </li>
 
     <!-- contraseña -->
-    <mat-form-field appearance="outline">
-      <mat-label>Contraseña</mat-label>
-      <input type="password" matInput placeholder="Contraseña" formControlName="contrasenia" required>
-    </mat-form-field>
-    <mat-checkbox formControlName="remember">Mantener sesion iniciada.</mat-checkbox>
+    <li>
+      <mat-form-field appearance="fill">
+        <mat-label>Contraseña</mat-label>
+        <input type="password" matInput placeholder="Contrasenya" [formControl]=contrasenia required>
+        <mat-error *ngIf="contrasenia.invalid">{{getErrorMessageContrasenia()}}</mat-error>
+      </mat-form-field>
+    </li>
+  </ul>
+  <div>
+  <mat-checkbox formControlName="remember">Mantener sesion iniciada.</mat-checkbox>
+</div>
     <br>
 
     <!-- captcha -->
