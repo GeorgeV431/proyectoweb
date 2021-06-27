@@ -11,7 +11,6 @@ import * as AOS from 'aos';
 
 import { UsuarioService } from './usuario.service';
 import { MatDialog } from '@angular/material/dialog';
-import { compileComponentFromMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',

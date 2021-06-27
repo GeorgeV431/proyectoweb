@@ -27,6 +27,7 @@ import {MatSliderModule} from '@angular/material/slider';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 
 
 
@@ -45,6 +46,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
   ],
   imports: [
     BrowserModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
