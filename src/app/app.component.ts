@@ -8,7 +8,10 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 
 import * as AOS from 'aos';
+
 import { UsuarioService } from './usuario.service';
+import { MatDialog } from '@angular/material/dialog';
+import { compileComponentFromMetadata } from '@angular/compiler';
 
 @Component({
   selector: 'app-root',
@@ -31,10 +34,11 @@ export class AppComponent {
 
   ingreso: FormGroup;
 
-  constructor(public fb:FormBuilder, private scroll: ViewportScroller, private router: Router, public usuarioService: UsuarioService) {
+  constructor(public fb:FormBuilder, private scroll: ViewportScroller, private router: Router, public usuarioService: UsuarioService, public dialog: MatDialog) {
     this.ingreso = fb.group({
       correo: [''],
-      contrasenia: ['']
+      contrasenia: [''],
+      remember: false,
     });
 
 
@@ -42,18 +46,48 @@ export class AppComponent {
 
   ngOnInit(): void {
     AOS.init();
+
+    let datos = (localStorage.getItem('Usuario'));
+    if (datos != null)
+      this.usuarioService.cargarUsuario(JSON.parse(datos));
+    
   }
 
   scrollToTop() {
     this.scroll.scrollToPosition([0, 0]);
   }
 
+  cerrarSesion(){
 
+    const dialog = this.dialog.open(dialogoCerrar);
+    dialog.afterClosed().subscribe(result =>{
+      if (result == true) {
+        this.usuarioService.desconectar();
+
+        let datos = (localStorage.getItem('Usuario'));
+        if (datos != null)
+          localStorage.removeItem('Usuario');
+
+      }
+
+    })
+
+  }
   onSubmit() {
-    this.usuarioService.ingreso(this.ingreso.value.correo, this.ingreso.value.contrasenia);
-    //alert(this.usuarioService.getNombre()+"ha ingresado");
-
+    this.usuarioService.ingreso(this.ingreso.value.correo, this.ingreso.value.contrasenia, this.ingreso.value.remember);
+    
+    this.ingreso = this.fb.group({
+      correo: [''],
+      contrasenia: [''],
+      remember: false,
+    });
   }
 
 
 }
+
+@Component({
+  selector: 'dialogoCerrar',
+  templateUrl: 'dialogoCerrar.html'
+})
+export class dialogoCerrar{}
