@@ -16,8 +16,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  correoValid = new FormControl('', [Validators.required, Validators.email]);
-  contraseniaValid = new FormControl('', [Validators.required,]);
+  correo = new FormControl('', [Validators.required, Validators.email]);
+  contrasenia = new FormControl('', [Validators.required,]);
 
   title = 'proyectoweb';
 
@@ -30,10 +30,7 @@ export class AppComponent {
 
   constructor(public fb:FormBuilder, private scroll: ViewportScroller, private router: Router, public usuarioService: UsuarioService, public dialog: MatDialog) {
     this.ingreso = fb.group({
-      correo: [''],
-      contrasenia: [''],
       remember: false,
-      reCaptcha: undefined,
     });
 
 
@@ -66,17 +63,17 @@ export class AppComponent {
     })
   }
   getErrorMessageContrasenia() {
-    if (this.contraseniaValid.hasError('required')) {
+    if (this.contrasenia.hasError('required')) {
       return 'You must enter a value';
     }
 
     return true;
   }
   getErrorMessageCorreo() {
-    if (this.correoValid.hasError('required')) {
+    if (this.correo.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.correoValid.hasError('email') ? 'Not a valid email' : true;
+    return this.correo.hasError('email') ? 'Not a valid email' : true;
 
   }
 
@@ -92,7 +89,7 @@ export class AppComponent {
       alert("You shall not pass");
     }else
     {
-      this.usuarioService.ingreso(this.correoValid.value, this.contraseniaValid.value, this.ingreso.value.remember);
+      this.usuarioService.ingreso(this.correo.value, this.contrasenia.value, this.ingreso.value.remember);
     }
 
   }
