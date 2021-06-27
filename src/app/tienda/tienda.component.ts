@@ -27,11 +27,11 @@ export class TiendaComponent implements OnInit {
     { id: 3, nombre: "Shiba3", stock: 10, valor: 5000, categoria: "Extra Cheese" },
     { id: 4, nombre: "Shiba4", stock: 10, valor: 9000, categoria: "Pepperonni" },
     { id: 5, nombre: "Shiba5", stock: 10, valor: 8000, categoria: "Mushroom" },
-    { id: 6, nombre: "Shiba6", stock: 10, valor: 1000, categoria: "Extra Cheese" },
+    { id: 6, nombre: "Shiba6", stock: 10, valor: 1000, categoria: "Pineapple" },
     { id: 7, nombre: "Shiba7", stock: 10, valor: 9000, categoria: "Mushroom" },
     { id: 8, nombre: "Shiba8", stock: 10, valor: 7000, categoria: "Pepperonni" },
     { id: 9, nombre: "Shiba9", stock: 10, valor: 9000, categoria: "Extra Cheese" },
-    { id: 10, nombre: "Shiba10", stock: 10, valor: 5000, categoria: "Mushroom" },
+    { id: 10, nombre: "Shiba10", stock: 10, valor: 5000, categoria: "Bacon" },
 
   ];
   cantidades: number[] = Array<number>();
