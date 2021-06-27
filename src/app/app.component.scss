@@ -25,8 +25,6 @@ body{
     background-color: #000000;
 }
 
-
-
 //container del sidebar
 #sideContainer {
     background: none;
@@ -35,7 +33,7 @@ body{
 //boton inicio de sesion
 #sidenavButton {
     position: absolute;
-    top: 1.5em;
+    top: 2em;
     left: 2em;  
 }
 
@@ -76,9 +74,14 @@ body{
 
   }
 #admin{
-    width: 5em;
-    height: 3em;
-    background-color: white;
-    border: 2px solid rgb(185, 185, 185);
+    width: 4em;
+    height: 1.5em;
+    background-color: rgb(255, 255, 255);
+    border: 2px solid rgb(107, 107, 107);
     border-radius: 5px;
+    position: absolute;
+    top: 2.4em;
+    left: 11em;
+    text-align: center;
+
 }

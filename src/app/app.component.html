@@ -11,8 +11,8 @@
 
     <div *ngIf="!usuarioService.getEstado(); then iniciarSesion else saludo"></div>
     <!-- boton inicio sesion -->
-    <ng-template #iniciarSesion id="sidenavButton">
-      <button type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
+    <ng-template #iniciarSesion >
+      <button id="sidenavButton" type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
     </ng-template>
     <ng-template #saludo>
       Hola, {{usuarioService.getNombre()}}
@@ -45,6 +45,8 @@
       <mat-label>Contraseña</mat-label>
       <input type="password" matInput placeholder="Contraseña" formControlName="contrasenia" required>
     </mat-form-field>
+    <mat-checkbox  formControlName="remember">Recordar Usuario y Contraseña</mat-checkbox>
+    <br>
 
     <!-- captcha -->
     <div class="g-recaptcha" data-sitekey="6LfnmzUbAAAAAF0DZrvwy9wy6buyDvQaauSlOySi" required></div>
