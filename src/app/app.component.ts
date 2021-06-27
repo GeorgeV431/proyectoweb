@@ -92,9 +92,7 @@ export class AppComponent {
       alert("You shall not pass");
     }else
     {
-      console.log(this.ingreso.value.correo);
-      this.usuarioService.ingreso(this.ingreso.value.correo, this.ingreso.value.contrasenia, this.ingreso.value.remember);
-     
+      this.usuarioService.ingreso(this.correoValid.value, this.contraseniaValid.value, this.ingreso.value.remember);
     }
 
   }

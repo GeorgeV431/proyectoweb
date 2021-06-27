@@ -39,7 +39,7 @@
     <li id="correo">
       <mat-form-field appearance="fill">
         <mat-label>Correo Electronico</mat-label>
-        <input matInput placeholder="CorreoDeEjemplo@xmail.xxx" [formControl]=correoValid formControlName="correo" required>
+        <input matInput placeholder="CorreoDeEjemplo@xmail.xxx" [formControl]=correoValid  required>
         <mat-error *ngIf="correoValid.invalid">{{getErrorMessageCorreo()}}</mat-error>
       </mat-form-field>
     </li>
@@ -48,7 +48,7 @@
     <li>
       <mat-form-field appearance="fill">
         <mat-label>Contraseña</mat-label>
-        <input type="password" matInput placeholder="Contrasenya" [formControl]=contraseniaValid formControlName="contrasenia" required>
+        <input type="password" matInput placeholder="Contrasenya" [formControl]=contraseniaValid  required>
         <mat-error *ngIf="contraseniaValid.invalid">{{getErrorMessageContrasenia()}}</mat-error>
       </mat-form-field>
     </li>
