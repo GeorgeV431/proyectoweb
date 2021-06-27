@@ -1,41 +1,194 @@
-import express, { Application } from 'express';
-import morgan from 'morgan';
-import cors from 'cors';
+//          CONST VARIOS
+const express = require("express");
+const jwt = require("jsonwebtoken");
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
+const server = express();
+const cont = require("../controllers/controllers");
+const port = 3000;
+const secureAccess = express.Router(); 
+//          CONST VARIOS
 
-import indexRoutes from './routes/indexRoutes';
-import gamesRoutes from './routes/gamesRoutes';
 
-class Server {
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(bodyParser.json());
+server.set('config',cont.config);
+server.listen(port,()=>{
+    console.log("Server listening on: http://localhost:" + port);
+});
 
-    public app: Application;
+//          CONEXION A LA BASE DE DATOS
+let connection = mysql.createConnection({
+    host    : 'localhost',
+    user    : 'root',
+    port    : 3306,
+    password: '',
+    database: 'boutique'
+});
+
+connection.connect((error:any)=>{
+    if(error){
+        console.log("error");
+    }else{
+    console.log('conectado a DB');
+    }
+});
+
+//          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
+server.use(function(req:any, res:any, next:any) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
+    next();
+});
+
+secureAccess.use((req:any, res:any, next:any) => {
+    const config = req.headers['access-token'];
+    if (config) {
+      jwt.verify(config, server.get('config'), (err:any, decoded:any) => {      
+        if (err) {
+            return res.json({ mensaje: 'Invalid Access' });    
+        } else {
+          req.decoded = decoded;    
+          req.authentificated= true;
+          next();
+        }
+      });
+    } else {
+    res.send({ 
+        mensaje: 'Failed Access' 
+    });
+    }
+ });
+//          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
+
+
+
+ //     GET, POST Y DELETE DE Usuarios
+server.get('/getUsuarios',secureAccess,(req:any,res:any)=>{
+    connection.query("SELECT * FROM usuarios",(req1:any,resultados:any)=>{
+        res.send(resultados);
+    });
+});
+
+server.post('/createUsuario',(req:any,res:any)=>{
+    let nombres = req.body.nombres;
+    let apellidos = req.body.apellidos;
+    let rut = req.body.rut;
+    let direccion = req.body.direccion;
+    let comuna = req.body.comuna;
+    let region = req.body.region;
+    let correo = req.body.correo;
+    let password=req.body.password;
     
-    constructor() {
-        this.app = express();
-        this.config();
-        this.routes();
-    }
+    connection.query("INSERT INTO usuarios(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('"+nombres+"','"+apellidos+"','"+rut+"','"+comuna+"','"+region+"','"+correo+"',MD5('"+password+"'),'"+direccion+"')",(req1:any,resultados:any)=>{
+        if(resultados == undefined){
+            res.status(401).send({"message":"ERROR, datos duplicados"});
+        }else{
+              res.status(201).send({"message":"creado"});
+        }
+    });
+});
 
-    config(): void {
-        this.app.set('port', process.env.PORT || 3000);
+server.post('/login', (req:any,res:any)=>{
+    let correo = req.body.correo;
+    let password = req.body.password;
+    
+    connection.query("SELECT * FROM usuarios where correo=? and password=md5(?)",[correo,password],(error:any,resultados:any,fields:any)=>{
+        res.send(resultados);
+    });
 
-        this.app.use(morgan('dev'));
-        this.app.use(cors());
-        this.app.use(express.json());
-        this.app.use(express.urlencoded({extended: false}));
-    }
+});
+//     GET, POST Y DELETE DE Usuarios
 
-    routes(): void {
-        this.app.use('/', indexRoutes);
-        this.app.use('/api/games', gamesRoutes);
-    }
 
-    start() {
-        this.app.listen(this.app.get('port'), () => {
-            console.log('Server on port', this.app.get('port'));
-        });
-    }
+//     GET, POST Y DELETE DE Productos
+server.get('/getProductos',(req:any,res:any)=>{
+    connection.query("SELECT * FROM productos",(req1:any,resultados:any)=>{
+        res.send(resultados);
+    });
+});
 
-}
+server.get('/getProductosCat/:categoria',(req:any,res:any)=>{
+    let categoria = req.params.categoria;
+    connection.query("SELECT * FROM productos where categoria=?",categoria,(req1:any,resultados:any)=>{
+        res.send(resultados);
+    });
+});
 
-const server = new Server();
-server.start();
+server.get('/getProductosId/:id',(req:any,res:any)=>{
+    let id = req.params.id;
+    connection.query("SELECT * FROM productos where id=?",id,(req1:any,resultados:any)=>{
+        res.send(resultados);
+    });
+});
+
+server.get('/getProductosNombre/:nombre',(req:any,res:any)=>{
+    let nombre="%"+req.params.nombre+"%";
+    connection.query("SELECT * FROM productos WHERE nombre LIKE ?",nombre,(req1:any,resultados:any)=>{
+        res.send(resultados);
+    });
+});
+//     GET, POST Y DELETE DE Productos
+
+
+
+//     GET, POST Y DELETE DE Comentarios
+server.get('/getComentarios',(req:any,res:any)=>{
+    connection.query("SELECT * FROM comentarios",(req1:any,resultados:any)=>{
+        res.send(resultados);
+    });
+});
+
+server.get('/getComentariosProduct',(req:any,res:any)=>{
+    let id_producto = req.body.id_producto;
+    connection.query("SELECT texto,id_usuario FROM comentario WHERE id_producto=?",id_producto,(req1:any,resultado:any)=>{
+        res.send(resultado);
+    });
+});
+
+server.post('/createComentario',(req:any,res:any)=>{
+    let id_producto = req.body.id_producto;
+    let id_usuario = req.body.id_usuario;
+    let texto = req.body.texto;
+    let calificacion = req.body.calificacion;
+
+    console.log(req.body);
+    connection.query("INSERT INTO comentario(id_producto,id_usuario,texto,calificacion)VALUES('"+id_producto+"','"+id_usuario+"','"+texto+"','"+calificacion+"')",(req1:any,resultados:any)=>{
+        res.status(201).send(resultados); 
+    });
+});
+//     GET, POST Y DELETE DE Comentarios
+
+//     GET, POST Y DELETE DE Boleta y Detalle
+server.get('/getBoleta',secureAccess,(req:any,res:any)=>{
+    connection.query("SELECT * FROM boleta",(req1:any,resultados:any)=>{
+        res.send(resultados);
+    });
+});
+
+server.post('/generarBoleta',secureAccess,(req:any,res:any)=>{
+    let id_Usuario = req.body.usuario;
+    let total = req.body.total;
+    
+    connection.query("INSERT INTO boleta(id_usuario,total)VALUES('"+id_Usuario+"','"+total+"')",(req:any,resultados:any)=>{
+        res.status(201).send(resultados);
+    });
+});
+
+server.get('/getDetalle',secureAccess,(req:any,res:any)=>{
+    let id_boleta = req.body.boleta;
+    connection.query("SELECT * FROM detalle WHERE id_boleta=?",id_boleta,(req1:any,resultados:any)=>{
+        res.send(resultados);
+    });
+});
+
+server.post('/generarBoleta',secureAccess,(req:any,res:any)=>{
+    let id_boleta = req.body.id_boleta;
+    let id_producto = req.body.id_produto;
+    let cantidad = req.body.cantidad;
+    let subtotal = req.body.subtotal;
+    connection.query("INSERT INTO detalle(id_boleta,id_producto,cantidad,subtotal)VALUES('"+id_boleta+"','"+id_producto+"','"+cantidad+"','"+subtotal+"')",(req:any,resultados:any)=>{
+        res.status(201).send(resultados);
+    });
+});
+

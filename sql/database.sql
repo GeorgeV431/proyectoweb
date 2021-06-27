@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2021 a las 19:20:50
+-- Tiempo de generación: 28-06-2021 a las 01:09:10
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `boutique`
 --
+CREATE DATABASE IF NOT EXISTS `boutique` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `boutique`;
 
 -- --------------------------------------------------------
 
@@ -29,8 +31,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `boleta` (
   `id` int(10) NOT NULL,
-  `id_usuario` int(10) NOT NULL,
-  `fecha` date NOT NULL,
+  `id_usuario` varchar(100) NOT NULL,
+  `fecha` date NOT NULL DEFAULT current_timestamp(),
   `total` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -39,7 +41,7 @@ CREATE TABLE `boleta` (
 --
 
 INSERT INTO `boleta` (`id`, `id_usuario`, `fecha`, `total`) VALUES
-(1, 194445556, '2021-06-01', 19200);
+(1, 'usert@test.cl', '2021-06-01', 19200);
 
 -- --------------------------------------------------------
 
@@ -50,17 +52,18 @@ INSERT INTO `boleta` (`id`, `id_usuario`, `fecha`, `total`) VALUES
 CREATE TABLE `comentarios` (
   `id` int(10) NOT NULL,
   `id_producto` int(10) NOT NULL,
-  `id_usuario` int(10) NOT NULL,
-  `texto` text NOT NULL
+  `id_usuario` varchar(100) NOT NULL,
+  `texto` text NOT NULL,
+  `calificacion` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `comentarios`
 --
 
-INSERT INTO `comentarios` (`id`, `id_producto`, `id_usuario`, `texto`) VALUES
-(1, 16, 123456789, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'),
-(2, 12, 123456789, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.');
+INSERT INTO `comentarios` (`id`, `id_producto`, `id_usuario`, `texto`, `calificacion`) VALUES
+(1, 16, '123456789', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 5),
+(2, 12, '123456789', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 5);
 
 -- --------------------------------------------------------
 
@@ -129,24 +132,24 @@ INSERT INTO `producto` (`id`, `nombre`, `stock`, `valor`, `categoria`) VALUES
 CREATE TABLE `usuario` (
   `Nombres` varchar(100) NOT NULL,
   `Apellidos` varchar(100) NOT NULL,
-  `Rut` int(10) NOT NULL,
+  `rut` int(10) NOT NULL,
   `Direccion` varchar(100) NOT NULL,
   `Comuna` varchar(50) NOT NULL,
   `Region` varchar(50) NOT NULL,
   `Correo` varchar(100) NOT NULL,
   `Password` varchar(100) NOT NULL,
-  `Tipo` int(1) NOT NULL
+  `Tipo` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`Nombres`, `Apellidos`, `Rut`, `Direccion`, `Comuna`, `Region`, `Correo`, `Password`, `Tipo`) VALUES
-('Usuario', 'Test', 123456789, 'boutique', 'Valparaiso', 'Valparaiso', 'usuario@boutique.cl', '1234', 1),
-('Jorge', 'Verschae', 191112223, 'somewhere', 'Rancagua', 'O\'Higgins', 'jorge@algo.cl', 'qweqweqwe', 0),
-('Aaron', 'Frenkel', 194445556, 'someplace', 'Rancagua', 'O\'Higgins', 'aaron@algo.cl', 'zxczxczxc', 0),
-('Roberto', 'Concha Vergara', 199037323, 'Portillo', 'Los Andes', 'Valparaiso', 'roberto@algo.cl', 'asdasdasd', 0);
+INSERT INTO `usuario` (`Nombres`, `Apellidos`, `rut`, `Direccion`, `Comuna`, `Region`, `Correo`, `Password`, `Tipo`) VALUES
+('Aaron', 'Frenkel', 112223334, 'someplace', 'Rancagua', 'O\'Higgins', 'aaron@algo.cl', 'zxczxczxc', 1),
+('Jorge', 'Verschae', 223334445, 'somewhere', 'Rancagua', 'O\'Higgins', 'jorge@algo.cl', 'qweqweqwe', 1),
+('Roberto', 'Concha Vergara', 199037323, 'Portillo', 'Los Andes', 'Valparaiso', 'roberto@algo.cl', 'asdasdasd', 1),
+('User', 'Test', 123456789, 'boutique', 'Valparaiso', 'Valparaiso', 'usuario@boutique.cl', '1234', 0);
 
 --
 -- Índices para tablas volcadas
@@ -180,7 +183,7 @@ ALTER TABLE `producto`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD UNIQUE KEY `Rut` (`Rut`);
+  ADD PRIMARY KEY (`Correo`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -209,8 +212,4 @@ ALTER TABLE `detalle`
 --
 ALTER TABLE `producto`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+--
