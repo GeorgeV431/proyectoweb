@@ -93,6 +93,9 @@ export class AppComponent {
     }
 
   }
+  adminLog(){
+    this.router.navigateByUrl('/admin');
+  }
 }
 
 @Component({

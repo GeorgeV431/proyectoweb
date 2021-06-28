@@ -20,7 +20,7 @@
     </ng-template>
 
   </mat-drawer-container>
-  <a id="admin" href="/admin" *ngIf="usuarioService.esAdmin">ADMIN</a>
+  <a id="admin" (click)="adminLog()" *ngIf="usuarioService.esAdmin">ADMIN</a>
 </header>
 
 <!-- SIDEBAR (INICIO DE SESION) -->
