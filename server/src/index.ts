@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const server = express();
-const cont = require("../controllers/controllers");
+const cont = require("./controllers/controllers");
 const port = 3000;
 const secureAccess = express.Router(); 
 //          CONST VARIOS
