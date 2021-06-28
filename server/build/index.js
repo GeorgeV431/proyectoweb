@@ -59,8 +59,14 @@ secureAccess.use((req, res, next) => {
 });
 //          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
 //     GET, POST Y DELETE DE Usuarios
-server.get('/getUsuarios', secureAccess, (req, res) => {
-    connection.query("SELECT * FROM usuarios", (req1, resultados) => {
+server.get('/getUsuarios', secureAccess, (res) => {
+    connection.query("SELECT * FROM usuario", (resultados) => {
+        res.send(resultados);
+    });
+});
+server.get('/getUsuario/:correo', (req, res) => {
+    let correo = req.params.correo;
+    connection.query("SELECT * FROM productos WHERE correo=?", correo, (req1, resultados) => {
         res.send(resultados);
     });
 });

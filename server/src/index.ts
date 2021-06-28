@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const server = express();
-const cont = require("../controllers/controllers");
+const cont = require("./controllers/controllers");
 const port = 3000;
 const secureAccess = express.Router(); 
 //          CONST VARIOS
@@ -14,7 +14,6 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.set('config',cont.config);
 server.listen(port,()=>{
-    console.log("Server listening on: http://localhost:" + port);
 });
 
 //          CONEXION A LA BASE DE DATOS
@@ -63,12 +62,18 @@ secureAccess.use((req:any, res:any, next:any) => {
 
 
 
+
+
  //     GET, POST Y DELETE DE Usuarios
-server.get('/getUsuarios',secureAccess,(req:any,res:any)=>{
-    connection.query("SELECT * FROM usuarios",(req1:any,resultados:any)=>{
+server.get('/getUsuarios',secureAccess,(res:any)=>{
+    connection.query("SELECT * FROM usuario",(resultados:any)=>{
+        
         res.send(resultados);
     });
 });
+
+
+
 
 server.get('/getUsuario/:correo',(req:any,res:any)=>{
     let correo = req.params.correo;
