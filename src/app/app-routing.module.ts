@@ -7,6 +7,7 @@ import {ProductoComponent} from "../app/producto/producto.component"
 import {ShoppingCartComponent} from "../app/shopping-cart/shopping-cart.component"
 import{ CartService } from "../app/cart.service"
 
+
 const routes: Routes = [
   {path:"registro",component:FormularioComponent},
   {path:"admin",component:AdminViewComponent},

@@ -1,6 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-//import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
-import { Usuario, Producto, Boleta, Detalle } from '../interfaces';
+import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
 import { ServicioService } from '../servicio.service';
 
 @Component({
@@ -8,9 +7,9 @@ import { ServicioService } from '../servicio.service';
   templateUrl: './admin-view.component.html',
   styleUrls: ['./admin-view.component.scss']
 })
-
-
 export class AdminViewComponent implements OnInit {
+
+
 
   usuarios: any | undefined = [];
   pedidos: any | undefined = [];
