@@ -20,7 +20,7 @@ export class ApiService {
     correo:string,
     password:string,
     ):Observable<any>{
-    
+    //FORMATO DEL REQ.BODY Y FORMA DEL METODO POST
     const body = new HttpParams()
       .set("nombre",nombre)
       .set('apellido',apellido)
