@@ -5,6 +5,7 @@ export interface Cart {
 export interface Boleta{
     id_usuario:string,
     fecha:Date,
+    detalle:Detalle[],
     total:number
 }
 
