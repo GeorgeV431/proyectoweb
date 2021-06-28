@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {HttpClientModule} from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent, dialogoCerrar } from './app.component';
@@ -45,6 +46,7 @@ import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
     ShoppingCartComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     RecaptchaModule,
     RecaptchaFormsModule,
