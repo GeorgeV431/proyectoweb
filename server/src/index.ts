@@ -12,7 +12,6 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.set('config',cont.config);
 server.listen(port,()=>{
-    console.log("Server listening on: http://localhost:" + port);
 });
 
 //          CONEXION A LA BASE DE DATOS
@@ -32,10 +31,17 @@ connection.connect((error:any)=>{
     }
 });
 
+//          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
+server.use(function(req:any, res:any, next:any) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "*");
+    next();
+});
+
  //     GET, POST Y DELETE DE Usuarios
-server.get('/getUsuarios',(req:any,res:any)=>{
-    connection.query("SELECT * FROM usuario",(req1:any,resultados:any)=>{
-        console.log(resultados);
+server.get('/getUsuarios',(res:any)=>{
+    connection.query("SELECT * FROM usuario",(resultados:any)=>{
+        
         res.send(resultados);
     });
 });
