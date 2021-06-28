@@ -4,12 +4,10 @@ const jwt = require("jsonwebtoken");
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
 const server = express();
-const cont = require("../controllers/controllers");
+const cont = require("./controllers/controllers");
 const port = 3000;
-const secureAccess = express.Router(); 
+
 //          CONST VARIOS
-
-
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.set('config',cont.config);
@@ -30,42 +28,14 @@ connection.connect((error:any)=>{
     if(error){
         console.log("error");
     }else{
-    console.log('conectado a DB');
+        console.log('conectado a DB');
     }
 });
-
-//          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
-server.use(function(req:any, res:any, next:any) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-    next();
-});
-
-secureAccess.use((req:any, res:any, next:any) => {
-    const config = req.headers['access-token'];
-    if (config) {
-      jwt.verify(config, server.get('config'), (err:any, decoded:any) => {      
-        if (err) {
-            return res.json({ mensaje: 'Invalid Access' });    
-        } else {
-          req.decoded = decoded;    
-          req.authentificated= true;
-          next();
-        }
-      });
-    } else {
-    res.send({ 
-        mensaje: 'Failed Access' 
-    });
-    }
- });
-//          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
-
-
 
  //     GET, POST Y DELETE DE Usuarios
-server.get('/getUsuarios',secureAccess,(req:any,res:any)=>{
-    connection.query("SELECT * FROM usuarios",(req1:any,resultados:any)=>{
+server.get('/getUsuarios',(req:any,res:any)=>{
+    connection.query("SELECT * FROM usuario",(req1:any,resultados:any)=>{
+        console.log(resultados);
         res.send(resultados);
     });
 });
@@ -167,13 +137,13 @@ server.post('/createComentario',(req:any,res:any)=>{
 //     GET, POST Y DELETE DE Comentarios
 
 //     GET, POST Y DELETE DE Boleta y Detalle
-server.get('/getBoleta',secureAccess,(req:any,res:any)=>{
+server.get('/getBoleta',(req:any,res:any)=>{
     connection.query("SELECT * FROM boleta",(req1:any,resultados:any)=>{
         res.send(resultados);
     });
 });
 
-server.post('/generarBoleta',secureAccess,(req:any,res:any)=>{
+server.post('/generarBoleta',(req:any,res:any)=>{
     let id_Usuario = req.body.usuario;
     let total = req.body.total;
     
@@ -182,14 +152,14 @@ server.post('/generarBoleta',secureAccess,(req:any,res:any)=>{
     });
 });
 
-server.get('/getDetalle',secureAccess,(req:any,res:any)=>{
+server.get('/getDetalle',(req:any,res:any)=>{
     let id_boleta = req.body.boleta;
     connection.query("SELECT * FROM detalle WHERE id_boleta=?",id_boleta,(req1:any,resultados:any)=>{
         res.send(resultados);
     });
 });
 
-server.post('/generarBoleta',secureAccess,(req:any,res:any)=>{
+server.post('/generarBoleta',(req:any,res:any)=>{
     let id_boleta = req.body.id_boleta;
     let id_producto = req.body.id_produto;
     let cantidad = req.body.cantidad;

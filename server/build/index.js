@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const server = express();
 const cont = require("./controllers/controllers");
 const port = 3000;
-const secureAccess = express.Router();
 //          CONST VARIOS
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
@@ -31,36 +30,16 @@ connection.connect((error) => {
         console.log('conectado a DB');
     }
 });
-//          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
-server.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-    next();
-});
-secureAccess.use((req, res, next) => {
-    const config = req.headers['access-token'];
-    if (config) {
-        jwt.verify(config, server.get('config'), (err, decoded) => {
-            if (err) {
-                return res.json({ mensaje: 'Invalid Access' });
-            }
-            else {
-                req.decoded = decoded;
-                req.authentificated = true;
-                next();
-            }
-        });
-    }
-    else {
-        res.send({
-            mensaje: 'Failed Access'
-        });
-    }
-});
-//          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
 //     GET, POST Y DELETE DE Usuarios
-server.get('/getUsuarios', secureAccess, (req, res) => {
-    connection.query("SELECT * FROM usuarios", (req1, resultados) => {
+server.get('/getUsuarios', (req, res) => {
+    connection.query("SELECT * FROM usuario", (req1, resultados) => {
+        console.log(resultados);
+        res.send(resultados);
+    });
+});
+server.get('/getUsuario/:correo', (req, res) => {
+    let correo = req.params.correo;
+    connection.query("SELECT * FROM productos WHERE correo=?", correo, (req1, resultados) => {
         res.send(resultados);
     });
 });
@@ -139,25 +118,25 @@ server.post('/createComentario', (req, res) => {
 });
 //     GET, POST Y DELETE DE Comentarios
 //     GET, POST Y DELETE DE Boleta y Detalle
-server.get('/getBoleta', secureAccess, (req, res) => {
+server.get('/getBoleta', (req, res) => {
     connection.query("SELECT * FROM boleta", (req1, resultados) => {
         res.send(resultados);
     });
 });
-server.post('/generarBoleta', secureAccess, (req, res) => {
+server.post('/generarBoleta', (req, res) => {
     let id_Usuario = req.body.usuario;
     let total = req.body.total;
     connection.query("INSERT INTO boleta(id_usuario,total)VALUES('" + id_Usuario + "','" + total + "')", (req, resultados) => {
         res.status(201).send(resultados);
     });
 });
-server.get('/getDetalle', secureAccess, (req, res) => {
+server.get('/getDetalle', (req, res) => {
     let id_boleta = req.body.boleta;
     connection.query("SELECT * FROM detalle WHERE id_boleta=?", id_boleta, (req1, resultados) => {
         res.send(resultados);
     });
 });
-server.post('/generarBoleta', secureAccess, (req, res) => {
+server.post('/generarBoleta', (req, res) => {
     let id_boleta = req.body.id_boleta;
     let id_producto = req.body.id_produto;
     let cantidad = req.body.cantidad;
