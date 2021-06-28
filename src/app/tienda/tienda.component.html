@@ -3,11 +3,10 @@
   <section id="categorias">
     <mat-button-toggle-group  formControlName="categoria" aria-label="Font Style">
       <mat-button-toggle value="">Todo</mat-button-toggle>
-      <mat-button-toggle value="Pepperonni">Pepperonni</mat-button-toggle>
-      <mat-button-toggle value="Mushroom">Mushroom</mat-button-toggle>
-      <mat-button-toggle value="Extra Cheese">Extra Cheese</mat-button-toggle>
-      <mat-button-toggle value="Bacon">Bacon</mat-button-toggle>
-      <mat-button-toggle value="Pineapple">Pineapple</mat-button-toggle>
+      <mat-button-toggle value="Accesorios">Accesorios</mat-button-toggle>
+      <mat-button-toggle value="Ropa">Ropa</mat-button-toggle>
+      <mat-button-toggle value="Platos">Platos</mat-button-toggle>
+      <mat-button-toggle value="Camas">Camas</mat-button-toggle>
     </mat-button-toggle-group>
   </section>
   <div id="filtro">
@@ -72,8 +71,8 @@
         <mat-card-title><a (click)="vistaProducto(indice)"> {{item.nombre}}</a> </mat-card-title>
       </mat-card-header>
       <img mat-card-image (click)="vistaProducto(indice)" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Foto del producto">
-      <mat-card-content>
-        <p> ${{item.valor}} </p>
+      <mat-card-content >
+        <p id="price">${{item.valor}} </p>
       </mat-card-content>
       <mat-card-actions>
 

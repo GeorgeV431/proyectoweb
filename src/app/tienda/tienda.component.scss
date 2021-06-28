@@ -15,6 +15,7 @@
     height: 35em;
     float: left;
     cursor: pointer;
+    
 }
 
 .card:hover{
@@ -27,6 +28,7 @@
     background-color: rgb(6, 177, 177);
     color: white;
     margin: 0em 0em 0em 2em;
+    text-align: middle;
 
 }
 #cartButtonOff{
@@ -53,11 +55,10 @@ input{
 }
 
 #price{
-    margin-right: 5em;
-    width: 20em;
-    display: inline-block;
-
+    font-size: 2em;
+    float: right;
 }
+
 #rating{
     width: 20em;
     display: inline-block;
