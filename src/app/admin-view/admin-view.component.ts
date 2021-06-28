@@ -20,10 +20,13 @@ export class AdminViewComponent implements OnInit {
   constructor(public servicio: ServicioService, public api:ApiService) { }
 
   ngOnInit() {
+    this.getUsuarios();
+
   }
 
   getUsuarios() {
-    this.servicio.getUsuarios()
+    let token = this.api.datos.token;
+    this.servicio.getUsuarios(token)
       .subscribe(
         res => {
           this.usuarios = res;

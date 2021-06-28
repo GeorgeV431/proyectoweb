@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Usuario, Producto, Comentarios, Boleta, Detalle } from './clases/clases';
 import { Observable } from 'rxjs';
 
@@ -13,12 +13,17 @@ export class ServicioService {
   constructor(private http: HttpClient) { }
 
   // inicio GET, DELETE Y POST de usuario
-  getUsuarios() {
-    return this.http.get(`${this.API_URI}/getUsuario`);
+  getUsuarios(user:string) {
+    let headers = new HttpHeaders();
+    headers= headers.append('access-token',user);
+    return this.http.get(`${this.API_URI}/getUsuarios`, {'headers':headers});
   }
-  getUsuario(rut: number) {
-    return this.http.get(`${this.API_URI}/usuario/${rut}`);
+  getUsuario(correo: string):Observable<any> {
+    let headers = new HttpHeaders();
+    headers = headers.append('access-token',correo);
+    return this.http.get(`${this.API_URI}/getUsuario`, {'headers':headers});
   }
+
   deleteUsuario(rut: number) {
     return this.http.delete(`${this.API_URI}/usuario/${rut}`);
   }

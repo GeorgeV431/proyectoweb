@@ -70,6 +70,13 @@ server.get('/getUsuarios',secureAccess,(req:any,res:any)=>{
     });
 });
 
+server.get('/getUsuario/:correo',(req:any,res:any)=>{
+    let correo = req.params.correo;
+    connection.query("SELECT * FROM productos WHERE correo=?",correo,(req1:any,resultados:any)=>{
+        res.send(resultados);
+    });
+});
+
 server.post('/createUsuario',(req:any,res:any)=>{
     let nombres = req.body.nombres;
     let apellidos = req.body.apellidos;
