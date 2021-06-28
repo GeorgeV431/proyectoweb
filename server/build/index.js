@@ -12,6 +12,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.set('config', cont.config);
 server.listen(port, () => {
+    console.log("Server listening on: http://localhost:" + port);
 });
 //          CONEXION A LA BASE DE DATOS
 let connection = mysql.createConnection({
@@ -29,15 +30,10 @@ connection.connect((error) => {
         console.log('conectado a DB');
     }
 });
-//          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
-server.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "*");
-    next();
-});
 //     GET, POST Y DELETE DE Usuarios
-server.get('/getUsuarios', (res) => {
-    connection.query("SELECT * FROM usuario", (resultados) => {
+server.get('/getUsuarios', (req, res) => {
+    connection.query("SELECT * FROM usuario", (req1, resultados) => {
+        console.log(resultados);
         res.send(resultados);
     });
 });

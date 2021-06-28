@@ -25,11 +25,11 @@ export class AdminViewComponent implements OnInit {
   }
 
   getUsuarios() {
-    //let token = this.api.datos.token;
-    this.servicio.getUsuarios()
+    let token = this.api.datos.token;
+    this.servicio.getUsuarios(token)
       .subscribe(
         res => {
-          this.usuarios.push(res);
+          this.usuarios = res;
         },
         err => console.error(err)
       );
