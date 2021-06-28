@@ -1,20 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Producto } from './clases/clases';
+import { Cart, Boleta, Detalle } from './interfaces';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
+  constructor(private http:HttpClient) { }
+  productosCarrito:Array<Detalle> = [];
+  url="http://localhost:3000/";
+
   //no se si esto deberia estar aqui, pero era agregarlo en este service o crear uno nuevo solo para esto
   objeto:Producto={id: 0,nombre: "", stock: 0, valor:0, categoria: ""};
 
   productos:Producto[]= new Array<Producto>();
   cantidades:number[]= new Array<number>();
-
-  total = 0;
-
-  constructor() { }
 
   getProductos(){
     for (let indice = 0; indice < this.productos.length; indice++) {
