@@ -1,6 +1,7 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
 import { ServicioService } from '../servicio.service';
+import { ApiService } from '../api.service'
 
 @Component({
   selector: 'app-admin-view',
@@ -16,7 +17,7 @@ export class AdminViewComponent implements OnInit {
 
   panelOpenState = false;
 
-  constructor(public servicio: ServicioService) { }
+  constructor(public servicio: ServicioService, public api:ApiService) { }
 
   ngOnInit() {
   }

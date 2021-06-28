@@ -14,7 +14,7 @@ export class ServicioService {
 
   // inicio GET, DELETE Y POST de usuario
   getUsuarios() {
-    return this.http.get(`${this.API_URI}/usuario`);
+    return this.http.get(`${this.API_URI}/getUsuario`);
   }
   getUsuario(rut: number) {
     return this.http.get(`${this.API_URI}/usuario/${rut}`);
