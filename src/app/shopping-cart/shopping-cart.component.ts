@@ -4,6 +4,7 @@ import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
 import { CartService } from "../cart.service"
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { UsuarioService } from '../usuario.service';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -19,8 +20,7 @@ export class ShoppingCartComponent implements OnInit {
 
   productos: Producto[] = new Array<Producto>();
 
-  constructor(private cartService: CartService,public dialog: MatDialog,private router: Router) {
-
+  constructor(private cartService: CartService,public dialog: MatDialog,private router: Router, public usuarioService: UsuarioService) {
   }
 
   ngOnInit(): void {
@@ -37,6 +37,9 @@ export class ShoppingCartComponent implements OnInit {
   submitCart(){
     this.dialog.open(dialogo);
     this.router.navigateByUrl('/');
+    this.productos= [];
+    this.cantidades= [];
+
   }
 
 
