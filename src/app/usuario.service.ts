@@ -8,8 +8,8 @@ export class UsuarioService {
 
   estaConectado = false;
   nombre = "";
-  id = 0;
-  esAdmin = true;
+  id = "";
+  esAdmin = false;
 
   constructor(private servicio:ServicioService) { }
 
@@ -30,7 +30,7 @@ export class UsuarioService {
   desconectar(){
     this.estaConectado = false;
     this.nombre = "";
-    this.id = 0;
+    this.id = "";
     this.esAdmin = false;
   }
 
@@ -40,22 +40,27 @@ export class UsuarioService {
       .subscribe(
         res => {
           if (res[0] == null){ alert("Usuario no encontrado"); return};
+
           this.nombre = res[0].Nombres + " " + res[0].Apellidos;
           this.id = res[0].Correo;
           if(res[0].Tipo == 1) this.esAdmin = true; else this.esAdmin = false;
+
+          sessionStorage.setItem('Usuario',JSON.stringify({
+            "estaConectado": this.estaConectado,
+            "nombre": this.nombre,
+            "id": this.id,
+            "esAdmin": this.esAdmin
+          }))
+
         }
 
       );
-
     this.conectar();
-  
+    
     if(recordar){
-      localStorage.setItem('Usuario',JSON.stringify({
-        "estaConectado": this.estaConectado,
-        "nombre": this.nombre,
-        "id": this.id,
-        "esAdmin": this.esAdmin
-      }))
+      let str = sessionStorage.getItem('Usuario');
+      if(str != null)
+        localStorage.setItem('Usuario', str);
     }
   }
 
