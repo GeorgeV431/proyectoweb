@@ -16,7 +16,11 @@
               {{item.Nombres}} {{item.Apellidos}}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p></p>
+          <p> {{item.rut}} </p>
+          <p> {{item.Region}} </p>
+          <p> {{item.Comuna}} </p>
+          <p> {{item.Direccion}} </p>
+
         </mat-expansion-panel>
 
       </mat-accordion>
@@ -36,7 +40,10 @@
               {{item.id_usuario}}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>This is the primary content of the panel.</p>
+          <p>{{item.id_usuario}}</p>
+          <p>{{item.fecha}}</p>
+          <p>{{item.total}}</p>
+
         </mat-expansion-panel>
 
       </mat-accordion>
