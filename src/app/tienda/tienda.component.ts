@@ -3,6 +3,7 @@ import { Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, NumberValueAccessor } from '@angular/forms';
 import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
 import { CartService } from "../cart.service"
+import { ServicioService } from '../servicio.service';
 
 @Component({
   selector: 'app-tienda',
@@ -21,25 +22,13 @@ export class TiendaComponent implements OnInit {
   
 
 
-  num: Array<Producto> = [
-    { id: 1, nombre: "Shiba1", stock: 0, valor: 3000, categoria: "Accesorios" },
-    { id: 2, nombre: "Shiba2", stock: 10, valor: 1000, categoria: "Ropa" },
-    { id: 3, nombre: "Shiba3", stock: 10, valor: 5000, categoria: "Platos" },
-    { id: 4, nombre: "Shiba4", stock: 10, valor: 9000, categoria: "Accesorios" },
-    { id: 5, nombre: "Shiba5", stock: 0, valor: 8000, categoria: "Ropa" },
-    { id: 6, nombre: "Shiba6", stock: 10, valor: 1000, categoria: "Platos" },
-    { id: 7, nombre: "Shiba7", stock: 10, valor: 9000, categoria: "Ropa" },
-    { id: 8, nombre: "Shiba8", stock: 10, valor: 7000, categoria: "Accesorios" },
-    { id: 9, nombre: "Shiba9", stock: 0, valor: 9000, categoria: "Platos" },
-    { id: 10, nombre: "Shiba10", stock: 10, valor: 5000, categoria: "Camas" },
-
-  ];
+  num: any;
   cantidades: number[] = Array<number>();
 
   filtro: FormGroup;
 
 
-  constructor(public fb: FormBuilder, private router: Router, private cartService: CartService) {
+  constructor(public fb: FormBuilder, private router: Router, private cartService: CartService, private servicio: ServicioService) {
     this.filtro = fb.group({
       categoria: [""],
       priceMin: 0,
@@ -51,6 +40,14 @@ export class TiendaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.servicio.getProductos()
+      .subscribe(
+        res => {
+          this.num = res;
+        },
+        err => console.error(err)
+      );
+
     for (let index = 0; index < this.num.length; index++) {
       this.cantidades.push(1);
     }

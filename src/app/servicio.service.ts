@@ -20,10 +20,9 @@ export class ServicioService {
     return this.http.get(`${this.API_URI}/getUsuarios`);
   }
 
-  getUsuario(correo: string):Observable<any> {
-    let headers = new HttpHeaders();
-    headers = headers.append('access-token',correo);
-    return this.http.get(`${this.API_URI}/getUsuario`, {'headers':headers});
+  getUsuario(correo: string) {
+    
+    return this.http.get(`${this.API_URI}/getUsuario/${correo}`);
   }
   saveUsuario(usuario: Usuario) {
     return this.http.post(`${this.API_URI}/createUsuario`, usuario);
@@ -34,7 +33,9 @@ export class ServicioService {
     const body = new HttpParams()
       .set("correo",correo)
       .set("password",password);
-    
+
+    console.log(body.toString())
+
     return this.http.post(`${this.API_URI}inicioSesion`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
 */
@@ -72,4 +73,8 @@ export class ServicioService {
     return this.http.post(`${this.API_URI}/detalle`, detalle);
   }
   // fin GET, DELETE Y POST de Detalle
+
+  getComentario(){
+    return this.http.get(`${this.API_URI}/getComentarios`);
+  }
 }

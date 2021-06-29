@@ -31,14 +31,16 @@
   </mat-card-actions>
   <mat-card-content>
     <p>COMENTARIOS:</p>
-    <mat-card id="comentario" *ngFor="let item of comentarios">
-      <mat-card-header>
-        <mat-card-title> {{item.usuario}} </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p> {{item.texto}} </p>
-      </mat-card-content>
-    </mat-card>
+    <div *ngFor="let item of comentarios">
+      <mat-card id="comentario"*ngIf="item.id_producto == producto.id">
+        <mat-card-header>
+          <mat-card-title> {{item.id_usuario}} </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p> {{item.texto}} </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </mat-card-content>
 
   <div *ngIf="usuarioService.getEstado(); then agregarComentario else pedirLogIn"></div>

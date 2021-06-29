@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ServicioService } from './servicio.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class UsuarioService {
   id = 0;
   esAdmin = true;
 
-  constructor() { }
+  constructor(private servicio:ServicioService) { }
 
   getEstado(){
     return this.estaConectado;
@@ -34,9 +35,17 @@ export class UsuarioService {
   }
 
   ingreso(correo:string, contrasenia:string, recordar:boolean){
+  
+    this.servicio.getUsuario(correo)
+      .subscribe(
+        res => {
+          console.log(JSON.stringify(res));
+        }
+
+      );
+
     this.conectar();
-    console.log(correo);
-    this.nombre = correo;
+    
 
     if(recordar){
       localStorage.setItem('Usuario',JSON.stringify({
