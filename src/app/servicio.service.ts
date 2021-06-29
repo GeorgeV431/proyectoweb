@@ -69,12 +69,16 @@ export class ServicioService {
   getProductos() {
     return this.http.get(`${this.API_URI}/getProductos`);
   }
+
   getProducto(id: number) {
     return this.http.get(`${this.API_URI}/producto/${id}`);
   }
-  updateProducto(id: number, updatedProducto: Producto): Observable<Producto> {
-    return this.http.put(`${this.API_URI}/producto/${id}`, updatedProducto);
+/*
+  updateProducto( ): Observable<any> {
+    return this.http.put(`${this.API_URI}/producto/${id}`);
   }
+  */
+ 
   // fin GET, DELETE Y POST de producto
 
   // inicio GET, DELETE Y POST de boleta
@@ -82,8 +86,15 @@ export class ServicioService {
     return this.http.get(`${this.API_URI}/getBoleta`);
   }
 
-  saveBoleta(boleta: Boleta) {
-    return this.http.post(`${this.API_URI}/generarBoleta`, boleta);
+  saveBoleta(
+    id_usuario:string,
+    total:string
+  ) {
+    console.log(id_usuario+" "+total);
+      const body = new HttpParams()
+      .set('id_usuario',id_usuario)
+      .set("texto",total);
+    return this.http.post(`${this.API_URI}/generarBoleta`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
   // fin GET, DELETE Y POST de boleta
 
