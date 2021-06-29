@@ -58,8 +58,7 @@ server.post('/createUsuario', (req, res) => {
     let region = req.body.region;
     let correo = req.body.correo;
     let password = req.body.password;
-    let tipo = req.body.tipo;
-    connection.query("INSERT INTO usuario(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('" + nombres + "','" + apellidos + "','" + rut + "','" + direccion + "','" + comuna + "','" + region + "','" + correo + "',MD5('" + password + "'),'" + tipo + "')", (req1, resultados) => {
+    connection.query("INSERT INTO usuario(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('" + nombres + "','" + apellidos + "','" + rut + "','" + direccion + "','" + comuna + "','" + region + "','" + correo + "',MD5('" + password + "'))", (req1, resultados) => {
         if (resultados == undefined) {
             res.status(401).send({ "message": "Datos duplicados" });
         }
