@@ -47,7 +47,33 @@ export class ShoppingCartComponent implements OnInit {
 
   submitCart(){
     this.suma();
-    this.servicio.saveBoleta(this.usuario.getId(), this.total.toString());
+    this.servicio.saveBoleta(this.usuario.getId(), this.total.toString()).subscribe(datos=>{
+      console.log(datos)
+      /*
+      for (let index = 0; index < this.productos.length; index++) {
+        let aux:number;
+        let id:string = datos;
+        console.log(datos[0]);
+        aux = this.productos[index].valor * this.cantidades[index];
+        this.servicio.saveDetalle(datos.id, this.productos[index].id.toString(), this.cantidades[index].toString(), aux.toString()).subscribe(datos=>{
+          console.log(datos)});
+      }
+      */
+    });
+    
+    this.servicio.getMaxIdBoleta().subscribe(datos=>{
+      console.log("Hola");
+      console.log(this.productos.length);
+      for (let index = 0; index < this.productos.length; index++) {
+        console.log(this.productos[index].id.toString());
+        let aux:number;
+        aux = this.productos[index].valor * this.cantidades[index];
+        this.servicio.saveDetalle(datos[0].id, this.productos[index].id.toString(), this.cantidades[index].toString(), aux.toString()).subscribe(datos=>{
+          console.log(datos)});
+      }
+    }); 
+     
+
     this.dialog.open(dialogo);
     this.router.navigateByUrl('/');
     this.productos= [];

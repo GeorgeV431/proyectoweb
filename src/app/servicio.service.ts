@@ -113,9 +113,10 @@ export class ServicioService {
     cantidad:string,
     subtotal:string
   ) {
+    console.log(id_boleta+" "+id_producto+" "+cantidad+" "+subtotal);
     const body = new HttpParams()
       .set("id_boleta",id_boleta)
-      .set('id_producto',id_producto)
+      .set("id_producto",id_producto)
       .set("cantidad",cantidad)
       .set("subtotal",subtotal);
     return this.http.post(`${this.API_URI}/generarDetalle`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')} );

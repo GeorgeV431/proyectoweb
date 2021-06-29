@@ -143,9 +143,10 @@ server.get('/getDetalle', (req, res) => {
 });
 server.post('/generarDetalle', (req, res) => {
     let id_boleta = req.body.id_boleta;
-    let id_producto = req.body.id_produto;
+    let id_producto = req.body.id_producto;
     let cantidad = req.body.cantidad;
     let subtotal = req.body.subtotal;
+    console.log(id_boleta + " " + id_producto + " " + cantidad + " " + subtotal);
     connection.query("INSERT INTO detalle(id_boleta,id_producto,cantidad,subtotal)VALUES('" + id_boleta + "','" + id_producto + "','" + cantidad + "','" + subtotal + "')", (req, resultados) => {
         res.status(201).send(resultados);
     });
