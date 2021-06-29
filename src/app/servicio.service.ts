@@ -32,7 +32,7 @@ export class ServicioService {
     comuna:string,
     region:string,
     correo:string,
-    contrasenia:string
+    password:string
     ):Observable<any>{
 
     const body = new HttpParams()
@@ -43,7 +43,7 @@ export class ServicioService {
       .set("comuna",comuna)
       .set("region",region)
       .set("correo",correo)
-      .set("clave",contrasenia)
+      .set("password",password)
 
       return this.http.post(`${this.API_URI}/createUsuario`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
