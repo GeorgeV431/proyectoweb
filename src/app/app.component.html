@@ -14,9 +14,9 @@
     <ng-template #iniciarSesion>
       <button id="sidenavButton" type="button" mat-raised-button (click)="drawer.toggle()"> Iniciar Sesion </button>
     </ng-template>
-    <ng-template #saludo>
+    <ng-template  #saludo>
       <button id="sidenavButton" type="button" mat-raised-button (click)="cerrarSesion()"> Cerrar Sesion </button>
-      Hola, {{usuarioService.getNombre()}}
+     <a id="sesion"> Hola, {{usuarioService.getNombre()}} </a>
     </ng-template>
 
   </mat-drawer-container>
