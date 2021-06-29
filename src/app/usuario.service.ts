@@ -39,6 +39,7 @@ export class UsuarioService {
     this.servicio.getUsuario(correo)
       .subscribe(
         res => {
+          if (res[0] == null){ alert("Usuario no encontrado"); return};
           this.nombre = res[0].Nombres + " " + res[0].Apellidos;
           this.id = res[0].Correo;
           if(res[0].Tipo == 1) this.esAdmin = true; else this.esAdmin = false;
