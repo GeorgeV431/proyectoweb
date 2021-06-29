@@ -117,9 +117,8 @@ server.post('/createComentario', (req, res) => {
     let id_usuario = req.body.id_usuario;
     let texto = req.body.texto;
     let calificacion = req.body.calificacion;
-    console.log(req.body);
     connection.query("INSERT INTO comentarios(id_producto,id_usuario,texto,calificacion)VALUES('" + id_producto + "','" + id_usuario + "','" + texto + "','" + calificacion + "')", (req1, resultados) => {
-        res.status(201).send(resultados);
+        res.send(resultados);
     });
 });
 //     GET, POST Y DELETE DE Comentarios
@@ -142,7 +141,7 @@ server.get('/getDetalle', (req, res) => {
         res.send(resultados);
     });
 });
-server.post('/generarBoleta', (req, res) => {
+server.post('/generarDetalle', (req, res) => {
     let id_boleta = req.body.id_boleta;
     let id_producto = req.body.id_produto;
     let cantidad = req.body.cantidad;
