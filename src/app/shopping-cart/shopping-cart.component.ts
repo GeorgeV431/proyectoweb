@@ -22,13 +22,14 @@ export class ShoppingCartComponent implements OnInit {
   productos: Producto[] = new Array<Producto>();
 
 
-  constructor(private cartService: CartService,private servicio: ServicioService, public dialog: MatDialog, private router: Router, public usuario: UsuarioService) {
+  constructor(private cartService: CartService,private servicio: ServicioService, public dialog: MatDialog, private router: Router, private usuario: UsuarioService) {
 
   }
 
   ngOnInit(): void {
     this.productos = this.cartService.getProductos();
     this.cantidades = this.cartService.getCantidades();
+    this.suma();
   }
 
   suma(){
@@ -63,8 +64,8 @@ export class ShoppingCartComponent implements OnInit {
     
     this.servicio.getMaxIdBoleta().subscribe(datos=>{
       console.log("Hola");
-      console.log(this.productos.length);
-      for (let index = 0; index < this.productos.length; index++) {
+      console.log(this.productos);
+      for (let index = 0; index < this.cartService.getLengthP(); index++) {
         console.log(this.productos[index].id.toString());
         let aux:number;
         aux = this.productos[index].valor * this.cantidades[index];
@@ -72,13 +73,10 @@ export class ShoppingCartComponent implements OnInit {
           console.log(datos)});
       }
     }); 
-     
+    
 
     this.dialog.open(dialogo);
     this.router.navigateByUrl('/');
-    this.productos= [];
-    this.cantidades= [];
-
   }
 
 
