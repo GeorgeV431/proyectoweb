@@ -1,5 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
+import { Usuario, Producto, Boleta, Detalle } from '../interfaces';
 import { ServicioService } from '../servicio.service';
 import { ApiService } from '../api.service'
 
@@ -12,6 +12,7 @@ export class AdminViewComponent implements OnInit {
 
 
 
+  //usuarios:Usuario[] = new Array<Usuario>();
   usuarios: any | undefined = [];
   pedidos: any | undefined = [];
 
@@ -28,8 +29,11 @@ export class AdminViewComponent implements OnInit {
     //let token = this.api.datos.token;
     this.servicio.getUsuarios()
       .subscribe(
-        res => {
-          this.usuarios.push(res);
+        res => { 
+          console.log(res);
+          this.usuarios = res;
+          console.log(this.usuarios[0]);
+          //this.usuarios.push(res);
         },
         err => console.error(err)
       );
@@ -39,7 +43,7 @@ export class AdminViewComponent implements OnInit {
     this.servicio.getBoletas()
       .subscribe(
         res => {
-          this.pedidos.push(res);
+          this.pedidos = res;
         },
         err => console.error(err)
       );

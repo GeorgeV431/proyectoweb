@@ -16,6 +16,7 @@ export class ServicioService {
   getUsuarios() {
     //let headers = new HttpHeaders();
     //headers= headers.append('access-token',user);
+    console.log(this.http.get(`${this.API_URI}/getUsuarios`));
     return this.http.get(`${this.API_URI}/getUsuarios`);
   }
 

@@ -10,13 +10,13 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              {{item}}
+              {{item.Correo}}
             </mat-panel-title>
             <mat-panel-description>
-              This is a summary of the content
+              {{item.Nombres}} {{item.Apellidos}}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>This is the primary content of the panel.</p>
+          <p></p>
         </mat-expansion-panel>
 
       </mat-accordion>
@@ -30,10 +30,10 @@
         <mat-expansion-panel>
           <mat-expansion-panel-header>
             <mat-panel-title>
-              {{item}}
+              {{item.id}}
             </mat-panel-title>
             <mat-panel-description>
-              This is a summary of the content
+              {{item.id_usuario}}
             </mat-panel-description>
           </mat-expansion-panel-header>
           <p>This is the primary content of the panel.</p>
