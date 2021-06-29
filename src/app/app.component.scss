@@ -79,10 +79,19 @@ body{
     background-color: rgb(255, 255, 255);
     border: 2px solid rgb(107, 107, 107);
     border-radius: 5px;
-
     text-align: center;
+    cursor: pointer;
 
 }
 ul{
     list-style: none;
+}
+#sesion{
+    font-size: medium;
+    font-family: Arbutus Slab;
+    color: white;
+    position: absolute;
+    top: 2em;
+    left: 10em; 
+
 }

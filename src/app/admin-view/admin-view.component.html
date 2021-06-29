@@ -41,7 +41,7 @@
             </mat-panel-description>
           </mat-expansion-panel-header>
           <section *ngFor="let detalle of detalles" >
-            <p *ngIf="isDetalle(detalle,item)"> id producto:{{detalle.id_producto}} cantidad:{{detalle.cantidad}} precio:{{detalle.subtotal}} </p>
+            <p *ngIf="isDetalle(detalle,item)"> id producto:{{detalle.id_producto}} | cantidad:{{detalle.cantidad}} | precio:{{detalle.subtotal}} </p>
           </section>
           <p>{{item.fecha}}</p>
           <p>{{item.total}}</p>

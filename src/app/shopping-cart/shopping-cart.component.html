@@ -1,6 +1,6 @@
 <div id="cart">
   <mat-card *ngFor="let item of productos,let indice=index" class="card">
-    <img mat-card-sm-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+    <img mat-card-sm-image src='{{ "../assets/" + (item.id) + ".jpg" }}' alt="Photo of a Shiba Inu">
     <mat-card-header>
       <mat-card-title>{{item.nombre}}</mat-card-title>
       <mat-card-subtitle> {{item.valor}} </mat-card-subtitle>
