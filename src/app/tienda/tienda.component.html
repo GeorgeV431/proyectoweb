@@ -70,7 +70,7 @@
       <mat-card-header>
         <mat-card-title><a (click)="vistaProducto(indice)"> {{item.nombre}}</a> </mat-card-title>
       </mat-card-header>
-      <img mat-card-image (click)="vistaProducto(indice)" src= {{item}}  alt="Foto del producto">
+      <img mat-card-image (click)="vistaProducto(indice)" src="str[indice]" alt="Foto del producto">
       <mat-card-content >
         <p id="price">${{item.valor}} </p>
       </mat-card-content>

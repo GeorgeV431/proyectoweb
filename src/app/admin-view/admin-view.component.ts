@@ -15,7 +15,6 @@ export class AdminViewComponent implements OnInit {
   //usuarios:Usuario[] = new Array<Usuario>();
   usuarios: any | undefined = [];
   pedidos: any | undefined = [];
-  detalles: any | undefined = [];
 
   panelOpenState = false;
 
@@ -24,7 +23,6 @@ export class AdminViewComponent implements OnInit {
   ngOnInit() {
     this.getUsuarios();
     this.getBoletas();
-    this.getDetalles();
   }
 
   getUsuarios() {
@@ -49,23 +47,6 @@ export class AdminViewComponent implements OnInit {
         },
         err => console.error(err)
       );
-  }
-
-  getDetalles() {
-    this.servicio.getDetalles()
-      .subscribe(
-        res => {
-          this.detalles = res;
-        },
-        err => console.error(err)
-      );
-  }
-  isDetalle(Detalle: any, item: any){
-    if (Detalle.id_boleta == item.id ) {
-      console.log("true");
-      return true;
-    }
-    return false;
   }
 
 }
