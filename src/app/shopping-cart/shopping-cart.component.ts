@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Usuario, Producto, Boleta, Detalle } from '../clases/clases';
 import { CartService } from "../cart.service"
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -17,7 +19,7 @@ export class ShoppingCartComponent implements OnInit {
 
   productos: Producto[] = new Array<Producto>();
 
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,public dialog: MatDialog,private router: Router) {
 
   }
 
@@ -32,5 +34,15 @@ export class ShoppingCartComponent implements OnInit {
     this.cartService.eliminarC(indice);
   }
 
+  submitCart(){
+    this.dialog.open(dialogo);
+    this.router.navigateByUrl('/');
+  }
+
 
 }
+@Component({
+  selector: 'dialogo',
+  templateUrl: 'dialogo.html',
+})
+export class dialogo { }
