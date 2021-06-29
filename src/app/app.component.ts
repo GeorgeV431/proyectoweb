@@ -28,7 +28,7 @@ export class AppComponent {
 
   ingreso: FormGroup;
 
-  constructor(public fb:FormBuilder, private scroll: ViewportScroller, private router: Router, public usuarioService: UsuarioService, public dialog: MatDialog) {
+  constructor(public fb: FormBuilder, private scroll: ViewportScroller, private router: Router, public usuarioService: UsuarioService, public dialog: MatDialog) {
     this.ingreso = fb.group({
       remember: false,
     });
@@ -42,23 +42,27 @@ export class AppComponent {
     let datos = (localStorage.getItem('Usuario'));
     if (datos != null)
       this.usuarioService.cargarUsuario(JSON.parse(datos));
-    
+
   }
 
   scrollToTop() {
     this.scroll.scrollToPosition([0, 0]);
   }
 
-  cerrarSesion(){
+  cerrarSesion() {
 
     const dialog = this.dialog.open(dialogoCerrar);
-    dialog.afterClosed().subscribe(result =>{
+    dialog.afterClosed().subscribe(result => {
       if (result == true) {
         this.usuarioService.desconectar();
 
         let datos = (localStorage.getItem('Usuario'));
         if (datos != null)
           localStorage.removeItem('Usuario');
+
+        datos = (sessionStorage.getItem('Usuario'));
+        if (datos != null)
+          sessionStorage.removeItem('Usuario');
       }
     })
   }
@@ -78,22 +82,21 @@ export class AppComponent {
   }
 
   validInput() {
-    if (this.getErrorMessageCorreo() == true && this.getErrorMessageContrasenia() == true ) {
+    if (this.getErrorMessageCorreo() == true && this.getErrorMessageContrasenia() == true) {
       return true;
     }
     return false;
   }
 
-  onSubmit():void {
-    if (this.validInput()==false || grecaptcha.getResponse() == "") {
+  onSubmit(): void {
+    if (this.validInput() == false || grecaptcha.getResponse() == "") {
       alert("You shall not pass");
-    }else
-    {
+    } else {
       this.usuarioService.ingreso(this.correo.value, this.contrasenia.value, this.ingreso.value.remember);
     }
 
   }
-  adminLog(){
+  adminLog() {
     this.router.navigateByUrl('/admin');
   }
 }
@@ -102,4 +105,4 @@ export class AppComponent {
   selector: 'dialogoCerrar',
   templateUrl: 'dialogoCerrar.html'
 })
-export class dialogoCerrar{}
+export class dialogoCerrar { }
