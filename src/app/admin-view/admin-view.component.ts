@@ -61,7 +61,6 @@ export class AdminViewComponent implements OnInit {
   }
   isDetalle(Detalle: any, item: any){
     if (Detalle.id_boleta == item.id ) {
-      console.log("true");
       return true;
     }
     return false;
