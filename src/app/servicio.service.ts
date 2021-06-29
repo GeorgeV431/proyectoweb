@@ -28,14 +28,16 @@ export class ServicioService {
   saveUsuario(usuario: Usuario) {
     return this.http.post(`${this.API_URI}/createUsuario`, usuario);
   }
-
+  
+/*
   login(correo:string,password:string):Observable<any>{
     const body = new HttpParams()
-      .set("email",correo)
-      .set("clave",password);
-
+      .set("correo",correo)
+      .set("password",password);
+    
     return this.http.post(`${this.API_URI}inicioSesion`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
+*/
 
   // fin GET, DELETE Y POST de usuario
 

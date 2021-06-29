@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-06-2021 a las 01:09:10
+-- Tiempo de generación: 29-06-2021 a las 04:02:50
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 8.0.7
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `boutique`
 --
-CREATE DATABASE IF NOT EXISTS `boutique` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `boutique`;
 
 -- --------------------------------------------------------
 
@@ -62,8 +60,8 @@ CREATE TABLE `comentarios` (
 --
 
 INSERT INTO `comentarios` (`id`, `id_producto`, `id_usuario`, `texto`, `calificacion`) VALUES
-(1, 16, '123456789', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 5),
-(2, 12, '123456789', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 5);
+(1, 16, 'user@test.cl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 5),
+(2, 12, 'user@test.cl', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 5);
 
 -- --------------------------------------------------------
 
@@ -108,7 +106,7 @@ CREATE TABLE `producto` (
 INSERT INTO `producto` (`id`, `nombre`, `stock`, `valor`, `categoria`) VALUES
 (1, 'Collar c/ flores', 50, 2000, 'Accesorios'),
 (2, 'Arnes', 50, 3980, 'Accesorios'),
-(3, 'Juguetes ', 100, 1000, 'Accesorios'),
+(3, 'Juguetes ', 0, 1000, 'Accesorios'),
 (4, 'Poleron Minie Mouse', 10, 6500, 'Ropa'),
 (5, 'Vestido Rosado', 10, 4890, 'Ropa'),
 (6, 'Vestido Azul', 10, 4890, 'Ropa'),
@@ -212,4 +210,8 @@ ALTER TABLE `detalle`
 --
 ALTER TABLE `producto`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
---
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

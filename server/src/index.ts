@@ -73,15 +73,17 @@ server.post('/createUsuario',(req:any,res:any)=>{
     });
 });
 
+
 server.post('/login', (req:any,res:any)=>{
     let correo = req.body.correo;
     let password = req.body.password;
     
-    connection.query("SELECT * FROM usuario where correo=? and password=md5(?)",[correo,password],(error:any,resultados:any,fields:any)=>{
+    connection.query("SELECT * FROM usuario where correo=?",correo,(error:any,resultados:any,fields:any)=>{
         res.send(resultados);
     });
 
 });
+
 //     GET, POST Y DELETE DE Usuarios
 
 
