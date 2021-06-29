@@ -75,8 +75,10 @@ export class ProductoComponent implements OnInit {
   onSubmit(){
     
     this.comentarios.push(
-      {id: (this.comentarios.length),producto: 101, usuario: (this.usuarioService.getId()), texto: this.comentario.value.comentario }
+      {id: (this.comentarios.length),id_producto: this.producto.id, id_usuario: (this.usuarioService.getId()), texto: this.comentario.value.comentario }
     )
+    console.log(this.comentarios);
+    this.servicio.saveComentario("this.producto.id", this.usuarioService.getId(), this.comentario.value.comentario, this.comentario.value.puntaje );
   }
 
   addCart() {
