@@ -68,17 +68,16 @@ server.post('/createUsuario',(req:any,res:any)=>{
         if(resultados == undefined){
             res.status(401).send({"message":"ERROR, datos duplicados"});
         }else{
-              res.status(201).send({"message":"creado"});
+            res.status(201).send({"message":"creado"});
         }
     });
 });
 
 
-server.post('/login', (req:any,res:any)=>{
-    let correo = req.body.correo;
-    let password = req.body.password;
+server.get('/login/:correo?:password', (req:any,res:any)=>{
+    let key = req.body.key;
     
-    connection.query("SELECT * FROM usuario where correo=?",correo,(error:any,resultados:any,fields:any)=>{
+    connection.query("SELECT * FROM usuario WHERE correo=? AND password=md5(?)",key,(error:any,resultados:any,fields:any)=>{
         res.send(resultados);
     });
 

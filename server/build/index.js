@@ -67,10 +67,10 @@ server.post('/createUsuario', (req, res) => {
         }
     });
 });
-server.post('/login', (req, res) => {
-    let correo = req.body.correo;
-    let password = req.body.password;
-    connection.query("SELECT * FROM usuario where correo=? and password=?", [correo, password], (error, resultados, fields) => {
+server.get('/login', (req, res) => {
+    let correo = req.body.Correo;
+    let password = req.body.Password;
+    connection.query("SELECT * FROM usuario WHERE correo=? AND password=md5(?)", [correo, password], (error, resultados, fields) => {
         res.send(resultados);
     });
 });
