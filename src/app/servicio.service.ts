@@ -33,7 +33,7 @@ export class ServicioService {
     region:string,
     email:string,
     contrasenia:string,
-    tipo:boolean
+    tipo:string
     ):Observable<any>{
 
     const body = new HttpParams()
@@ -41,10 +41,11 @@ export class ServicioService {
       .set('apellido',apellidos)
       .set("rut",rut)
       .set("direccion",direccion)
-      .set("clave",contrasenia)
-      .set("email",email)
+      .set("comuna",comuna)
       .set("region",region)
-      .set("comuna",comuna);
+      .set("email",email)
+      .set("clave",contrasenia)
+      .set("tipo",tipo);
 
       return this.http.post(`${this.API_URI}/createUsuario`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
@@ -95,5 +96,19 @@ export class ServicioService {
 
   getComentario(){
     return this.http.get(`${this.API_URI}/getComentarios`);
+  }
+  saveComentario(
+    id_producto:string,
+    id_usuario:string,
+    texto:string,
+    calificacion:string
+    ){
+      const body = new HttpParams()
+      .set("id_producto",id_producto)
+      .set('id_usuario',id_usuario)
+      .set("texto",texto)
+      .set("calificacion",calificacion);
+
+      return this.http.post(`${this.API_URI}/createUsuario`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
 }

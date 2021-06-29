@@ -138,9 +138,8 @@ server.post('/createComentario',(req:any,res:any)=>{
     let texto = req.body.texto;
     let calificacion = req.body.calificacion;
 
-    console.log(req.body);
     connection.query("INSERT INTO comentarios(id_producto,id_usuario,texto,calificacion)VALUES('"+id_producto+"','"+id_usuario+"','"+texto+"','"+calificacion+"')",(req1:any,resultados:any)=>{
-        res.status(201).send(resultados); 
+        res.send(resultados); 
     });
 });
 //     GET, POST Y DELETE DE Comentarios
