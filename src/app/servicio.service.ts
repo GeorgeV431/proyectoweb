@@ -13,11 +13,12 @@ export class ServicioService {
   constructor(private http: HttpClient) { }
 
   // inicio GET, DELETE Y POST de usuario
-  getUsuarios(user:string) {
-    let headers = new HttpHeaders();
-    headers= headers.append('access-token',user);
-    return this.http.get(`${this.API_URI}/getUsuarios`, {'headers':headers});
+  getUsuarios() {
+    //let headers = new HttpHeaders();
+    //headers= headers.append('access-token',user);
+    return this.http.get(`${this.API_URI}/getUsuarios`);
   }
+
   getUsuario(correo: string):Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.append('access-token',correo);

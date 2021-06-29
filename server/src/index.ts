@@ -32,6 +32,13 @@ connection.connect((error:any)=>{
     }
 });
 
+//          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
+server.use(function(req:any, res:any, next:any) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    return next();
+});
+
  //     GET, POST Y DELETE DE Usuarios
 server.get('/getUsuarios',(req:any,res:any)=>{
     connection.query("SELECT * FROM usuario",(req1:any,resultados:any)=>{
@@ -42,7 +49,7 @@ server.get('/getUsuarios',(req:any,res:any)=>{
 
 server.get('/getUsuario/:correo',(req:any,res:any)=>{
     let correo = req.params.correo;
-    connection.query("SELECT * FROM productos WHERE correo=?",correo,(req1:any,resultados:any)=>{
+    connection.query("SELECT * FROM usuario WHERE correo=?",correo,(req1:any,resultados:any)=>{
         res.send(resultados);
     });
 });
@@ -57,7 +64,7 @@ server.post('/createUsuario',(req:any,res:any)=>{
     let correo = req.body.correo;
     let password=req.body.password;
     
-    connection.query("INSERT INTO usuarios(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('"+nombres+"','"+apellidos+"','"+rut+"','"+comuna+"','"+region+"','"+correo+"',MD5('"+password+"'),'"+direccion+"')",(req1:any,resultados:any)=>{
+    connection.query("INSERT INTO usuario(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('"+nombres+"','"+apellidos+"','"+rut+"','"+comuna+"','"+region+"','"+correo+"',MD5('"+password+"'),'"+direccion+"')",(req1:any,resultados:any)=>{
         if(resultados == undefined){
             res.status(401).send({"message":"ERROR, datos duplicados"});
         }else{
@@ -70,7 +77,7 @@ server.post('/login', (req:any,res:any)=>{
     let correo = req.body.correo;
     let password = req.body.password;
     
-    connection.query("SELECT * FROM usuarios where correo=? and password=md5(?)",[correo,password],(error:any,resultados:any,fields:any)=>{
+    connection.query("SELECT * FROM usuario where correo=? and password=md5(?)",[correo,password],(error:any,resultados:any,fields:any)=>{
         res.send(resultados);
     });
 
@@ -80,28 +87,28 @@ server.post('/login', (req:any,res:any)=>{
 
 //     GET, POST Y DELETE DE Productos
 server.get('/getProductos',(req:any,res:any)=>{
-    connection.query("SELECT * FROM productos",(req1:any,resultados:any)=>{
+    connection.query("SELECT * FROM producto",(req1:any,resultados:any)=>{
         res.send(resultados);
     });
 });
 
 server.get('/getProductosCat/:categoria',(req:any,res:any)=>{
     let categoria = req.params.categoria;
-    connection.query("SELECT * FROM productos where categoria=?",categoria,(req1:any,resultados:any)=>{
+    connection.query("SELECT * FROM producto WHERE categoria=?",categoria,(req1:any,resultados:any)=>{
         res.send(resultados);
     });
 });
 
 server.get('/getProductosId/:id',(req:any,res:any)=>{
     let id = req.params.id;
-    connection.query("SELECT * FROM productos where id=?",id,(req1:any,resultados:any)=>{
+    connection.query("SELECT * FROM producto WHERE id=?",id,(req1:any,resultados:any)=>{
         res.send(resultados);
     });
 });
 
 server.get('/getProductosNombre/:nombre',(req:any,res:any)=>{
     let nombre="%"+req.params.nombre+"%";
-    connection.query("SELECT * FROM productos WHERE nombre LIKE ?",nombre,(req1:any,resultados:any)=>{
+    connection.query("SELECT * FROM producto WHERE nombre LIKE ?",nombre,(req1:any,resultados:any)=>{
         res.send(resultados);
     });
 });
@@ -118,7 +125,7 @@ server.get('/getComentarios',(req:any,res:any)=>{
 
 server.get('/getComentariosProduct',(req:any,res:any)=>{
     let id_producto = req.body.id_producto;
-    connection.query("SELECT texto,id_usuario FROM comentario WHERE id_producto=?",id_producto,(req1:any,resultado:any)=>{
+    connection.query("SELECT texto,id_usuario FROM comentarios WHERE id_producto=?",id_producto,(req1:any,resultado:any)=>{
         res.send(resultado);
     });
 });
@@ -130,7 +137,7 @@ server.post('/createComentario',(req:any,res:any)=>{
     let calificacion = req.body.calificacion;
 
     console.log(req.body);
-    connection.query("INSERT INTO comentario(id_producto,id_usuario,texto,calificacion)VALUES('"+id_producto+"','"+id_usuario+"','"+texto+"','"+calificacion+"')",(req1:any,resultados:any)=>{
+    connection.query("INSERT INTO comentarios(id_producto,id_usuario,texto,calificacion)VALUES('"+id_producto+"','"+id_usuario+"','"+texto+"','"+calificacion+"')",(req1:any,resultados:any)=>{
         res.status(201).send(resultados); 
     });
 });
@@ -154,7 +161,7 @@ server.post('/generarBoleta',(req:any,res:any)=>{
 
 server.get('/getDetalle',(req:any,res:any)=>{
     let id_boleta = req.body.boleta;
-    connection.query("SELECT * FROM detalle WHERE id_boleta=?",id_boleta,(req1:any,resultados:any)=>{
+    connection.query("SELECT * FROM detalle",id_boleta,(req1:any,resultados:any)=>{
         res.send(resultados);
     });
 });

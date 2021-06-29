@@ -30,6 +30,12 @@ connection.connect((error) => {
         console.log('conectado a DB');
     }
 });
+//          ACCESS CONTROL Y SECUREACCESS SCOPIADO DE POR AHI
+server.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    return next();
+});
 //     GET, POST Y DELETE DE Usuarios
 server.get('/getUsuarios', (req, res) => {
     connection.query("SELECT * FROM usuario", (req1, resultados) => {
@@ -39,7 +45,7 @@ server.get('/getUsuarios', (req, res) => {
 });
 server.get('/getUsuario/:correo', (req, res) => {
     let correo = req.params.correo;
-    connection.query("SELECT * FROM productos WHERE correo=?", correo, (req1, resultados) => {
+    connection.query("SELECT * FROM usuario WHERE correo=?", correo, (req1, resultados) => {
         res.send(resultados);
     });
 });
@@ -52,7 +58,7 @@ server.post('/createUsuario', (req, res) => {
     let region = req.body.region;
     let correo = req.body.correo;
     let password = req.body.password;
-    connection.query("INSERT INTO usuarios(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('" + nombres + "','" + apellidos + "','" + rut + "','" + comuna + "','" + region + "','" + correo + "',MD5('" + password + "'),'" + direccion + "')", (req1, resultados) => {
+    connection.query("INSERT INTO usuario(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('" + nombres + "','" + apellidos + "','" + rut + "','" + comuna + "','" + region + "','" + correo + "',MD5('" + password + "'),'" + direccion + "')", (req1, resultados) => {
         if (resultados == undefined) {
             res.status(401).send({ "message": "ERROR, datos duplicados" });
         }
@@ -64,32 +70,32 @@ server.post('/createUsuario', (req, res) => {
 server.post('/login', (req, res) => {
     let correo = req.body.correo;
     let password = req.body.password;
-    connection.query("SELECT * FROM usuarios where correo=? and password=md5(?)", [correo, password], (error, resultados, fields) => {
+    connection.query("SELECT * FROM usuario where correo=? and password=md5(?)", [correo, password], (error, resultados, fields) => {
         res.send(resultados);
     });
 });
 //     GET, POST Y DELETE DE Usuarios
 //     GET, POST Y DELETE DE Productos
 server.get('/getProductos', (req, res) => {
-    connection.query("SELECT * FROM productos", (req1, resultados) => {
+    connection.query("SELECT * FROM producto", (req1, resultados) => {
         res.send(resultados);
     });
 });
 server.get('/getProductosCat/:categoria', (req, res) => {
     let categoria = req.params.categoria;
-    connection.query("SELECT * FROM productos where categoria=?", categoria, (req1, resultados) => {
+    connection.query("SELECT * FROM producto WHERE categoria=?", categoria, (req1, resultados) => {
         res.send(resultados);
     });
 });
 server.get('/getProductosId/:id', (req, res) => {
     let id = req.params.id;
-    connection.query("SELECT * FROM productos where id=?", id, (req1, resultados) => {
+    connection.query("SELECT * FROM producto WHERE id=?", id, (req1, resultados) => {
         res.send(resultados);
     });
 });
 server.get('/getProductosNombre/:nombre', (req, res) => {
     let nombre = "%" + req.params.nombre + "%";
-    connection.query("SELECT * FROM productos WHERE nombre LIKE ?", nombre, (req1, resultados) => {
+    connection.query("SELECT * FROM producto WHERE nombre LIKE ?", nombre, (req1, resultados) => {
         res.send(resultados);
     });
 });
@@ -102,7 +108,7 @@ server.get('/getComentarios', (req, res) => {
 });
 server.get('/getComentariosProduct', (req, res) => {
     let id_producto = req.body.id_producto;
-    connection.query("SELECT texto,id_usuario FROM comentario WHERE id_producto=?", id_producto, (req1, resultado) => {
+    connection.query("SELECT texto,id_usuario FROM comentarios WHERE id_producto=?", id_producto, (req1, resultado) => {
         res.send(resultado);
     });
 });
@@ -112,7 +118,7 @@ server.post('/createComentario', (req, res) => {
     let texto = req.body.texto;
     let calificacion = req.body.calificacion;
     console.log(req.body);
-    connection.query("INSERT INTO comentario(id_producto,id_usuario,texto,calificacion)VALUES('" + id_producto + "','" + id_usuario + "','" + texto + "','" + calificacion + "')", (req1, resultados) => {
+    connection.query("INSERT INTO comentarios(id_producto,id_usuario,texto,calificacion)VALUES('" + id_producto + "','" + id_usuario + "','" + texto + "','" + calificacion + "')", (req1, resultados) => {
         res.status(201).send(resultados);
     });
 });
@@ -132,7 +138,7 @@ server.post('/generarBoleta', (req, res) => {
 });
 server.get('/getDetalle', (req, res) => {
     let id_boleta = req.body.boleta;
-    connection.query("SELECT * FROM detalle WHERE id_boleta=?", id_boleta, (req1, resultados) => {
+    connection.query("SELECT * FROM detalle", id_boleta, (req1, resultados) => {
         res.send(resultados);
     });
 });
