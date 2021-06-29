@@ -24,21 +24,40 @@ export class ServicioService {
     
     return this.http.get(`${this.API_URI}/getUsuario/${correo}`);
   }
-  saveUsuario(usuario: Usuario) {
-    return this.http.post(`${this.API_URI}/createUsuario`, usuario);
-  }
-  
-/*
-  login(correo:string,password:string):Observable<any>{
+  saveUsuario(
+    nombres:string,
+    apellidos:string,
+    rut:string,
+    direccion:string,
+    comuna:string,
+    region:string,
+    email:string,
+    contrasenia:string,
+    tipo:boolean
+    ):Observable<any>{
+
     const body = new HttpParams()
-      .set("correo",correo)
-      .set("password",password);
+      .set("nombre",nombres)
+      .set('apellido',apellidos)
+      .set("rut",rut)
+      .set("direccion",direccion)
+      .set("clave",contrasenia)
+      .set("email",email)
+      .set("region",region)
+      .set("comuna",comuna);
 
-    console.log(body.toString())
-
-    return this.http.post(`${this.API_URI}inicioSesion`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
+      return this.http.post(`${this.API_URI}/createUsuario`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
-*/
+
+  login(correo:string,password:string):Observable<any>{
+    let key:string;
+    key = correo + '?' + password;
+    let headers = new HttpHeaders();
+    headers = headers.append('access-token',key);
+    
+    return this.http.post(`${this.API_URI}inicioSesion`, {'headers':headers});
+  }
+
 
   // fin GET, DELETE Y POST de usuario
 

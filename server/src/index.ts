@@ -63,22 +63,22 @@ server.post('/createUsuario',(req:any,res:any)=>{
     let region = req.body.region;
     let correo = req.body.correo;
     let password=req.body.password;
+    let tipo = req.body.tipo;
     
-    connection.query("INSERT INTO usuario(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('"+nombres+"','"+apellidos+"','"+rut+"','"+comuna+"','"+region+"','"+correo+"',MD5('"+password+"'),'"+direccion+"')",(req1:any,resultados:any)=>{
+    connection.query("INSERT INTO usuario(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('"+nombres+"','"+apellidos+"','"+rut+"','"+direccion+"','"+comuna+"','"+region+"','"+correo+"',MD5('"+password+"'),'"+tipo+"')",(req1:any,resultados:any)=>{
         if(resultados == undefined){
-            res.status(401).send({"message":"ERROR, datos duplicados"});
+            res.status(401).send({"message":"Datos duplicados"});
         }else{
-              res.status(201).send({"message":"creado"});
+            res.status(201).send({"message":"Exito creando"});
         }
     });
 });
 
 
-server.post('/login', (req:any,res:any)=>{
-    let correo = req.body.correo;
-    let password = req.body.password;
+server.get('/login/:correo?:password', (req:any,res:any)=>{
+    let key = req.body.key;
     
-    connection.query("SELECT * FROM usuario where correo=?",correo,(error:any,resultados:any,fields:any)=>{
+    connection.query("SELECT * FROM usuario WHERE correo=? AND password=md5(?)",key,(error:any,resultados:any,fields:any)=>{
         res.send(resultados);
     });
 
