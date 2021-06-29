@@ -49,13 +49,15 @@ export class TiendaComponent implements OnInit {
         err => console.error(err)
       );
 
-    for (let index = 0; index < this.num.length; index++) {
-      this.cantidades.push(1);
-    }
+    
     if (this.cartService.getLengthP()>=1) {
       this.toggleBadgeVisibility();
     }
     this.total=this.cartService.getLengthP();
+
+    for (let index = 0; index < 15 ; index++) {
+      this.cantidades.push(1);
+    }
   }
 
   addCart(indice: number) {
