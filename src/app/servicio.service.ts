@@ -24,30 +24,18 @@ export class ServicioService {
     headers = headers.append('access-token',correo);
     return this.http.get(`${this.API_URI}/getUsuario`, {'headers':headers});
   }
-
-  deleteUsuario(rut: number) {
-    return this.http.delete(`${this.API_URI}/usuario/${rut}`);
-  }
   saveUsuario(usuario: Usuario) {
-    return this.http.post(`${this.API_URI}/usuario`, usuario);
+    return this.http.post(`${this.API_URI}/createUsuario`, usuario);
   }
-  updateUsuario(rut: number, updatedUsuario: Usuario): Observable<Usuario> {
-    return this.http.put(`${this.API_URI}/usuario/${rut}`, updatedUsuario);
-  }
+
   // fin GET, DELETE Y POST de usuario
 
   // inicio GET, DELETE Y POST de producto
   getProductos() {
-    return this.http.get(`${this.API_URI}/producto`);
+    return this.http.get(`${this.API_URI}/getProductos`);
   }
   getProducto(id: number) {
     return this.http.get(`${this.API_URI}/producto/${id}`);
-  }
-  deleteProducto(id: number) {
-    return this.http.delete(`${this.API_URI}/producto/${id}`);
-  }
-  saveProducto(producto: Producto) {
-    return this.http.post(`${this.API_URI}/producto`, producto);
   }
   updateProducto(id: number, updatedProducto: Producto): Observable<Producto> {
     return this.http.put(`${this.API_URI}/producto/${id}`, updatedProducto);
@@ -56,23 +44,19 @@ export class ServicioService {
 
   // inicio GET, DELETE Y POST de boleta
   getBoletas() {
-    return this.http.get(`${this.API_URI}/boleta`);
+    return this.http.get(`${this.API_URI}/getBoleta`);
   }
-  getBoleta(id: number) {
-    return this.http.get(`${this.API_URI}/boleta/${id}`);
-  }
+
   saveBoleta(boleta: Boleta) {
-    return this.http.post(`${this.API_URI}/boleta`, boleta);
+    return this.http.post(`${this.API_URI}/generarBoleta`, boleta);
   }
   // fin GET, DELETE Y POST de boleta
 
   // inicio GET, DELETE Y POST de Detalle
   getDetalles() {
-    return this.http.get(`${this.API_URI}/detalle`);
+    return this.http.get(`${this.API_URI}/getDetalle`);
   }
-  getDetalle(id: number) {
-    return this.http.get(`${this.API_URI}/detalle/${id}`);
-  }
+ 
   saveDetalle(detalle: Detalle) {
     return this.http.post(`${this.API_URI}/detalle`, detalle);
   }

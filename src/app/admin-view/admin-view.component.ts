@@ -21,7 +21,7 @@ export class AdminViewComponent implements OnInit {
 
   ngOnInit() {
     this.getUsuarios();
-
+    this.getBoletas();
   }
 
   getUsuarios() {
@@ -39,7 +39,7 @@ export class AdminViewComponent implements OnInit {
     this.servicio.getBoletas()
       .subscribe(
         res => {
-          this.pedidos = res;
+          this.pedidos.push(res);
         },
         err => console.error(err)
       );
