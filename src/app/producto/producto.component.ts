@@ -19,7 +19,7 @@ export class ProductoComponent implements OnInit {
 
   comentarios:any;
 
-  valoracion = 2;
+  valoracion = 4;
   stars = ''.split('.');
 
   comentario: FormGroup;
@@ -75,7 +75,7 @@ export class ProductoComponent implements OnInit {
   onSubmit(){
     
     this.comentarios.push(
-      {id: (this.comentarios.length),id_producto: this.producto.id, id_usuario: (this.usuarioService.getId()), texto: this.comentario.value.comentario }
+      {id: (this.comentarios.length),id_producto: this.producto.id, id_usuario: (this.usuarioService.getId()), texto: this.comentario.value.comentario, puntaje: this.comentario.value.puntaje }
     )
     if(this.producto.id?.toString() != undefined){
       let aux:string = this.producto.id?.toString();
