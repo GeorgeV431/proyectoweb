@@ -7,8 +7,8 @@
     <li>
       <mat-form-field appearance="fill">
         <mat-label>Nombre </mat-label>
-        <input matInput placeholder="Roberto Andres" [formControl]=name required>
-        <mat-error *ngIf="name.invalid">{{getErrorMessageNombre()}}</mat-error>
+        <input matInput placeholder="Roberto Andres" [formControl]=nombres required>
+        <mat-error *ngIf="nombres.invalid">{{getErrorMessageNombre()}}</mat-error>
       </mat-form-field>
     </li>
 
@@ -16,8 +16,8 @@
     <li>
       <mat-form-field appearance="fill">
         <mat-label>Apellidos</mat-label>
-        <input matInput placeholder="Concha Vergara" [formControl]=apellido required>
-        <mat-error *ngIf="apellido.invalid">{{getErrorMessageApellidos()}}</mat-error>
+        <input matInput placeholder="Concha Vergara" [formControl]=apellidos required>
+        <mat-error *ngIf="apellidos.invalid">{{getErrorMessageApellidos()}}</mat-error>
       </mat-form-field>
     </li>
 
@@ -57,7 +57,7 @@
           <mat-option [value]="i" *ngFor="let i of regiones">{{i}}</mat-option>
         </mat-select>
         <mat-label> Region</mat-label>
-        <mat-error *ngIf="name.invalid">{{getErrorMessageRegion()}}</mat-error>
+        <mat-error *ngIf="nombres.invalid">{{getErrorMessageRegion()}}</mat-error>
       </mat-form-field>
     </li>
 
@@ -70,7 +70,7 @@
           <mat-option [value]="i" *ngFor="let i of comunas">{{i}}</mat-option>
         </mat-select>
         <mat-label>Comuna</mat-label>
-        <mat-error *ngIf="name.invalid">{{getErrorMessageComuna()}}</mat-error>
+        <mat-error *ngIf="nombres.invalid">{{getErrorMessageComuna()}}</mat-error>
       </mat-form-field>
     </li>
 

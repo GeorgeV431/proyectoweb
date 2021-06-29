@@ -58,25 +58,16 @@ server.post('/createUsuario', (req, res) => {
     let region = req.body.region;
     let correo = req.body.correo;
     let password = req.body.password;
+    console.log(nombres + " " + apellidos);
     connection.query("INSERT INTO usuario(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('" + nombres + "','" + apellidos + "','" + rut + "','" + direccion + "','" + comuna + "','" + region + "','" + correo + "',MD5('" + password + "'))", (req1, resultados) => {
-        if (resultados == undefined) {
-            res.status(401).send({ "message": "Datos duplicados" });
-        }
-        else {
-            res.status(201).send({ "message": "Exito creando" });
-        }
     });
 });
-/*
-server.get('/login/:correo', (req:any,res:any)=>{
+server.get('/login/:correo', (req, res) => {
     let key = req.body.key;
-    
-    connection.query("SELECT * FROM usuario WHERE correo=? AND password=md5(?)",key,(error:any,resultados:any,fields:any)=>{
+    connection.query("SELECT * FROM usuario WHERE correo=? AND password=md5(?)", key, (error, resultados, fields) => {
         res.send(resultados);
     });
-
 });
-*/
 //     GET, POST Y DELETE DE Usuarios
 //     GET, POST Y DELETE DE Productos
 server.get('/getProductos', (req, res) => {

@@ -64,16 +64,11 @@ server.post('/createUsuario',(req:any,res:any)=>{
     let correo = req.body.correo;
     let password=req.body.password;
     
+    console.log(nombres + " " + apellidos)
     connection.query("INSERT INTO usuario(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('"+nombres+"','"+apellidos+"','"+rut+"','"+direccion+"','"+comuna+"','"+region+"','"+correo+"',MD5('"+password+"'))",(req1:any,resultados:any)=>{
-        if(resultados == undefined){
-            res.status(401).send({"message":"Datos duplicados"});
-        }else{
-            res.status(201).send({"message":"Exito creando"});
-        }
     });
 });
 
-/*
 server.get('/login/:correo', (req:any,res:any)=>{
     let key = req.body.key;
     
@@ -82,7 +77,7 @@ server.get('/login/:correo', (req:any,res:any)=>{
     });
 
 });
-*/
+
 //     GET, POST Y DELETE DE Usuarios
 
 

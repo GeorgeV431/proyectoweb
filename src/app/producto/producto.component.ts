@@ -77,8 +77,16 @@ export class ProductoComponent implements OnInit {
     this.comentarios.push(
       {id: (this.comentarios.length),id_producto: this.producto.id, id_usuario: (this.usuarioService.getId()), texto: this.comentario.value.comentario }
     )
-    console.log(this.comentarios);
-    this.servicio.saveComentario("this.producto.id", this.usuarioService.getId(), this.comentario.value.comentario, this.comentario.value.puntaje );
+    if(this.producto.id?.toString() != undefined){
+      let aux:string = this.producto.id?.toString();
+    
+    
+    //console.log(this.comentarios);
+
+    this.servicio.saveComentario(aux, this.usuarioService.getId(), this.comentario.value.comentario, this.comentario.value.puntaje ).subscribe(datos=>{
+      console.log(datos); 
+    });
+    }
   }
 
   addCart() {

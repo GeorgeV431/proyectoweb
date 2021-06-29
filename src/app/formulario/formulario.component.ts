@@ -18,8 +18,8 @@ export class FormularioComponent implements OnInit {
   hideRequiredControl = new FormControl(false);
   floatLabelControl = new FormControl('auto');
 
-  name = new FormControl('', [Validators.required,]);
-  apellido = new FormControl('', [Validators.required,]);
+  nombres = new FormControl('', [Validators.required,]);
+  apellidos = new FormControl('', [Validators.required,]);
   rut = new FormControl('', [Validators.required,]);
   direccion = new FormControl('', [Validators.required,]);
   correo = new FormControl('', [Validators.required, Validators.email]);
@@ -91,7 +91,6 @@ export class FormularioComponent implements OnInit {
   }
   constructor(public fb: FormBuilder, private router: Router, private route: ActivatedRoute, public dialog: MatDialog, public servicio:ServicioService) {
     this.formulario = fb.group({
-      nombre: ['']
     });
   }
 
@@ -102,7 +101,7 @@ export class FormularioComponent implements OnInit {
   /*-- Nombre --*/
 
   getErrorMessageNombre() {
-    if (this.name.hasError('required')) {
+    if (this.nombres.hasError('required')) {
       return 'You must enter a value';
     }
 
@@ -111,7 +110,7 @@ export class FormularioComponent implements OnInit {
 
   /*-- Apellidos --*/
   getErrorMessageApellidos() {
-    if (this.apellido.hasError('required')) {
+    if (this.apellidos.hasError('required')) {
       return 'You must enter a value';
     }
 
@@ -193,11 +192,16 @@ export class FormularioComponent implements OnInit {
         this.dialog.open(dialogClave);
       }
       else {
-        console.log(this.name.value, this.apellido.value, this.rut.value, this.direccion.value, this.correo.value, 
-          this.region.value, this.comuna.value, this.contrasenya.value, this.cContrasenya.value);
+        //console.log(this.name.value, this.apellido.value, this.rut.value, this.direccion.value, this.correo.value, 
+        //  this.region.value, this.comuna.value, this.contrasenya.value, this.cContrasenya.value);
         
-        this.servicio.saveUsuario(this.name.value, this.apellido.value, this.rut.value,
-          this.direccion.value, this.comuna.value, this.region.value, this.correo.value, this.contrasenya.value);
+        this.servicio.saveUsuario(this.nombres.value, this.apellidos.value, this.rut.value,
+          this.direccion.value, this.comuna.value, this.region.value, this.correo.value, this.contrasenya.value).subscribe(datos=>{
+            console.log(datos["message"]);
+            if(datos["message"]==="usuarioCreado"){
+              this.router.navigate(['/home']);
+              return;
+            }});
 
         this.dialog.open(dialogo);
         this.router.navigateByUrl('/');

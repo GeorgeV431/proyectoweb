@@ -21,7 +21,7 @@ export class ServicioService {
   }
 
   getUsuario(correo: string):Observable<any> {
-    
+
     return this.http.get(`${this.API_URI}/getUsuario/${correo}`);
   }
   saveUsuario(
@@ -32,18 +32,23 @@ export class ServicioService {
     comuna:string,
     region:string,
     correo:string,
-    password:string
-    ):Observable<any>{
+    password:string):Observable<any>{
+
+    console.log(nombres + " " + apellidos);
 
     const body = new HttpParams()
-      .set("nombre",nombres)
-      .set('apellido',apellidos)
+      .set("nombres",nombres)
+      .set('apellidos',apellidos)
       .set("rut",rut)
       .set("direccion",direccion)
       .set("comuna",comuna)
       .set("region",region)
       .set("correo",correo)
-      .set("password",password)
+      .set("password",password);
+
+      console.log(body);
+      console.log(body.toString());
+
 
       return this.http.post(`${this.API_URI}/createUsuario`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
@@ -54,7 +59,7 @@ export class ServicioService {
     let headers = new HttpHeaders();
     headers = headers.append('access-token',key);
     
-    return this.http.post(`${this.API_URI}inicioSesion`, {'headers':headers});
+    return this.http.post(`${this.API_URI}/login`, {'headers':headers});
   }
 
 
@@ -101,12 +106,13 @@ export class ServicioService {
     texto:string,
     calificacion:string
     ){
+      console.log(id_producto+" "+id_usuario+" "+texto+" "+calificacion);
       const body = new HttpParams()
       .set("id_producto",id_producto)
       .set('id_usuario',id_usuario)
       .set("texto",texto)
       .set("calificacion",calificacion);
 
-      return this.http.post(`${this.API_URI}/createUsuario`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
+      return this.http.post(`${this.API_URI}/createComentario`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
 }
