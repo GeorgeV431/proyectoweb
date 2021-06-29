@@ -4,7 +4,7 @@
     <div mat-card-avatar class="header-image"></div>
     <mat-card-title> {{ producto.nombre }} </mat-card-title>
     <mat-card-subtitle> {{producto.categoria}} </mat-card-subtitle>
-    <button id="shoppingCart"  [routerLink]="['/cart']" routerLinkActive="router-link-active" mat-stroked-button>
+    <button id="shoppingCart" matBadgePosition="before" matBadge=" {{total}} " matBadgeColor="warn" [matBadgeHidden]="hidden"  [routerLink]="['/cart']" routerLinkActive="router-link-active" mat-stroked-button>
       <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
     </button>
   </mat-card-header>
