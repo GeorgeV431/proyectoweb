@@ -55,10 +55,13 @@ export class UsuarioService {
         }
 
       );
+    let str = sessionStorage.getItem('Usuario');
+    if(str == null)
+        return;
     this.conectar();
     
     if(recordar){
-      let str = sessionStorage.getItem('Usuario');
+      
       if(str != null)
         localStorage.setItem('Usuario', str);
     }
