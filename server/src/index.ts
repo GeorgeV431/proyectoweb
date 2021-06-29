@@ -146,17 +146,23 @@ server.get('/getBoleta',(req:any,res:any)=>{
 });
 
 server.post('/generarBoleta',(req:any,res:any)=>{
-    let id_Usuario = req.body.usuario;
+    let id_usuario = req.body.id_usuario;
     let total = req.body.total;
-    
-    connection.query("INSERT INTO boleta(id_usuario,total)VALUES('"+id_Usuario+"','"+total+"')",(req:any,resultados:any)=>{
+    console.log(id_usuario+" "+total);
+    connection.query("INSERT INTO boleta(id_usuario,total)VALUES('"+id_usuario+"','"+total+"')",(req:any,resultados:any)=>{
         res.status(201).send(resultados);
+    });
+});
+
+server.get('/maxId',(req:any,res:any)=>{
+    connection.query("SELECT MAX(id) AS id FROM boleta",(req1:any,resultados:any)=>{
+        res.send(resultados);
     });
 });
 
 server.get('/getDetalle',(req:any,res:any)=>{
     let id_boleta = req.body.boleta;
-    connection.query("SELECT * FROM detalle",id_boleta,(req1:any,resultados:any)=>{
+    connection.query("SELECT * FROM detalle",(req1:any,resultados:any)=>{
         res.send(resultados);
     });
 });

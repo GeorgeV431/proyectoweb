@@ -123,15 +123,21 @@ server.get('/getBoleta', (req, res) => {
     });
 });
 server.post('/generarBoleta', (req, res) => {
-    let id_Usuario = req.body.usuario;
+    let id_usuario = req.body.id_usuario;
     let total = req.body.total;
-    connection.query("INSERT INTO boleta(id_usuario,total)VALUES('" + id_Usuario + "','" + total + "')", (req, resultados) => {
+    console.log(id_usuario + " " + total);
+    connection.query("INSERT INTO boleta(id_usuario,total)VALUES('" + id_usuario + "','" + total + "')", (req, resultados) => {
         res.status(201).send(resultados);
+    });
+});
+server.get('/maxId', (req, res) => {
+    connection.query("SELECT MAX(id) AS id FROM boleta", (req1, resultados) => {
+        res.send(resultados);
     });
 });
 server.get('/getDetalle', (req, res) => {
     let id_boleta = req.body.boleta;
-    connection.query("SELECT * FROM detalle", id_boleta, (req1, resultados) => {
+    connection.query("SELECT * FROM detalle", (req1, resultados) => {
         res.send(resultados);
     });
 });

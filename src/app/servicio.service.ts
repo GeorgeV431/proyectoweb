@@ -78,22 +78,26 @@ export class ServicioService {
     return this.http.put(`${this.API_URI}/producto/${id}`);
   }
   */
- 
+
   // fin GET, DELETE Y POST de producto
 
   // inicio GET, DELETE Y POST de boleta
   getBoletas() {
     return this.http.get(`${this.API_URI}/getBoleta`);
   }
+  getMaxIdBoleta():Observable<any>{
+    return this.http.get(`${this.API_URI}/maxId`);
+  }
 
   saveBoleta(
     id_usuario:string,
     total:string
-  ) {
+  ):Observable<any> {
     console.log(id_usuario+" "+total);
       const body = new HttpParams()
-      .set('id_usuario',id_usuario)
-      .set("texto",total);
+      .set("id_usuario",id_usuario)
+      .set("total",total);
+    
     return this.http.post(`${this.API_URI}/generarBoleta`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
   // fin GET, DELETE Y POST de boleta
@@ -103,8 +107,18 @@ export class ServicioService {
     return this.http.get(`${this.API_URI}/getDetalle`);
   }
  
-  saveDetalle(detalle: Detalle) {
-    return this.http.post(`${this.API_URI}/denerarDetalle`, detalle);
+  saveDetalle(
+    id_boleta:string,
+    id_producto:string,
+    cantidad:string,
+    subtotal:string
+  ) {
+    const body = new HttpParams()
+      .set("id_boleta",id_boleta)
+      .set('id_producto',id_producto)
+      .set("cantidad",cantidad)
+      .set("subtotal",subtotal);
+    return this.http.post(`${this.API_URI}/generarDetalle`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')} );
   }
   // fin GET, DELETE Y POST de Detalle
 
