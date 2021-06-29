@@ -11,6 +11,8 @@ import { UsuarioService } from '../usuario.service';
   styleUrls: ['./producto.component.scss']
 })
 export class ProductoComponent implements OnInit {
+  hidden = true;
+  total=0;
 
   producto: Producto = { id: 1, nombre: "Shiba1", stock: 10, valor: 3000, categoria: "Pepperonni" };
   cantidad: number = 1;;
@@ -82,7 +84,11 @@ export class ProductoComponent implements OnInit {
   addCart() {
     this.cartService.adicionarP(this.producto);
     this.cartService.adicionarC(this.cantidad);
-
+    
+    if (this.cartService.getLengthP()==1) {
+      this.toggleBadgeVisibility();
+    }
+    this.total=this.cartService.getLengthP();
   }
   stock(){
     if (this.producto.stock==0) {
@@ -90,6 +96,10 @@ export class ProductoComponent implements OnInit {
     }else{
       return true;
     }
+  }
+
+  toggleBadgeVisibility() {
+    this.hidden = !this.hidden;
   }
 
 }

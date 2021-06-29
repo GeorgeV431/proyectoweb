@@ -4,11 +4,11 @@
     <div mat-card-avatar class="header-image"></div>
     <mat-card-title> {{ producto.nombre }} </mat-card-title>
     <mat-card-subtitle> {{producto.categoria}} </mat-card-subtitle>
-    <button id="shoppingCart"  [routerLink]="['/cart']" routerLinkActive="router-link-active" mat-stroked-button>
+    <button id="shoppingCart" matBadgePosition="before" matBadge=" {{total}} " matBadgeColor="warn" [matBadgeHidden]="hidden"  [routerLink]="['/cart']" routerLinkActive="router-link-active" mat-stroked-button>
       <mat-icon aria-hidden="false" aria-label="Example home icon">shopping_cart</mat-icon>
     </button>
   </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <img mat-card-image src='{{ "../assets/" + producto.id + ".jpg" }}' alt="Photo of a Shiba Inu">
   <mat-card-content>
     <p *ngIf="not0()">
       <mat-icon *ngFor="let item of stars" aria-hidden="false" aria-label="Example home icon">star</mat-icon>

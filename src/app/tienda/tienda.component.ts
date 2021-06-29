@@ -55,7 +55,7 @@ export class TiendaComponent implements OnInit {
     }
     this.total=this.cartService.getLengthP();
 
-    for (let index = 0; index < this.servicio.getProductos.length ; index++) {
+    for (let index = 0; index < 15 ; index++) {
       this.cantidades.push(1);
     }
   }
