@@ -39,14 +39,15 @@ export class UsuarioService {
     this.servicio.getUsuario(correo)
       .subscribe(
         res => {
-          console.log(JSON.stringify(res));
+          this.nombre = res[0].Nombres + " " + res[0].Apellidos;
+          this.id = res[0].Correo;
+          if(res[0].Tipo == 1) this.esAdmin = true; else this.esAdmin = false;
         }
 
       );
 
     this.conectar();
-    
-
+  
     if(recordar){
       localStorage.setItem('Usuario',JSON.stringify({
         "estaConectado": this.estaConectado,
