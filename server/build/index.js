@@ -68,12 +68,16 @@ server.post('/createUsuario', (req, res) => {
         }
     });
 });
-server.get('/login/:correo?:password', (req, res) => {
+/*
+server.get('/login/:correo', (req:any,res:any)=>{
     let key = req.body.key;
-    connection.query("SELECT * FROM usuario WHERE correo=? AND password=md5(?)", key, (error, resultados, fields) => {
+    
+    connection.query("SELECT * FROM usuario WHERE correo=? AND password=md5(?)",key,(error:any,resultados:any,fields:any)=>{
         res.send(resultados);
     });
+
 });
+*/
 //     GET, POST Y DELETE DE Usuarios
 //     GET, POST Y DELETE DE Productos
 server.get('/getProductos', (req, res) => {
