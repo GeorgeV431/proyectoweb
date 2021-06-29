@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { ServicioService } from '../servicio.service';
 
 
 @Component({
@@ -88,7 +89,7 @@ export class FormularioComponent implements OnInit {
     }
 
   }
-  constructor(public fb: FormBuilder, private router: Router, private route: ActivatedRoute, public dialog: MatDialog) {
+  constructor(public fb: FormBuilder, private router: Router, private route: ActivatedRoute, public dialog: MatDialog, public servicio:ServicioService) {
     this.formulario = fb.group({
       nombre: ['']
     });
@@ -192,7 +193,12 @@ export class FormularioComponent implements OnInit {
         this.dialog.open(dialogClave);
       }
       else {
-        //  console.log(this.name.value, this.apellido.value, this.rut.value, this.direccion.value, this.correo.value, this.region.value, this.comuna.value, this.contrasenya.value, this.cContrasenya.value);
+        console.log(this.name.value, this.apellido.value, this.rut.value, this.direccion.value, this.correo.value, 
+          this.region.value, this.comuna.value, this.contrasenya.value, this.cContrasenya.value);
+        
+        this.servicio.saveUsuario(this.name.value, this.apellido.value, this.rut.value,
+          this.direccion.value, this.comuna.value, this.region.value, this.correo.value, this.contrasenya.value);
+
         this.dialog.open(dialogo);
         this.router.navigateByUrl('/');
       }

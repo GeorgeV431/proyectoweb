@@ -129,6 +129,7 @@ export class TiendaComponent implements OnInit {
       return false;
   }
 
+
   vistaProducto(indice: number) {
     this.cartService.addObjeto(this.num[indice]);
     this.router.navigateByUrl('/producto');
