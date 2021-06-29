@@ -13,11 +13,11 @@ export interface Usuario {
 };
 
 export interface Producto {
-    id?: number,
-    nombre?: string,
-    stock?: number,
-    valor?: number,
-    categoria?: string
+    id: number,
+    nombre: string,
+    stock: number,
+    valor: number,
+    categoria: string
 }
 
 export interface Comentarios {
