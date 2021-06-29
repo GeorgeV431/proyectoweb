@@ -77,7 +77,7 @@
       <mat-card-actions>
 
         <mat-form-field id="cantidad" appearance="outline">
-          <input type="number" [(ngModel)]="cantidades[indice]" class="cantidad" matInput>
+          <input type="number" min="1" [(ngModel)]="cantidades[indice]" class="cantidad" matInput>
         </mat-form-field>
         
         <button *ngIf="stock(item)" id="cartButton" (click)="addCart(indice)" mat-button> 
