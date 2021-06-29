@@ -46,7 +46,7 @@ export class UsuarioService {
           if(res[0].Tipo == 1) this.esAdmin = true; else this.esAdmin = false;
 
           sessionStorage.setItem('Usuario',JSON.stringify({
-            "estaConectado": this.estaConectado,
+            "estaConectado": true,
             "nombre": this.nombre,
             "id": this.id,
             "esAdmin": this.esAdmin
@@ -58,8 +58,8 @@ export class UsuarioService {
     let str = sessionStorage.getItem('Usuario');
     if(str == null)
         return;
+
     this.conectar();
-    
     if(recordar){
       
       if(str != null)
