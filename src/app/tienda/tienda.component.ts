@@ -19,7 +19,6 @@ export class TiendaComponent implements OnInit {
   hidden = true;
   fontStyleControl = new FormControl();
   fontStyle?: string;
-  str:string[] = new Array<string>();
   
 
 
@@ -84,10 +83,6 @@ export class TiendaComponent implements OnInit {
   }
 
   revisar(item:any) {
-    let str1 = new String( "../../assets/" ); 
-    let str2 = new String( ".jpg" ); 
-    str1.concat(item.id?.toString());
-    this.str.push(str1.concat(str2.toString()));
 
     let result = 4;
     let flagCategoria = false, flagMin = false, flagMax = false, flagStock=false;

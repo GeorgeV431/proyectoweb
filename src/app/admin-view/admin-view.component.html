@@ -40,8 +40,10 @@
               {{item.id_usuario}}
             </mat-panel-description>
           </mat-expansion-panel-header>
-          <p>{{item.id_usuario}}</p>
           <p>{{item.fecha}}</p>
+          <div *ngFor="let detalle of detalles" >
+            <p *ngIf="isDetalle(detalle,item)"> {{detalle.id_producto}} {{detalle.cantidad}} {{detalle.subtotal}} </p>
+          </div>
           <p>{{item.total}}</p>
 
         </mat-expansion-panel>
