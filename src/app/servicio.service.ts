@@ -25,8 +25,29 @@ export class ServicioService {
     headers = headers.append('access-token',correo);
     return this.http.get(`${this.API_URI}/getUsuario`, {'headers':headers});
   }
-  saveUsuario(usuario: Usuario) {
-    return this.http.post(`${this.API_URI}/createUsuario`, usuario);
+  saveUsuario(
+    nombres:string,
+    apellidos:string,
+    rut:string,
+    direccion:string,
+    comuna:string,
+    region:string,
+    email:string,
+    contrasenia:string,
+    tipo:boolean
+    ):Observable<any>{
+
+    const body = new HttpParams()
+      .set("nombre",nombres)
+      .set('apellido',apellidos)
+      .set("rut",rut)
+      .set("direccion",direccion)
+      .set("clave",contrasenia)
+      .set("email",email)
+      .set("region",region)
+      .set("comuna",comuna);
+
+      return this.http.post(`${this.API_URI}/createUsuario`,body.toString(),{headers:new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
 
   login(correo:string,password:string):Observable<any>{

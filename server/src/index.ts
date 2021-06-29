@@ -63,12 +63,13 @@ server.post('/createUsuario',(req:any,res:any)=>{
     let region = req.body.region;
     let correo = req.body.correo;
     let password=req.body.password;
+    let tipo = req.body.tipo;
     
-    connection.query("INSERT INTO usuario(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('"+nombres+"','"+apellidos+"','"+rut+"','"+comuna+"','"+region+"','"+correo+"',MD5('"+password+"'),'"+direccion+"')",(req1:any,resultados:any)=>{
+    connection.query("INSERT INTO usuario(nombres,apellidos,rut,direccion,comuna,region,correo,password)VALUES('"+nombres+"','"+apellidos+"','"+rut+"','"+direccion+"','"+comuna+"','"+region+"','"+correo+"',MD5('"+password+"'),'"+tipo+"')",(req1:any,resultados:any)=>{
         if(resultados == undefined){
-            res.status(401).send({"message":"ERROR, datos duplicados"});
+            res.status(401).send({"message":"Datos duplicados"});
         }else{
-            res.status(201).send({"message":"creado"});
+            res.status(201).send({"message":"Exito creando"});
         }
     });
 });
