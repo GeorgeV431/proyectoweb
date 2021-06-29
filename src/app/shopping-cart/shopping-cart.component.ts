@@ -22,7 +22,7 @@ export class ShoppingCartComponent implements OnInit {
   productos: Producto[] = new Array<Producto>();
 
 
-  constructor(private cartService: CartService,private servicio: ServicioService, public dialog: MatDialog, private router: Router, private usuario: UsuarioService) {
+  constructor(private cartService: CartService,private servicio: ServicioService, public dialog: MatDialog, private router: Router, public usuario: UsuarioService) {
 
   }
 
@@ -73,12 +73,10 @@ export class ShoppingCartComponent implements OnInit {
           console.log(datos)});
       }
     }); 
-    
 
     this.dialog.open(dialogo);
     this.router.navigateByUrl('/');
   }
-
 
 }
 @Component({

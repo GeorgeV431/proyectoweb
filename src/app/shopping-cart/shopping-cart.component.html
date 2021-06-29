@@ -17,11 +17,11 @@
 
     </mat-card-actions>
   </mat-card>
-  <div id="divBuy">
+  <div *ngIf="usuario.getEstado()" id="divBuy">
     <label >total: {{total}} </label>
     <button  id="buy" type="button" (click)="submitCart()" mat-button>COMPRAR</button>
   </div>
-  <div #pedirLogIn>
+  <div *ngIf="!usuario.getEstado()" #pedirLogIn>
         Debe Iniciar Sesion para realizar la compra.
   </div>
   
