@@ -168,7 +168,7 @@ server.get('/getDetalle',(req:any,res:any)=>{
     });
 });
 
-server.post('/generarBoleta',(req:any,res:any)=>{
+server.post('/generarDetalle',(req:any,res:any)=>{
     let id_boleta = req.body.id_boleta;
     let id_producto = req.body.id_produto;
     let cantidad = req.body.cantidad;

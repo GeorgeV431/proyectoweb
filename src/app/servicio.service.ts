@@ -89,7 +89,7 @@ export class ServicioService {
   }
  
   saveDetalle(detalle: Detalle) {
-    return this.http.post(`${this.API_URI}/detalle`, detalle);
+    return this.http.post(`${this.API_URI}/denerarDetalle`, detalle);
   }
   // fin GET, DELETE Y POST de Detalle
 
